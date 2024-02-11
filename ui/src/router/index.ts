@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouterScrollBehavior } from 'vue-router'
 
+import FrontPage from '@/views/LandingPage/index.vue'
 import Error from '@/views/Error.vue'
 
 import auth from './auth'
@@ -20,6 +21,11 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   scrollBehavior,
   routes: [
+    {
+      path: '/',
+      name: 'home',
+      component: FrontPage,
+    },
     ...auth,
     {
       path: '/:pathMatch(.*)*',
