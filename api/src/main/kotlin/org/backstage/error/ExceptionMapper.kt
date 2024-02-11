@@ -40,6 +40,7 @@ class ConstraintViolationExceptionMapper : ExceptionMapper<ConstraintViolationEx
 }
 
 object ExceptionResponseFactory {
+    @Suppress("CyclomaticComplexMethod")
     fun handleThrownException(exception: Throwable?): Response {
         tailrec fun handleForException(exception: Throwable?, parent: Throwable? = null): Response =
             when (exception) {

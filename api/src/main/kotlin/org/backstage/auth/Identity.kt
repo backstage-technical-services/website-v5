@@ -4,7 +4,7 @@ import io.quarkus.oidc.runtime.OidcJwtCallerPrincipal
 import io.quarkus.security.identity.SecurityIdentity
 
 fun SecurityIdentity.getUserId(): String = this.getUserIdOrNull()
-    ?: throw IllegalStateException("Could not determine ID of user $this")
+    ?: error("Could not determine ID of user $this")
 
 fun SecurityIdentity.getUserIdOrNull(): String? = when (isAnonymous) {
     true -> null

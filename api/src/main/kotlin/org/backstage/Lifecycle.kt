@@ -11,10 +11,12 @@ import org.jboss.logging.Logger
 class Lifecycle {
     private val logger = Logger.getLogger(this::class.java.canonicalName)
 
+    @Suppress("UnusedParameter")
     fun onStart(@Observes event: StartupEvent) {
         logger.info("Started application with profiles: ${ConfigUtils.getProfiles().joinToString(separator = ", ")}")
     }
 
+    @Suppress("UnusedParameter")
     fun onStop(@Observes event: ShutdownEvent) {
         logger.info("Stopping application cleanly ...")
     }

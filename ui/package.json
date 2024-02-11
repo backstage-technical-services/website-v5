@@ -12,8 +12,8 @@
     "test:unit:ci": "vitest run --coverage",
     "test:e2e": "start-server-and-test dev http://localhost:8000 'cypress open --e2e'",
     "test:e2e:ci": "start-server-and-test preview http://localhost:8000 'cypress run --e2e'",
-    "type-check": "vue-tsc --strict --noEmit -p tsconfig.app.json --composite false",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore"
+    "check:types": "vue-tsc --strict --noEmit -p tsconfig.app.json --composite false",
+    "check:lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore"
   },
   "dependencies": {
     "@auth0/auth0-vue": "^2.3.0",
