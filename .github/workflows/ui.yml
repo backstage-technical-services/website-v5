@@ -44,3 +44,30 @@ jobs:
           node-version: 18
       - run: yarn install --frozen-lockfile
       - run: yarn test:unit:ci
+
+  e2e-tests:
+    name: E2E Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - run: yarn install --frozen-lockfile
+      - uses: cypress-io/github-action@v6
+        with:
+          working-directory: ui
+          build: yarn build
+          command: yarn test:e2e:ci
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: ui/cypress/screenshots
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-videos
+          path: ui/cypress/videos
+          if-no-files-found: ignore
