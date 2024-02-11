@@ -1,0 +1,59 @@
+$color-bg: #000;
+$color-text: #ccc;
+
+$font-size-base: 16px;
+$line-height: 1.6;
+
+$color-bts-yellow: #ffcf00;
+$color-bts-yellow-dark: #c5a000;
+$color-bts-gold: #d69e00;
+$color-bts-orange: #d18800;
+
+/* Quasar overrides */
+$primary: $color-bts-yellow;
+$secondary: #303030;
+$accent: #7400bd;
+
+$dark: #212121;
+$dark-page: $color-bg;
+
+$positive: #00821e;
+$negative: #940011;
+$info: #0053b3;
+$warning: #c26700;
+
+$body-font-size: $font-size-base;
+$body-line-height: $line-height;
+
+$button-font-size: 0.9375rem;
+$input-font-size: 1rem;
+$tooltip-fontsize: 0.75rem;
+
+$dark-shadow-color: blue;
+
+@import 'quasar/src/css/variables';
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: ($breakpoint-xs + 1),
+  md: ($breakpoint-sm + 1),
+  lg: ($breakpoint-md + 1),
+  xl: ($breakpoint-lg + 1),
+);
+$container-max-widths: (
+  xs: 100%,
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+);
+
+:root {
+  --color-bg: #{$color-bg};
+  --color-text: #{$color-text};
+
+  --color-bts-yellow: #{$color-bts-yellow};
+  --color-bts-yellow-dark: #{$color-bts-yellow-dark};
+  --color-bts-gold: #{$color-bts-gold};
+  --color-bts-orange: #{$color-bts-orange};
+}

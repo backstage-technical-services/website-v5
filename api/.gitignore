@@ -1,0 +1,8 @@
+### Gradle ###
+.gradle/
+build/
+
+### Quarkus ###
+/.quarkus/cli/plugins/
+.env
+src/main/resources/import.sql

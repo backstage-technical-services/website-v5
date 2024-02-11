@@ -1,0 +1,14 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.web.json",
+  "include": ["./**/*", "../support/**/*"],
+  "compilerOptions": {
+    "isolatedModules": false,
+    "target": "es5",
+    "lib": ["es5", "dom"],
+    "types": [
+      "node",
+      "cypress",
+      "@quasar/quasar-app-extension-testing-e2e-cypress"
+    ]
+  }
+}

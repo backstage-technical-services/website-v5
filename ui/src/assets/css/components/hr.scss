@@ -1,0 +1,10 @@
+hr {
+  background: var(--color-bts-yellow);
+  border: none;
+  height: 1px;
+  margin: 1.5em 0;
+
+  & + * {
+    margin-top: 0;
+  }
+}

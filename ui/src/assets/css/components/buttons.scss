@@ -1,0 +1,9 @@
+.q-btn {
+  &.bg-primary {
+    color: #000 !important;
+  }
+
+  &.q-btn--flat.text-secondary {
+    color: #fff !important;
+  }
+}

@@ -1,0 +1,19 @@
+@import 'vars';
+
+@mixin transition($property, $time: 0.1s, $timing-fn: ease-in) {
+  transition-property: $property;
+  transition-duration: $time;
+  transition-timing-function: $timing-fn;
+}
+
+@mixin breakpoint-from($breakpoint) {
+  @media (min-width: map-get($sizes, $breakpoint)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-to($breakpoint) {
+  @media(max-width: map-get($sizes, $breakpoint) - 1) {
+    @content;
+  }
+}

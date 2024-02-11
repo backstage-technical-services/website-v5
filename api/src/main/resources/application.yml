@@ -1,0 +1,73 @@
+quarkus:
+  # Server
+  http:
+    port: 8080
+    cors:
+      ~: true
+      methods: GET,PUT,POST,PATCH,DELETE
+      exposed-headers: Resource-Id
+
+  # Logging
+  log:
+    console:
+      enable: true
+      format: "level=%p traceId=%X{traceId} spanId=%X{spanId} sampled=%X{sampled} class=%c{2.} thread=%t | %s%e%n"
+    min-level: TRACE
+    level: INFO
+    category:
+      "org.backstage":
+        level: ${LOG_LEVEL:INFO}
+
+  # Database
+  datasource:
+    db-kind: postgresql
+  hibernate-orm:
+    dialect: org.hibernate.dialect.PostgreSQLDialect
+    jdbc:
+      timezone: UTC
+    database:
+      generation: none
+
+  # Auth/OIDC
+  oidc:
+    auth-server-url: ${OIDC_SERVER_URL}
+    client-id: ${OIDC_CLIENT_ID}
+    credentials:
+      secret: ${OIDC_CLIENT_SECRET}
+    roles:
+      role-claim-path: permissions
+
+"%prod":
+  quarkus:
+    datasource:
+      jdbc:
+        url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+      username: ${DB_USER}
+      password: ${DB_PASS}
+
+"%dev":
+  quarkus:
+    http:
+      cors:
+        origins: http://localhost:8000
+    log:
+      category:
+        "org.backstage":
+          level: ${LOG_LEVEL:DEBUG}
+        "org.jboss.resteasy.reactive.common.core.AbstractResteasyReactiveContext":
+          level: DEBUG
+    hibernate-orm:
+      database:
+        generation: drop-and-create
+      log:
+        jdbc-warnings: true
+        sql: true
+
+"%test":
+  quarkus:
+    hibernate-orm:
+      sql-load-script: no-file
+      database:
+        generation: drop-and-create
+    oidc:
+      enabled: false

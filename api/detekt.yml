@@ -1,0 +1,8 @@
+naming:
+  MatchingDeclarationName:
+    active: false
+
+
+style:
+  WildcardImport:
+    active: false

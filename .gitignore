@@ -1,0 +1,26 @@
+### Eclipse ###
+.project
+.classpath
+.settings/
+bin/
+
+### IntelliJ ###
+.idea
+*.ipr
+*.iml
+*.iws
+
+### NetBeans ###
+nb-configuration.xml
+
+### Visual Studio Code ###
+.vscode/*
+!.vscode/extensions.json
+.factorypath
+
+### Vim ###
+*.swp
+*.swo
+
+### macOS  ###
+.DS_Store

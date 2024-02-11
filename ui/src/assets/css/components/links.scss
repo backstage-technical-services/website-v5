@@ -1,0 +1,33 @@
+a:not(.q-link, .q-btn) {
+  &, &:visited {
+    color: var(--color-bts-yellow);
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: var(--color-bts-yellow);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  &:active {
+    color: var(--color-bts-gold);
+    text-decoration: underline;
+  }
+
+  &:focus {
+    outline-color: var(--color-bts-yellow);
+  }
+
+  &.muted {
+    color: var(--color-text);
+
+    &:hover {
+      color: var(--color-bts-yellow);
+    }
+
+    &:focus, &:active {
+      outline-color: var(--color-text);
+    }
+  }
+}
