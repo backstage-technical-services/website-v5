@@ -5,6 +5,8 @@ import FrontPage from '@/views/LandingPage/index.vue'
 import Error from '@/views/Error.vue'
 
 import auth from './auth'
+import legal from './legal'
+import redirects from './redirects'
 
 const scrollBehavior: RouterScrollBehavior = (to, from, savedPosition) => {
   if (savedPosition) {
@@ -26,7 +28,14 @@ const router = createRouter({
       name: 'home',
       component: FrontPage,
     },
+    {
+      path: '/faq',
+      name: 'faq',
+      component: () => import('@/views/FAQ.vue'),
+    },
     ...auth,
+    ...redirects,
+    ...legal,
     {
       path: '/:pathMatch(.*)*',
       name: 'not-found',
