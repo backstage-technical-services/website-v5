@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://json.schemastore.org/detekt-1.22.0.json
 complexity:
   LongParameterList:
-    functionThreshold: 20
+    functionThreshold: 15
 
 naming:
   MatchingDeclarationName:
