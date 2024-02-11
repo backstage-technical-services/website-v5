@@ -5,6 +5,7 @@ import FrontPage from '@/views/LandingPage/index.vue'
 import Error from '@/views/Error.vue'
 
 import auth from './auth'
+import awards from './awards'
 import legal from './legal'
 import redirects from './redirects'
 
@@ -34,6 +35,7 @@ const router = createRouter({
       component: () => import('@/views/FAQ.vue'),
     },
     ...auth,
+    ...awards,
     ...redirects,
     ...legal,
     {

@@ -46,4 +46,14 @@ export const login = () => {
 }
 
 export default auth0
-export const permissions = {}
+export const permissions = {
+  awards: {
+    list: 'award:read',
+    add: 'award:create',
+    suggest: 'award:suggest',
+    view: 'award:read',
+    edit: 'award:edit',
+    approve: 'award:approve',
+    delete: 'award:delete',
+  },
+}
