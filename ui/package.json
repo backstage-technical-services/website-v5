@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview --port 8000",
+    "preview": "vite preview --host --port 8000",
     "test:unit": "vitest",
     "test:unit:watch": "yarn test:unit",
     "test:unit:coverage": "yarn test:unit --coverage",
