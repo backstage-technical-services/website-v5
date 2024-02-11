@@ -1,0 +1,26 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="UI - E2E Tests" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/ui/package.json" />
+    <command value="run" />
+    <scripts>
+      <script value="test:e2e" />
+    </scripts>
+    <node-interpreter value="project" />
+    <envs />
+    <method v="2">
+      <option name="NpmBeforeRunTask" enabled="true">
+        <package-json value="$PROJECT_DIR$/ui/package.json" />
+        <command value="run" />
+        <scripts>
+          <script value="build" />
+        </scripts>
+        <node-interpreter value="project" />
+        <envs>
+          <env name="VITE_API_URL" value="http://localhost:8080" />
+          <env name="VITE_AUTH0_CLIENT_ID" value="LXvFEud2ndyJkl5ArB6MFLLh8zQv1ZI6" />
+          <env name="VITE_AUTH0_DOMAIN" value="backstage-dev.uk.auth0.com" />
+        </envs>
+      </option>
+    </method>
+  </configuration>
+</component>
