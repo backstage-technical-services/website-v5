@@ -71,6 +71,7 @@ abstract class BaseEntity {
 
 @MappedSuperclass
 abstract class SoftDeletableEntity(
+    @Suppress("ForbiddenComment")
     @ColumnDefault("false") // TODO: remove when we move to liquibase
     @Column(name = "deleted", nullable = false)
     var deleted: Boolean = false

@@ -88,6 +88,7 @@ fun <T, U : BaseEntity> authoriseAndDo(fn: (U) -> Boolean, entity: U?, onAuthori
  * }
  * ```
  */
+@Suppress("UnusedPrivateProperty")
 abstract class Policy<T>(private val identity: SecurityIdentity) {
     protected fun allow() = Unit
     protected fun deny() {
