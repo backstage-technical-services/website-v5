@@ -47,5 +47,9 @@ jobs:
           distribution: temurin
           java-version: 17
       - run: ./gradlew assemble
-      - run: scripts/build_image.sh
-      # TODO: test that the image starts and passes health checks
+      - run: scripts/test_container.sh
+        working-directory: .
+        env:
+          OIDC_SERVER_URL: ${{ secrets.OIDC_SERVER_URL }}
+          OIDC_CLIENT_ID: ${{ secrets.OIDC_CLIENT_ID }}
+          OIDC_CLIENT_SECRET: ${{ secrets.OIDC_CLIENT_SECRET }}

@@ -1,0 +1,50 @@
+version: '3.8'
+
+networks:
+  default:
+    name: backstage-default
+
+services:
+  database:
+    image: postgres:16
+    container_name: backstage-db
+    networks:
+      - default
+    environment:
+      POSTGRES_DB: backstage
+      POSTGRES_USER: backstage
+      POSTGRES_PASSWORD: backstage
+    healthcheck:
+      test: [ 'CMD-SHELL', 'pg_isready -U backstage' ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: on-failure
+
+  api:
+    build:
+      context: api
+      dockerfile: src/main/docker/Dockerfile.jvm
+    image: backstage/api
+    container_name: backstage-api
+    networks:
+      - default
+    ports:
+      - '8080:8080'
+    environment:
+      QUARKUS_PROFILE: prod
+      LOG_LEVEL: debug
+      # Database
+      DB_HOST: database
+      DB_PORT: 5432
+      DB_NAME: backstage
+      DB_USER: backstage
+      DB_PASS: backstage
+      # OIDC
+      OIDC_SERVER_URL: $OIDC_SERVER_URL
+      OIDC_CLIENT_ID: $OIDC_CLIENT_ID
+      OIDC_CLIENT_SECRET: $OIDC_CLIENT_SECRET
+    depends_on:
+      database:
+        condition: service_healthy
+    restart: on-failure
