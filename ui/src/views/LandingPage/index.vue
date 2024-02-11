@@ -70,7 +70,7 @@
         <div class="row">
           <div class="col-12 col-md-6">
             <q-icon size="xl" :name="mdiPhone"/>
-            <div class="text-h2">+44 (0) 1225 383067</div>
+            <div class="text-h2">+44 (0) 1225 666076</div>
           </div>
           <div class="col-12 col-md-6">
             <q-icon size="xl" :name="mdiEmail"/>

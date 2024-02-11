@@ -22,7 +22,7 @@ const lines: AboutLine[] = [
     icon: mdiEmail,
   },
   {
-    text: '+44 (0) 1225 383067',
+    text: '+44 (0) 1225 666076',
     icon: mdiPhone,
   },
   {
