@@ -60,7 +60,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useHead } from 'unhead'
+import { useHead } from '@unhead/vue'
 import { useBreadcrumbs } from '@/composables/breadcrumbs'
 
 const { setBreadcrumbs } = useBreadcrumbs()
