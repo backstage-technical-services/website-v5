@@ -1,5 +1,7 @@
 package org.backstage.auth
 
-@Suppress("EmptyClassBlock")
 object Roles {
+    object UserGroups {
+        const val READ = "usergroup:read"
+    }
 }

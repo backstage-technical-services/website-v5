@@ -43,6 +43,7 @@ dependencies {
 
     // Auth
     implementation("io.quarkus:quarkus-oidc")
+    implementation("com.auth0:auth0:2.10.1")
 
     // Monitoring
     implementation("io.quarkus:quarkus-smallrye-health")
@@ -51,6 +52,7 @@ dependencies {
 
     // Other
     implementation("io.quarkus:quarkus-mailer")
+    implementation("io.quarkus:quarkus-cache")
     implementation("org.apache.commons:commons-lang3:3.14.0")
 
     // Tests
