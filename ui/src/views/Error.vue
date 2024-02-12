@@ -21,7 +21,7 @@
 
 <script lang="ts" setup>
 import { mdiHome, mdiGithub } from '@quasar/extras/mdi-v7'
-import { useHead } from 'unhead'
+import { useHead } from '@unhead/vue'
 import { useLayout } from '@/composables/layout'
 
 const props = withDefaults(defineProps<{
