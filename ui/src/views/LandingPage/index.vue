@@ -84,7 +84,7 @@
 
 <script lang="ts" setup>
 import { onMounted } from 'vue'
-import { useHead } from 'unhead'
+import { useHead } from '@unhead/vue'
 import { mdiPhone, mdiEmail } from '@quasar/extras/mdi-v7'
 
 import Carousel from '@/components/Carousel.vue'
