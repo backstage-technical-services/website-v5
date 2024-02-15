@@ -14,7 +14,6 @@ import io.quarkiverse.test.junit.mockk.InjectMock
 import io.quarkus.test.TestTransaction
 import io.quarkus.test.junit.QuarkusTest
 import jakarta.inject.Inject
-import jakarta.ws.rs.core.Response
 import jakarta.ws.rs.core.Response.Status.*
 import org.backstage.AuthHelpers
 import org.backstage.assertThrowsHttpException
@@ -23,7 +22,6 @@ import org.backstage.expect
 import org.backstage.shouldBeValidId
 import org.backstage.usergroup.UserGroupFixtures
 import org.junit.jupiter.api.Test
-import kotlin.math.exp
 
 @QuarkusTest
 @TestTransaction
