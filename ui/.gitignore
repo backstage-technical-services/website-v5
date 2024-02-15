@@ -21,3 +21,4 @@ coverage
 
 ### Tests ###
 /tests/reports
+.nyc_output

@@ -6,9 +6,13 @@ import vue from '@vitejs/plugin-vue'
 import eslint from 'vite-plugin-eslint'
 import { quasar, transformAssetUrls } from '@quasar/vite-plugin'
 import unhead from '@unhead/addons/vite'
+import istanbul from 'vite-plugin-istanbul'
 import { configDefaults } from 'vitest/config'
 
 export default defineConfig({
+  build: {
+    sourcemap: 'inline',
+  },
   plugins: [
     vue({
       template: {
@@ -18,6 +22,14 @@ export default defineConfig({
     eslint(),
     quasar(),
     unhead(),
+    istanbul({
+      include: 'src/*',
+      exclude: ['node_modules'],
+      extension: ['.ts', '.vue'],
+      cypress: true,
+      requireEnv: true,
+      forceBuildInstrument: true,
+    }),
   ],
   server: {
     port: 8000,
@@ -37,8 +49,8 @@ export default defineConfig({
       clean: true,
       cleanOnRerun: true,
       provider: 'v8',
-      reporter: ['text', 'json', 'html'],
-      reportsDirectory: './tests/reports/unit',
+      reporter: ['text', 'lcov'],
+      reportsDirectory: './coverage/unit',
     },
   },
 })

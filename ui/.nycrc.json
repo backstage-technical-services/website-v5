@@ -1,0 +1,15 @@
+{
+  "extends": "@istanbuljs/nyc-config-typescript",
+  "check-coverage": true,
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.vue"
+  ],
+  "exclude": [
+    "cypress/**/*.*",
+    "src/**/*.spec.ts",
+    "**/*.d.ts"
+  ],
+  "report-dir": "./coverage/e2e",
+  "reporter": ["lcov"]
+}
