@@ -3,7 +3,7 @@
 ### BTS Website v5
 
 ![License](https://img.shields.io/github/license/backstage-technical-services/website-v5?style=flat-square)
-[![Workflow Status](https://img.shields.io/github/actions/workflow/status/backstage-technical-services/website-v5/build.yml?branch=main&style=flat-square)](https://github.com/backstage-technical-services/website-v5/actions/workflows/api.yml)
+[![Workflow Status](https://img.shields.io/github/actions/workflow/status/backstage-technical-services/website-v5/build.yml?branch=main&style=flat-square)](https://github.com/backstage-technical-services/website-v5/actions/workflows/build.yml)
 [![Issues](https://img.shields.io/github/issues/backstage-technical-services/website-v5?style=flat-square)](https://github.com/backstage-technical-services/website-v5/issues)
 
 ---
