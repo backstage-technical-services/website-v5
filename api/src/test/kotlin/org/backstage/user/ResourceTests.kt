@@ -21,7 +21,7 @@ class UserResourceTests {
     lateinit var repository: UserRepository
 
     @Test
-    fun `listing awards as an authenticated user should return a 401 response`() {
+    fun `listing users as an authenticated user should return a 401 response`() {
         RestAssured
             .`when`()
             .get()
@@ -32,7 +32,7 @@ class UserResourceTests {
 
     @Test
     @TestSecurity(user = AuthHelpers.DEFAULT_USER_ID)
-    fun `listing awards without the correct role should return a 403 response`() {
+    fun `listing users without the correct role should return a 403 response`() {
         RestAssured
             .`when`()
             .get()
@@ -43,7 +43,7 @@ class UserResourceTests {
 
     @Test
     @TestSecurity(user = AuthHelpers.DEFAULT_USER_ID, roles = [Roles.Users.READ])
-    fun `listing the awards should return a valid response`() {
+    fun `listing the users should return a valid response`() {
         RestAssured
             .`when`()
             .get()
@@ -55,7 +55,7 @@ class UserResourceTests {
     }
 
     @Test
-    fun `creating an award as an unauthenticated user should return a 401 response`() {
+    fun `creating an user as an unauthenticated user should return a 401 response`() {
         RestAssured
             .given()
             .asJson(UserFixtures.CREATE_REQUEST_JSON)
@@ -69,7 +69,7 @@ class UserResourceTests {
 
     @Test
     @TestSecurity(user = AuthHelpers.DEFAULT_USER_ID)
-    fun `creating an award without the correct role should return a 403 response`() {
+    fun `creating an user without the correct role should return a 403 response`() {
         RestAssured
             .given()
             .asJson(UserFixtures.CREATE_REQUEST_JSON)
@@ -83,7 +83,7 @@ class UserResourceTests {
 
     @Test
     @TestSecurity(user = AuthHelpers.DEFAULT_USER_ID, roles = [Roles.Users.CREATE])
-    fun `creating an award should return a 204 status code and the resource ID`() {
+    fun `creating an user should return a 204 status code and the resource ID`() {
         RestAssured
             .given()
             .asJson(UserFixtures.CREATE_REQUEST_JSON)

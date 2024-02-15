@@ -44,7 +44,7 @@ class UserGroupServiceTests {
     }
 
     @Test
-    fun `listing awards with too high a page size should have the size reduced`() {
+    fun `listing user groups with too high a page size should have the size reduced`() {
         every { authService.listUserGroups(any(), any()) } returns UserGroupList(
             totalItems = 100,
             groups = generateGroups(50),
@@ -56,7 +56,7 @@ class UserGroupServiceTests {
     }
 
     @Test
-    fun `listing awards with a small page size should show that more pages are available`() {
+    fun `listing user groups with a small page size should show that more pages are available`() {
         every { authService.listUserGroups(any(), any()) } returns UserGroupList(
             totalItems = 5,
             groups = generateGroups(2),

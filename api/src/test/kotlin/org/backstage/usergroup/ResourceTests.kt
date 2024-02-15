@@ -35,7 +35,7 @@ class UserGroupResourceTests {
 
     @Test
     @TestSecurity(user = AuthHelpers.DEFAULT_USER_ID, roles = [Roles.UserGroups.READ])
-    fun `listing the awards should return a valid response`() {
+    fun `listing the user groups should return a valid response`() {
         RestAssured
             .`when`()
             .get()
