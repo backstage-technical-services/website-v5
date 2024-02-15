@@ -1,7 +1,6 @@
 package org.backstage
 
 import io.github.serpro69.kfaker.Faker
-import io.github.serpro69.kfaker.faker
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.longs.shouldBeGreaterThan
 import io.kotest.matchers.nulls.shouldNotBeNull
@@ -27,6 +26,7 @@ fun Long?.shouldBeValidId() {
 
 object AuthHelpers {
     const val DEFAULT_USER_ID = "TEST_USER"
+    val EXAMPLE_IDENTITY_ID = "auth0|${faker.random.randomString()}"
 
     fun createMockedPrincipal(userId: String = DEFAULT_USER_ID): Principal =
         mockk<OidcJwtCallerPrincipal> {

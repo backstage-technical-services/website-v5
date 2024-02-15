@@ -43,6 +43,7 @@ dependencies {
 
     // Auth
     implementation("io.quarkus:quarkus-oidc")
+    implementation("com.auth0:auth0:2.10.1")
 
     // Monitoring
     implementation("io.quarkus:quarkus-smallrye-health")
@@ -51,12 +52,14 @@ dependencies {
 
     // Other
     implementation("io.quarkus:quarkus-mailer")
+    implementation("io.quarkus:quarkus-cache")
     implementation("org.apache.commons:commons-lang3:3.14.0")
 
     // Tests
     testImplementation("io.github.serpro69:kotlin-faker:1.15.0")
     testImplementation("io.quarkus:quarkus-junit5")
     testImplementation("io.quarkus:quarkus-test-security")
+    testImplementation("io.quarkus:quarkus-jacoco")
     testImplementation("io.rest-assured:rest-assured")
     testImplementation("io.quarkiverse.mockk:quarkus-junit5-mockk:2.1.0")
     testImplementation("io.kotest:kotest-runner-junit5-jvm:$kotestVersion")
@@ -89,6 +92,11 @@ tasks.withType<Test> {
     systemProperty("java.util.logging.manager", "org.jboss.logmanager.LogManager")
     useJUnitPlatform()
     finalizedBy(tasks.jacocoTestReport)
+
+    configure<JacocoTaskExtension> {
+        excludeClassLoaders = listOf("*QuarkusClassLoader")
+        setDestinationFile(layout.buildDirectory.file("jacoco/test.exec").get().asFile)
+    }
 }
 
 tasks.detekt {

@@ -56,6 +56,11 @@ quarkus:
           level: ${LOG_LEVEL:DEBUG}
         "org.jboss.resteasy.reactive.common.core.AbstractResteasyReactiveContext":
           level: DEBUG
+    datasource:
+      jdbc:
+        url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:backstage}
+      username: ${DB_USER:backstage}
+      password: ${DB_PASS:backstage}
     hibernate-orm:
       database:
         generation: drop-and-create
