@@ -3,14 +3,18 @@ package org.backstage.auth
 import com.auth0.client.auth.AuthAPI
 import com.auth0.client.mgmt.ManagementAPI
 import com.auth0.client.mgmt.filter.RolesFilter
+import com.auth0.client.mgmt.filter.UserFilter
 import com.auth0.exception.APIException
 import com.auth0.json.mgmt.roles.Role
+import com.auth0.json.mgmt.users.User
 import io.quarkus.arc.profile.IfBuildProfile
 import io.quarkus.cache.CacheResult
 import jakarta.enterprise.context.ApplicationScoped
 import jakarta.enterprise.context.Dependent
 import jakarta.enterprise.context.RequestScoped
 import jakarta.enterprise.inject.Produces
+import org.apache.commons.lang3.RandomStringUtils
+import org.backstage.user.UserRequest
 import org.backstage.usergroup.UserGroupResponse
 import org.eclipse.microprofile.config.inject.ConfigProperty
 import org.slf4j.LoggerFactory
@@ -44,6 +48,7 @@ class Auth0Config(
     }
 
     companion object {
+        const val USER_CONNECTION = "Username-Password-Authentication"
         private val LOGGER = LoggerFactory.getLogger(Auth0Config::class.java)
     }
 }
@@ -53,6 +58,53 @@ class Auth0Config(
 class Auth0AuthService(
     private val managementAPI: ManagementAPI,
 ) : AuthService {
+    private fun generatePassword(): CharArray = RandomStringUtils
+        .randomAlphanumeric(PASSWORD_LENGTH)
+        .toCharArray()
+
+    override fun createUser(request: UserRequest.Create): String {
+        LOGGER.debug("Checking if user exists in Auth0 with email ${request.email}")
+        val existingUser = UserFilter()
+            .withQuery("email:${request.email}")
+            .let { filter -> managementAPI.users().list(filter) }
+            .execute()
+            .body
+            .items
+            .firstOrNull()
+
+        return when (existingUser) {
+            null -> {
+                User()
+                    .apply {
+                        setConnection(Auth0Config.USER_CONNECTION)
+                        nickname = request.username
+                        email = request.email
+                        isEmailVerified = true
+                        name = "${request.firstName} ${request.lastName}"
+                        givenName = request.firstName
+                        familyName = request.lastName
+                        setPassword(generatePassword())
+                    }
+                    .let { user -> managementAPI.users().create(user) }
+                    .execute()
+                    .body
+                    .id
+                    .also { LOGGER.debug("Created user with ID $it in Auth0") }
+                    .also { userId ->
+                        managementAPI.users()
+                            .addRoles(userId, listOf(request.group))
+                            .execute()
+                            .also { LOGGER.debug("Added role ${request.group} to user $userId") }
+                    }
+            }
+
+            else -> {
+                LOGGER.debug("User with ID ${existingUser.id} already exists in Auth0")
+                existingUser.id
+            }
+        }
+    }
+
     @CacheResult(cacheName = "auth0-roles")
     override fun listUserGroups(pageIndex: Int, pageSize: Int): UserGroupList {
         val filter = RolesFilter()
@@ -86,6 +138,7 @@ class Auth0AuthService(
     }
 
     companion object {
+        private const val PASSWORD_LENGTH = 20
         private val LOGGER = LoggerFactory.getLogger(Auth0AuthService::class.java)
     }
 }

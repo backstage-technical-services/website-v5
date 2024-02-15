@@ -56,7 +56,13 @@ fun Page.checkPageSize(maxPageSize: Int): Page = when (this.size > maxPageSize) 
         LOGGER.debug("Requested page size (${this.size}) is greater than allowed maximum ($maxPageSize).")
         Page.of(this.index, maxPageSize)
     }
+
     false -> this
+}
+
+fun <E : SoftDeletableEntity> PanacheRepository<E>.softDelete(entity: E) {
+    entity.deleted = true
+    this.persistAndFlush(entity)
 }
 
 @MappedSuperclass
