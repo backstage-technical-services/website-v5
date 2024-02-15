@@ -95,6 +95,7 @@ jobs:
             --force-recreate \
             api
         working-directory: api
+      - run: scripts/wait_until_healthy.sh "backstage-api"
       - uses: cypress-io/github-action@v6
         with:
           working-directory: ui
