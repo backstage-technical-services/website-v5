@@ -2,6 +2,7 @@ package org.backstage.awards
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import jakarta.validation.constraints.NotBlank
+import org.backstage.user.UserResponse
 
 sealed class AwardRequest {
     data class Create(
@@ -46,7 +47,7 @@ sealed class AwardResponse {
         val recurring: Boolean,
 
         @JsonProperty("suggestedBy")
-        val suggestedBy: String?,
+        val suggestedBy: UserResponse.Minimal?,
 
         @JsonProperty("approved")
         val approved: Boolean,

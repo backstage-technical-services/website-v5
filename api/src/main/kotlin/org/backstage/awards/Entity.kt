@@ -2,9 +2,9 @@ package org.backstage.awards
 
 import io.quarkus.hibernate.orm.panache.kotlin.PanacheRepository
 import jakarta.enterprise.context.ApplicationScoped
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.Table
+import jakarta.persistence.*
+import org.backstage.user.UserEntity
+import org.backstage.user.toClass
 import org.backstage.util.SoftDeletableEntity
 import org.hibernate.annotations.ResultCheckStyle
 import org.hibernate.annotations.SQLDelete
@@ -29,22 +29,24 @@ data class AwardEntity(
     @Column(name = "recurring", nullable = false)
     var recurring: Boolean,
 
-    @Column(name = "suggested_by", nullable = true)
-    var suggestedBy: String?,
+    @ManyToOne
+    @JoinColumn(name = "suggested_by_id", nullable = true)
+    var suggestedBy: UserEntity?,
 
     @Column(name = "approved", nullable = false)
     var approved: Boolean,
 ) : SoftDeletableEntity()
 
 @Suppress("ForbiddenComment")
-inline fun <reified T> AwardEntity.toClass(): T = when(T::class) {
+inline fun <reified T> AwardEntity.toClass(): T = when (T::class) {
     AwardResponse.Full::class -> AwardResponse.Full(
         id = id!!,
         name = name,
         description = description,
         recurring = recurring,
-        suggestedBy = suggestedBy, // TODO: need to convert this to a name/object
+        suggestedBy = suggestedBy?.toClass(),
         approved = approved
     ) as T
+
     else -> throw IllegalArgumentException("Cannot convert ${this::class} to ${T::class}")
 }

@@ -1,5 +1,6 @@
 import type { ApiProps } from '../types'
 import type { PaginatedResponse } from '@/config/pagination'
+import type { UserResponseMinimal } from '@/api/domains/users'
 
 export type CreateAwardRequest = {
   name: string
@@ -18,7 +19,7 @@ export type AwardResponse = {
   name: string
   description: string
   recurring: boolean
-  suggestedBy?: string
+  suggestedBy?: UserResponseMinimal
   approved: boolean
 }
 

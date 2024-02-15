@@ -10,14 +10,20 @@ import io.kotest.matchers.comparables.shouldBeLessThanOrEqualTo
 import io.kotest.matchers.nulls.shouldBeNull
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
+import io.mockk.every
+import io.quarkiverse.test.junit.mockk.InjectMock
 import io.quarkus.test.TestTransaction
 import io.quarkus.test.junit.QuarkusTest
 import io.quarkus.test.security.TestSecurity
 import jakarta.inject.Inject
 import org.backstage.AuthHelpers
 import org.backstage.assertThrowsHttpException
+import org.backstage.auth.AuthService
 import org.backstage.expect
 import org.backstage.shouldBeValidId
+import org.backstage.user.UserFixtures
+import org.backstage.user.UserService
+import org.backstage.usergroup.UserGroupFixtures
 import org.backstage.util.findByIdOrThrow
 import org.junit.jupiter.api.Test
 
@@ -104,6 +110,12 @@ class AwardServiceTests {
     @Inject
     lateinit var service: AwardService
 
+    @Inject
+    lateinit var userService: UserService
+
+    @InjectMock
+    lateinit var authService: AuthService
+
     @Test
     fun `the service should be injected`() {
         service.shouldNotBeNull()
@@ -130,7 +142,12 @@ class AwardServiceTests {
 
     @Test
     @TestTransaction
+    @TestSecurity(user = AuthHelpers.EXAMPLE_IDENTITY_ID)
     fun `when suggesting an award it should be persisted as a suggested award`() {
+        every { authService.createUser(any()) } returns AuthHelpers.EXAMPLE_IDENTITY_ID
+        every { authService.getUserGroup(any()) } returns UserGroupFixtures.DEFAULT_RESPONSE
+        val suggestedByUserId = userService.create(UserFixtures.makeCreateRequest())
+
         val request = AwardFixtures.makeCreateRequest(recurring = true)
         val awardId = service.suggest(request)
 
@@ -142,8 +159,12 @@ class AwardServiceTests {
             this.description shouldBe request.description
             this.recurring.shouldBeTrue()
             this.approved.shouldBeFalse()
-            this.suggestedBy shouldBe AuthHelpers.DEFAULT_USER_ID
             this.deleted.shouldBeFalse()
+
+            with(this.suggestedBy) {
+                shouldNotBeNull()
+                id shouldBe suggestedByUserId
+            }
         }
     }
 
@@ -256,7 +277,7 @@ class AwardServiceTests {
 
     @Test
     @TestTransaction
-    fun `when deleting an award with deleted = true, no exception should be thrown`() {
+    fun `when deleting an award that's already deleted, no exception should be thrown`() {
         val awardId = AwardFixtures.makeEntity(deleted = false)
             .also { repository.persist(it) }
             .id!!

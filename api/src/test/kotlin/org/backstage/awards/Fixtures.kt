@@ -1,8 +1,8 @@
 package org.backstage.awards
 
-import org.backstage.AuthHelpers
 import org.backstage.faker
-import java.util.*
+import org.backstage.user.UserEntity
+import org.backstage.user.UserFixtures
 import kotlin.random.Random
 
 object AwardFixtures {
@@ -20,10 +20,7 @@ object AwardFixtures {
         name: String = faker.lorem.words(),
         description: String = faker.lorem.words(),
         recurring: Boolean = Random.nextBoolean(),
-        suggestedBy: String? = when (Random.nextBoolean()) {
-            true -> UUID.randomUUID().toString()
-            false -> null
-        },
+        suggestedBy: UserEntity? = null,
         approved: Boolean = Random.nextBoolean(),
         deleted: Boolean = false,
     ) = AwardEntity(
@@ -64,29 +61,13 @@ object AwardFixtures {
 
     const val EXISTING_ENTITY_ID: Long = 1L
     const val NON_EXISTENT_ID: Long = 1000L
-    val ENTITY = AwardEntity(
-        name = "Unpersisted Award",
-        description = "The description",
-        recurring = false,
-        suggestedBy = AuthHelpers.DEFAULT_USER_ID,
-        approved = false
-    )
-    val HYDRATED_ENTITY = AwardEntity(
-        name = "Existing Award",
-        description = "The existing award",
-        recurring = true,
-        suggestedBy = AuthHelpers.DEFAULT_USER_ID,
-        approved = true
-    ).apply {
-        id = EXISTING_ENTITY_ID
-    }
 
     val RESPONSE_FULL = AwardResponse.Full(
         id = EXISTING_ENTITY_ID,
         name = "Response Award",
         description = "The response description",
         recurring = false,
-        suggestedBy = AuthHelpers.DEFAULT_USER_ID,
+        suggestedBy = UserFixtures.RESPONSE_MINIMAL,
         approved = false
     )
     val RESPONSE_FULL_JSON = """
@@ -95,7 +76,7 @@ object AwardFixtures {
             "name": "Response Award",
             "description": "The response description",
             "recurring": false,
-            "suggestedBy": "${AuthHelpers.DEFAULT_USER_ID}",
+            "suggestedBy": ${UserFixtures.RESPONSE_MINIMAL_JSON},
             "approved": false
         }
     """.trimIndent()

@@ -6,6 +6,7 @@ import io.quarkus.security.identity.SecurityIdentity
 import jakarta.enterprise.context.ApplicationScoped
 import jakarta.transaction.Transactional
 import org.backstage.auth.getUserId
+import org.backstage.user.UserService
 import org.backstage.util.*
 import org.slf4j.LoggerFactory
 
@@ -22,7 +23,8 @@ interface AwardService {
 @ApplicationScoped
 class RepositoryAwardService(
     private val repository: AwardRepository,
-    private val identity: SecurityIdentity
+    private val userService: UserService,
+    private val identity: SecurityIdentity,
 ) : AwardService {
     override fun list(pageIndex: Int, pageSize: Int): PaginatedResponse<AwardResponse.Full> = repository
         .findPaginated(
@@ -44,7 +46,7 @@ class RepositoryAwardService(
             description = request.description,
             recurring = request.recurring,
             suggestedBy = when (asSuggestion) {
-                true -> identity.getUserId()
+                true -> userService.findByIdentityId(identityId = identity.getUserId())
                 else -> null
             },
             approved = !asSuggestion,

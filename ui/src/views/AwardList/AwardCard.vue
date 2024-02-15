@@ -11,7 +11,7 @@
 
           <!-- Suggested by -->
           <span class="text-caption text-grey-6" v-if="award.suggestedBy">
-            Suggested by: {{ award.suggestedBy }}
+            Suggested by: {{ award.suggestedBy.name }}
           </span>
         </q-item-section>
       </q-item>
