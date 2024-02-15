@@ -3,11 +3,16 @@ complexity:
   LongParameterList:
     functionThreshold: 15
 
+exceptions:
+  TooGenericExceptionCaught:
+    active: false
+
 naming:
   MatchingDeclarationName:
     active: false
 
-
 style:
+  ThrowsCount:
+    max: 5
   WildcardImport:
     active: false

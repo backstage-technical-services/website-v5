@@ -20,6 +20,7 @@ object UserFixtures {
         group = group,
     )
 
+    @Suppress("LongParameterList")
     fun makeEntity(
         identityId: String = UUID.randomUUID().toString(),
         username: String = faker.random.randomString(),

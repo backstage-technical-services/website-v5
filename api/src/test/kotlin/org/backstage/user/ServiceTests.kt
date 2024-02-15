@@ -153,7 +153,10 @@ class UserServiceTests {
         val request = UserFixtures.makeCreateRequest(username = username)
         repository.persist(UserFixtures.makeEntity(username = username))
 
-        assertThrowsHttpException(expectedStatus = CONFLICT, expectedMessage = "A user with that username already exists") {
+        assertThrowsHttpException(
+            expectedStatus = CONFLICT,
+            expectedMessage = "A user with that username already exists",
+        ) {
             service.create(request)
         }
     }
@@ -165,7 +168,10 @@ class UserServiceTests {
         val request = UserFixtures.makeCreateRequest(email = email)
         repository.persist(UserFixtures.makeEntity(email = email))
 
-        assertThrowsHttpException(expectedStatus = CONFLICT, expectedMessage = "A user with that email already exists") {
+        assertThrowsHttpException(
+            expectedStatus = CONFLICT,
+            expectedMessage = "A user with that email already exists",
+        ) {
             service.create(request)
         }
     }
@@ -177,7 +183,10 @@ class UserServiceTests {
 
         val request = UserFixtures.makeCreateRequest()
 
-        assertThrowsHttpException(expectedStatus = INTERNAL_SERVER_ERROR, expectedMessage = "An internal error occurred") {
+        assertThrowsHttpException(
+            expectedStatus = INTERNAL_SERVER_ERROR,
+            expectedMessage = "An internal error occurred",
+        ) {
             service.create(request)
         }
     }
