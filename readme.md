@@ -3,6 +3,8 @@
 ### BTS Website v5
 
 ![License](https://img.shields.io/github/license/backstage-technical-services/website-v5?style=flat-square)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=backstage-technical-services_website-v5&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=backstage-technical-services_website-v5)
+![Coverage](https://img.shields.io/sonar/coverage/backstage-technical-services_website-v5/main?server=https%3A%2F%2Fsonarcloud.io&style=flat-square)
 [![Workflow Status](https://img.shields.io/github/actions/workflow/status/backstage-technical-services/website-v5/build.yml?branch=main&style=flat-square)](https://github.com/backstage-technical-services/website-v5/actions/workflows/build.yml)
 [![Issues](https://img.shields.io/github/issues/backstage-technical-services/website-v5?style=flat-square)](https://github.com/backstage-technical-services/website-v5/issues)
 
