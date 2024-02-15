@@ -88,13 +88,17 @@ jobs:
           java-version: 17
       - name: Start the API
         run: |
-          ./gradlew assemble
+          pushd api && ./gradlew assemble && popd
           docker compose up \
-            --detach \
-            --build \
-            --force-recreate \
-            api
-        working-directory: api
+              --detach \
+              --build \
+              --force-recreate \
+              api
+          scripts/wait_until_healthy.sh "backstage-api"
+        env:
+          OIDC_SERVER_URL: ${{ secrets.OIDC_SERVER_URL }}
+          OIDC_CLIENT_ID: ${{ secrets.OIDC_CLIENT_ID }}
+          OIDC_CLIENT_SECRET: ${{ secrets.OIDC_CLIENT_SECRET }}
       - run: scripts/wait_until_healthy.sh "backstage-api"
       - uses: cypress-io/github-action@v6
         with:
