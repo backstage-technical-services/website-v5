@@ -91,7 +91,7 @@ const fetchAwardsPage = async(pageNum: number, pageSize: number) => {
 }
 
 const onRequest = (props: QTableOnRequest) => {
-  fetchAwardsPage(props.pagination.page || DEFAULT_PAGE_NUM, props.pagination.rowsPerPage || DEFAULT_PAGE_SIZE)
+  fetchAwardsPage(props.pagination.page ?? DEFAULT_PAGE_NUM, props.pagination.rowsPerPage ?? DEFAULT_PAGE_SIZE)
 }
 const refresh = () => fetchAwardsPage(pagination.value.page, pagination.value.rowsPerPage)
 
