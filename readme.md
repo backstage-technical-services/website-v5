@@ -103,7 +103,6 @@ This uses GitHub Actions to automatically run checks for pull requests and on me
 **API**
 - Lint code using Detekt
 - Run tests
-- Check the Docker image builds and starts
 
 **UI**
 - Check the types are valid
