@@ -56,7 +56,7 @@ dependencies {
     implementation("org.apache.commons:commons-lang3:3.14.0")
 
     // Tests
-    testImplementation("io.github.serpro69:kotlin-faker:1.15.0")
+    testImplementation("io.github.serpro69:kotlin-faker:1.16.0")
     testImplementation("io.quarkus:quarkus-junit5")
     testImplementation("io.quarkus:quarkus-test-security")
     testImplementation("io.quarkus:quarkus-jacoco")
