@@ -24,7 +24,7 @@
     "marked": "^7.0.3",
     "pinia": "^2.1.7",
     "quasar": "^2.12.4",
-    "vue": "^3.2.47",
+    "vue": "^3.4.19",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
