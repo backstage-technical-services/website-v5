@@ -1,6 +1,6 @@
 package org.backstage.auth
 
-import org.backstage.user.UserRequest
+import org.backstage.users.UserRequest
 import org.backstage.usergroup.UserGroupResponse
 
 data class UserGroupList(

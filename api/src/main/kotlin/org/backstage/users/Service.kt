@@ -1,4 +1,4 @@
-package org.backstage.user
+package org.backstage.users
 
 import io.quarkus.panache.common.Page
 import io.quarkus.panache.common.Sort

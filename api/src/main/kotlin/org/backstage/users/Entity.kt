@@ -1,4 +1,4 @@
-package org.backstage.user
+package org.backstage.users
 
 import io.quarkus.hibernate.orm.panache.kotlin.PanacheRepository
 import jakarta.enterprise.context.ApplicationScoped

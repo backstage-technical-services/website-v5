@@ -14,7 +14,7 @@ import jakarta.enterprise.context.Dependent
 import jakarta.enterprise.context.RequestScoped
 import jakarta.enterprise.inject.Produces
 import org.apache.commons.lang3.RandomStringUtils
-import org.backstage.user.UserRequest
+import org.backstage.users.UserRequest
 import org.backstage.usergroup.UserGroupResponse
 import org.eclipse.microprofile.config.inject.ConfigProperty
 import org.slf4j.LoggerFactory

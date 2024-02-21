@@ -1,4 +1,4 @@
-package org.backstage.user
+package org.backstage.users
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import jakarta.validation.constraints.Email

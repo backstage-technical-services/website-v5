@@ -1,4 +1,4 @@
-package org.backstage.user
+package org.backstage.users
 
 import jakarta.annotation.security.RolesAllowed
 import jakarta.validation.Valid

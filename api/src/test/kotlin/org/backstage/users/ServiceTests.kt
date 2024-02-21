@@ -1,4 +1,4 @@
-package org.backstage.user
+package org.backstage.users
 
 import com.auth0.exception.APIException
 import io.kotest.matchers.booleans.shouldBeFalse
