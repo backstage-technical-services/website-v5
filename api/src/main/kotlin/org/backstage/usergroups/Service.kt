@@ -1,4 +1,4 @@
-package org.backstage.usergroup
+package org.backstage.usergroups
 
 import jakarta.enterprise.context.ApplicationScoped
 import jakarta.ws.rs.core.Response

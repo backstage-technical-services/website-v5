@@ -1,4 +1,4 @@
-package org.backstage.usergroup
+package org.backstage.usergroups
 
 import io.kotest.assertions.json.shouldEqualJson
 import io.kotest.core.spec.style.BehaviorSpec

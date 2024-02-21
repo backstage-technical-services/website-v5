@@ -1,4 +1,4 @@
-package org.backstage.usergroup
+package org.backstage.usergroups
 
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe

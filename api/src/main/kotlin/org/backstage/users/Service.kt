@@ -8,7 +8,7 @@ import jakarta.ws.rs.core.Response
 import jakarta.ws.rs.core.Response.Status.INTERNAL_SERVER_ERROR
 import org.backstage.auth.AuthService
 import org.backstage.error.exceptionWithMessage
-import org.backstage.usergroup.UserGroupService
+import org.backstage.usergroups.UserGroupService
 import org.backstage.util.PaginatedResponse
 import org.backstage.util.checkPageSize
 import org.backstage.util.findPaginated

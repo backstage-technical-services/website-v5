@@ -15,7 +15,7 @@ import jakarta.enterprise.context.RequestScoped
 import jakarta.enterprise.inject.Produces
 import org.apache.commons.lang3.RandomStringUtils
 import org.backstage.users.UserRequest
-import org.backstage.usergroup.UserGroupResponse
+import org.backstage.usergroups.UserGroupResponse
 import org.eclipse.microprofile.config.inject.ConfigProperty
 import org.slf4j.LoggerFactory
 import java.net.URL

@@ -1,4 +1,4 @@
-package org.backstage.usergroup
+package org.backstage.usergroups
 
 import io.quarkus.test.common.http.TestHTTPEndpoint
 import io.quarkus.test.junit.QuarkusTest

@@ -1,4 +1,4 @@
-package org.backstage.usergroup
+package org.backstage.usergroups
 
 import jakarta.annotation.security.RolesAllowed
 import jakarta.ws.rs.*

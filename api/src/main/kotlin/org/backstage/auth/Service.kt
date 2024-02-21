@@ -1,7 +1,7 @@
 package org.backstage.auth
 
 import org.backstage.users.UserRequest
-import org.backstage.usergroup.UserGroupResponse
+import org.backstage.usergroups.UserGroupResponse
 
 data class UserGroupList(
     val totalItems: Long,

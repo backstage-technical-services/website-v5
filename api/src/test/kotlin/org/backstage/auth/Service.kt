@@ -2,7 +2,7 @@ package org.backstage.auth
 
 import jakarta.enterprise.context.ApplicationScoped
 import org.backstage.users.UserRequest
-import org.backstage.usergroup.UserGroupResponse
+import org.backstage.usergroups.UserGroupResponse
 import java.util.*
 
 @ApplicationScoped
