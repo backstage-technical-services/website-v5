@@ -1,4 +1,4 @@
-package org.backstage.usergroup
+package org.backstage.usergroups
 
 import com.fasterxml.jackson.annotation.JsonProperty
 

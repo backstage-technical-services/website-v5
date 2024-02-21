@@ -1,4 +1,4 @@
-package org.backstage.user
+package org.backstage.users
 
 import com.auth0.exception.APIException
 import io.kotest.matchers.booleans.shouldBeFalse
@@ -21,7 +21,7 @@ import org.backstage.assertThrowsHttpException
 import org.backstage.auth.AuthService
 import org.backstage.expect
 import org.backstage.shouldBeValidId
-import org.backstage.usergroup.UserGroupFixtures
+import org.backstage.usergroups.UserGroupFixtures
 import org.junit.jupiter.api.Test
 
 @QuarkusTest

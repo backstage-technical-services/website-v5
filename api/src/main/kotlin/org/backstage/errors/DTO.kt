@@ -1,4 +1,4 @@
-package org.backstage.error
+package org.backstage.errors
 
 import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonInclude

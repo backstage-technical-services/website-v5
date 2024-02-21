@@ -1,4 +1,4 @@
-package org.backstage.error
+package org.backstage.errors
 
 import jakarta.ws.rs.WebApplicationException
 import jakarta.ws.rs.core.Response

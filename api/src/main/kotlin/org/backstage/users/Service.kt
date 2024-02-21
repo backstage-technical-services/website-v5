@@ -1,4 +1,4 @@
-package org.backstage.user
+package org.backstage.users
 
 import io.quarkus.panache.common.Page
 import io.quarkus.panache.common.Sort
@@ -7,8 +7,8 @@ import jakarta.transaction.Transactional
 import jakarta.ws.rs.core.Response
 import jakarta.ws.rs.core.Response.Status.INTERNAL_SERVER_ERROR
 import org.backstage.auth.AuthService
-import org.backstage.error.exceptionWithMessage
-import org.backstage.usergroup.UserGroupService
+import org.backstage.errors.exceptionWithMessage
+import org.backstage.usergroups.UserGroupService
 import org.backstage.util.PaginatedResponse
 import org.backstage.util.checkPageSize
 import org.backstage.util.findPaginated

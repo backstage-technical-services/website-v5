@@ -1,4 +1,4 @@
-package org.backstage.error
+package org.backstage.errors
 
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe

@@ -1,9 +1,9 @@
-package org.backstage.usergroup
+package org.backstage.usergroups
 
 import jakarta.enterprise.context.ApplicationScoped
 import jakarta.ws.rs.core.Response
 import org.backstage.auth.AuthService
-import org.backstage.error.exceptionWithMessage
+import org.backstage.errors.exceptionWithMessage
 import org.backstage.util.PageInfo
 import org.backstage.util.PaginatedResponse
 import kotlin.math.ceil

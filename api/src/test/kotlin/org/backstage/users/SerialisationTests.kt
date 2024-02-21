@@ -1,4 +1,4 @@
-package org.backstage.user
+package org.backstage.users
 
 import com.fasterxml.jackson.module.kotlin.readValue
 import io.kotest.assertions.json.shouldEqualJson

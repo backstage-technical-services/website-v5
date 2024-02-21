@@ -1,7 +1,7 @@
-package org.backstage.user
+package org.backstage.users
 
 import org.backstage.faker
-import org.backstage.usergroup.UserGroupFixtures
+import org.backstage.usergroups.UserGroupFixtures
 import java.time.LocalDate
 import java.util.UUID
 
