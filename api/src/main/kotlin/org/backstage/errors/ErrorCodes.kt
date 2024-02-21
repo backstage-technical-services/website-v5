@@ -1,4 +1,4 @@
-package org.backstage.error
+package org.backstage.errors
 
 interface ErrorCode {
     companion object {

@@ -9,7 +9,7 @@ import jakarta.persistence.*
 import jakarta.ws.rs.core.Response
 import org.apache.commons.lang3.StringUtils
 import org.backstage.auth.getUserId
-import org.backstage.error.exceptionWithMessage
+import org.backstage.errors.exceptionWithMessage
 import org.hibernate.annotations.ColumnDefault
 import org.hibernate.envers.DefaultRevisionEntity
 import org.hibernate.envers.RevisionEntity

@@ -1,4 +1,4 @@
-package org.backstage.error
+package org.backstage.errors
 
 import com.fasterxml.jackson.databind.JsonMappingException
 import io.kotest.core.spec.style.BehaviorSpec
@@ -6,7 +6,6 @@ import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.booleans.shouldBeFalse
 import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.collections.shouldHaveSize
-import io.kotest.matchers.maps.shouldContainAll
 import io.kotest.matchers.nulls.shouldBeNull
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
@@ -22,7 +21,6 @@ import jakarta.ws.rs.core.Response.Status.*
 import jakarta.ws.rs.core.Response.StatusType
 import org.backstage.http.HttpHeaders
 import java.sql.SQLException
-import kotlin.reflect.jvm.internal.ReflectProperties.Val
 import org.hibernate.exception.ConstraintViolationException as HibernateConstraintViolationException
 
 class ExceptionHandlerTests : BehaviorSpec() {

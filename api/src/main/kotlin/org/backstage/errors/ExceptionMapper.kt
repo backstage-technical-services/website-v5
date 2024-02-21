@@ -1,4 +1,4 @@
-package org.backstage.error
+package org.backstage.errors
 
 import com.fasterxml.jackson.databind.JsonMappingException
 import com.fasterxml.jackson.databind.exc.InvalidFormatException
@@ -16,12 +16,12 @@ import jakarta.ws.rs.core.Response.Status
 import jakarta.ws.rs.core.Response.StatusType
 import jakarta.ws.rs.ext.ExceptionMapper
 import jakarta.ws.rs.ext.Provider
-import org.backstage.error.JsonExceptionHandler.handleInvalidFormat
-import org.backstage.error.JsonExceptionHandler.handleInvalidJsonType
-import org.backstage.error.JsonExceptionHandler.handleMismatchedInput
-import org.backstage.error.JsonExceptionHandler.handleValidationConstraintViolation
-import org.backstage.error.PersistenceExceptionHandler.handleEntityNotFound
-import org.backstage.error.PersistenceExceptionHandler.handleHibernateConstraintViolation
+import org.backstage.errors.JsonExceptionHandler.handleInvalidFormat
+import org.backstage.errors.JsonExceptionHandler.handleInvalidJsonType
+import org.backstage.errors.JsonExceptionHandler.handleMismatchedInput
+import org.backstage.errors.JsonExceptionHandler.handleValidationConstraintViolation
+import org.backstage.errors.PersistenceExceptionHandler.handleEntityNotFound
+import org.backstage.errors.PersistenceExceptionHandler.handleHibernateConstraintViolation
 import org.jboss.logging.Logger
 import java.time.format.DateTimeParseException
 import org.hibernate.exception.ConstraintViolationException as HibernateConstraintViolationException

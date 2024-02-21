@@ -1,4 +1,4 @@
-package org.backstage.error
+package org.backstage.errors
 
 import io.kotest.assertions.json.shouldContainJsonKeyValue
 import io.kotest.assertions.json.shouldEqualJson
