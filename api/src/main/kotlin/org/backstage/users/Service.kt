@@ -6,6 +6,7 @@ import jakarta.enterprise.context.ApplicationScoped
 import jakarta.transaction.Transactional
 import jakarta.ws.rs.core.Response
 import jakarta.ws.rs.core.Response.Status.INTERNAL_SERVER_ERROR
+import jakarta.ws.rs.core.Response.Status.NOT_FOUND
 import org.backstage.auth.AuthService
 import org.backstage.errors.exceptionWithMessage
 import org.backstage.usergroups.UserGroupService
@@ -17,6 +18,7 @@ import org.slf4j.LoggerFactory
 interface UserService {
     fun list(pageIndex: Int, pageSize: Int): PaginatedResponse<UserResponse.Minimal>
     fun create(request: UserRequest.Create): Long
+    fun findByIdentityId(identityId: String): UserEntity
 }
 
 @ApplicationScoped
@@ -64,6 +66,10 @@ class RepositoryUserService(
 
         return entity.id!!
     }
+
+    override fun findByIdentityId(identityId: String): UserEntity = repository
+        .findByIdentityId(identityId = identityId)
+        ?: throw NOT_FOUND exceptionWithMessage "Could not find user for that identity ID"
 
     companion object {
         const val MAX_PAGE_SIZE = 50
