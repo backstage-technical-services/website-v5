@@ -14,6 +14,7 @@
 
         <q-btn class="q-mr-lg" label="Gallery" to="/gallery" flat />
         <q-btn class="q-mr-lg" label="Committee" to="/committee" flat />
+        <q-btn class="q-mr-lg" label="Events diary" to="/events/diary" />
         <q-btn color="primary" class="text-grey-9" label="Book Us" to="/book-us" />
       </div>
     </q-toolbar>

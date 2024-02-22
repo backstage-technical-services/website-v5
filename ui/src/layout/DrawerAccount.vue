@@ -11,20 +11,12 @@
       <q-item-section>My profile</q-item-section>
     </q-item>
 
-    <q-item clickable v-ripple>
+    <q-item to="/profile/events" clickable v-ripple>
       <q-item-section avatar>
         <q-icon :name="mdiCalendar"/>
       </q-item-section>
 
       <q-item-section>My events</q-item-section>
-    </q-item>
-
-    <q-item clickable v-ripple>
-      <q-item-section avatar>
-        <q-icon :name="mdiStar"/>
-      </q-item-section>
-
-      <q-item-section>My training</q-item-section>
     </q-item>
 
     <q-item clickable v-ripple @click="logout">
