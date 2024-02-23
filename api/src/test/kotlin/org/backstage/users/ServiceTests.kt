@@ -205,7 +205,7 @@ class UserServiceTests {
     }
 
     @Test
-    fun `when fetching a user by identity ID which doesn't exist then an exception should be throw`() {
+    fun `when fetching a user by identity ID which doesn't exist then an exception should be thrown`() {
         assertThrowsHttpException(
             expectedStatus = NOT_FOUND,
             expectedMessage = "Could not find user for that identity ID",
