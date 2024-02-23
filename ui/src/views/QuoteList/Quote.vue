@@ -3,11 +3,11 @@
     <q-card class="bg-transparent" flat>
       <q-card-section horizontal>
         <q-card-section class="column justify-center text-center q-pa-none" style="min-width: 2.5em;">
-          <q-btn :icon="mdiChevronUp" size="md" color="grey-6" class="q-pa-none" @click="likeQuote" flat v-if="canLike">
+          <q-btn :icon="mdiChevronUp" size="md" :color="quote.userVote === 'LIKE' ? undefined : 'grey-8'" class="q-pa-none" @click="likeQuote" flat v-if="canLike">
             <q-tooltip>Upvote</q-tooltip>
           </q-btn>
-          <div class="text-body2 text-grey-6">{{ quote.rating }}</div>
-          <q-btn :icon="mdiChevronDown" size="md" color="grey-6" class="q-pa-none" @click="dislikeQuote" flat v-if="canLike">
+          <div :class="{ 'text-body2': true, 'text-grey-6': quote.rating === 0, 'text-red-4': quote.rating < 0, 'text-green-4': quote.rating > 0 }">{{ quote.rating }}</div>
+          <q-btn :icon="mdiChevronDown" size="md" :color="quote.userVote === 'DISLIKE' ? undefined : 'grey-8'" class="q-pa-none" @click="dislikeQuote" flat v-if="canLike">
             <q-tooltip>Downvote</q-tooltip>
           </q-btn>
         </q-card-section>
@@ -25,7 +25,7 @@
         </q-card-section>
 
         <q-card-actions class="text-grey-6 items-start" v-if="canDelete">
-          <q-btn :icon="mdiDelete" size="md" class="q-mt-md" @click="deleteQuote" flat v-if="canDelete">
+          <q-btn :icon="mdiDelete" size="md" color="red-8" class="q-mt-md" @click="deleteQuote" flat v-if="canDelete">
             <q-tooltip>Delete</q-tooltip>
           </q-btn>
         </q-card-actions>

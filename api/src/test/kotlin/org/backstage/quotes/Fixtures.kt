@@ -56,8 +56,6 @@ object QuoteFixtures {
         quote = EXAMPLE_QUOTE,
         date = LocalDateTime.of(2018, 1, 2, 10, 55, 31),
         rating = 4,
-        likes = 5,
-        dislikes = 1,
     )
     val RESPONSE_DEFAULT_JSON = """
         {
@@ -66,8 +64,7 @@ object QuoteFixtures {
             "quote": "$EXAMPLE_QUOTE",
             "date": "2018-01-02 10:55:31",
             "rating": 4,
-            "likes": 5,
-            "dislikes": 1
+            "userVote": null
         }
     """.trimIndent()
 }

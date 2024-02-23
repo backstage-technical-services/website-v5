@@ -49,6 +49,11 @@ class QuoteResourceTests {
     @Test
     @TestSecurity(user = AuthHelpers.DEFAULT_USER_ID, roles = [Roles.Quotes.READ])
     fun `listing the quotes should return a valid response`() {
+        val user = setUpTest {
+            UserFixtures.makeEntity(identityId = AuthHelpers.DEFAULT_USER_ID)
+                .also { userRepository.persist(it) }
+        }
+
         RestAssured
             .`when`()
             .get()
@@ -57,6 +62,10 @@ class QuoteResourceTests {
             .shouldBeJson()
             .statusCode(OK)
             .body("size()", greaterThan(0))
+
+        cleanUpTest {
+            userRepository.delete(user)
+        }
     }
 
     @Test

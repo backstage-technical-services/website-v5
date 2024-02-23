@@ -6,6 +6,7 @@ import io.quarkus.security.identity.SecurityIdentity
 import jakarta.enterprise.context.ApplicationScoped
 import jakarta.transaction.Transactional
 import org.backstage.auth.getUserId
+import org.backstage.auth.getUserIdOrNull
 import org.backstage.users.UserService
 import org.backstage.util.PaginatedResponse
 import org.backstage.util.checkPageSize
@@ -16,6 +17,7 @@ import org.slf4j.LoggerFactory
 interface QuoteService {
     fun list(pageIndex: Int, pageSize: Int): PaginatedResponse<QuoteResponse.Default>
     fun create(request: QuoteRequest.Create): Long
+    fun get(id: Long): QuoteResponse.Default
     fun like(id: Long)
     fun dislike(id: Long)
     fun delete(id: Long)
@@ -31,8 +33,7 @@ class RepositoryQuoteService(
         .findPaginated(
             page = Page.of(pageIndex, pageSize).checkPageSize(MAX_PAGE_SIZE),
             sort = Sort.descending("date"),
-            converter = QuoteEntity::toClass,
-        )
+        ) { quote -> QuoteConverter.toDefaultResponse(quote, getCurrentUser()) }
 
     override fun create(request: QuoteRequest.Create): Long = createQuote(request)
         .also { LOGGER.info("Created quote with ID $it") }
@@ -51,6 +52,10 @@ class RepositoryQuoteService(
         return entity.id!!
     }
 
+    override fun get(id: Long): QuoteResponse.Default = repository
+        .findByIdOrThrow(id)
+        .let { quote -> QuoteConverter.toDefaultResponse(quote, getCurrentUser()) }
+
     override fun like(id: Long) = updateLikes(id = id, type = QuoteLikeType.LIKE)
 
     override fun dislike(id: Long) = updateLikes(id = id, type = QuoteLikeType.DISLIKE)
@@ -60,13 +65,14 @@ class RepositoryQuoteService(
         val quote = repository.findByIdOrThrow(id)
         val user = userService.findByIdentityId(identityId = identity.getUserId())
 
-        when(val like = quote.likes.firstOrNull { it.user.id == user.id }) {
+        when (val like = quote.likes.firstOrNull { it.user.id == user.id }) {
             null -> {
                 QuoteLikeEntity(
                     type = type,
                     user = user,
                 ).also { quote.likes.add(it) }
             }
+
             else -> {
                 quote.rating -= like.type.vote
                 like.type = type
@@ -75,7 +81,7 @@ class RepositoryQuoteService(
 
         quote.rating += type.vote
 
-        when(type) {
+        when (type) {
             QuoteLikeType.LIKE -> LOGGER.info("User with ID ${user.id} liked quote with ID $id")
             QuoteLikeType.DISLIKE -> LOGGER.info("User with ID ${user.id} disliked quote with ID $id")
         }
@@ -92,6 +98,10 @@ class RepositoryQuoteService(
             LOGGER.debug("Tried to delete quote with ID $id but it doesn't exist")
         }
     }
+
+    private fun getCurrentUser() = identity
+        .getUserIdOrNull()
+        ?.let { identityId -> userService.findByIdentityId(identityId) }
 
     companion object {
         const val MAX_PAGE_SIZE = 50

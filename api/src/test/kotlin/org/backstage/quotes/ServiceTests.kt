@@ -265,7 +265,77 @@ class QuoteServiceTests {
         repository.findById(quoteId).shouldBeNull()
     }
 
+    @Test
+    fun `when fetching a quote that doesn't exist an exception should be thrown`() {
+        insertUser()
 
-    private fun insertUser() = UserFixtures.makeEntity(identityId = AuthHelpers.DEFAULT_USER_ID)
+        assertThrowsHttpException {
+            service.get(1000L)
+        }
+    }
+
+    @Test
+    fun `when fetching a quote that exists the properties should be mapped correctly`() {
+        val user = insertUser()
+        val quoteEntity = QuoteFixtures
+            .makeEntity(addedBy = user)
+            .also { repository.persist(it) }
+
+        with(service.get(quoteEntity.id!!)) {
+            id shouldBe quoteEntity.id!!
+            culprit shouldBe quoteEntity.culprit
+            quote shouldBe quoteEntity.quote
+            date shouldBe quoteEntity.date
+            rating shouldBe 0
+            userVote.shouldBeNull()
+        }
+    }
+
+    @Test
+    fun `when fetching a quote that the user has liked the userVote field should be LIKED`() {
+        val user = insertUser()
+        val quoteId = QuoteFixtures.makeEntity(addedBy = user)
+            .also { repository.persist(it) }
+            .id!!
+        service.like(quoteId)
+
+        with(service.get(quoteId)) {
+            userVote shouldBe QuoteLikeType.LIKE
+        }
+    }
+
+    @Test
+    fun `when fetching a quote that the user has disliked the userVote field should be DISLIKED`() {
+        val user = insertUser()
+        val quoteId = QuoteFixtures.makeEntity(addedBy = user)
+            .also { repository.persist(it) }
+            .id!!
+        service.dislike(quoteId)
+
+        with(service.get(quoteId)) {
+            userVote shouldBe QuoteLikeType.DISLIKE
+        }
+    }
+
+    @Test
+    fun `when fetching a quote that's been liked by another user the userVote field should be null`() {
+        val user = insertUser()
+        val likedUser = insertUser(identityId = AuthHelpers.EXAMPLE_IDENTITY_ID)
+
+        val quoteId = QuoteFixtures.makeEntity(addedBy = user)
+            .apply {
+                QuoteLikeEntity(type = QuoteLikeType.LIKE, user = likedUser)
+                    .also { likes.add(it) }
+            }
+            .also { repository.persist(it) }
+            .id!!
+
+        with(service.get(quoteId)) {
+            userVote.shouldBeNull()
+        }
+    }
+
+    private fun insertUser(identityId: String = AuthHelpers.DEFAULT_USER_ID) = UserFixtures
+        .makeEntity(identityId = identityId)
         .also { userRepository.persist(it) }
 }

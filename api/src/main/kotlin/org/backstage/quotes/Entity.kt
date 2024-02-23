@@ -48,16 +48,3 @@ data class QuoteLikeEntity(
     @JoinColumn(name = "user_id")
     var user: UserEntity,
 ) : BaseEntity()
-
-inline fun <reified T : Any> QuoteEntity.toClass(): T = when(T::class) {
-    QuoteResponse.Default::class -> QuoteResponse.Default(
-        id = id!!,
-        culprit = culprit,
-        quote = quote,
-        date = date,
-        rating = rating,
-        likes = likes.count { it.type == QuoteLikeType.LIKE },
-        dislikes = likes.count { it.type === QuoteLikeType.DISLIKE },
-    ) as T
-    else -> throw IllegalArgumentException("Cannot convert ${this::class} to ${T::class}")
-}

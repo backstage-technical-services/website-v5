@@ -47,10 +47,7 @@ sealed class QuoteResponse {
         @JsonProperty("rating")
         val rating: Int,
 
-        @JsonProperty("likes")
-        val likes: Int,
-
-        @JsonProperty("dislikes")
-        val dislikes: Int,
+        @JsonProperty("userVote")
+        val userVote: QuoteLikeType? = null,
     ) : QuoteResponse()
 }
