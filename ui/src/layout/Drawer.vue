@@ -15,13 +15,13 @@
 </template>
 
 <script lang="ts" setup>
+import { computed } from 'vue'
 import { useAuth0 } from '@auth0/auth0-vue'
 
 import Profile from './DrawerProfile.vue'
 import Account from './DrawerAccount.vue'
 import MenuItem from './DrawerMenuItem.vue'
-
-import menu from '@/data/menu'
+import { useMenu } from '@/data/menu'
 
 defineProps<{
   showDrawer: boolean
@@ -30,6 +30,8 @@ defineProps<{
 const {
   isAuthenticated,
 } = useAuth0()
+
+const menu = computed(() => useMenu())
 
 const emit = defineEmits(['setDrawer'])
 const handleSetDrawer = (val: boolean) => {

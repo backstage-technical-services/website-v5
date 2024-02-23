@@ -46,4 +46,11 @@ export const login = () => {
 }
 
 export default auth0
-export const permissions = {}
+export const permissions = {
+  quotes: {
+    list: 'quote:read',
+    add: 'quote:create',
+    like: 'quote:like',
+    delete: 'quote:delete',
+  },
+}
