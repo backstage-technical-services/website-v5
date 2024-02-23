@@ -56,6 +56,7 @@ object QuoteFixtures {
         quote = EXAMPLE_QUOTE,
         date = LocalDateTime.of(2018, 1, 2, 10, 55, 31),
         rating = 4,
+        userVote = null,
     )
     val RESPONSE_DEFAULT_JSON = """
         {
