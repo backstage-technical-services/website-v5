@@ -44,7 +44,7 @@ export default function({ http, extractData, extractResourceId }: ApiProps) {
         items: response.items.map(quote => ({
           ...quote,
           date: fromApiDate(quote.date),
-          userVote: quote.userVote || undefined,
+          userVote: quote.userVote ?? undefined,
         })),
       })),
 
