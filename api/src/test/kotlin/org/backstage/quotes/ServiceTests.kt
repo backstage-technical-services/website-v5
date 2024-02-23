@@ -8,6 +8,7 @@ import io.kotest.matchers.comparables.shouldBeGreaterThanOrEqualTo
 import io.kotest.matchers.nulls.shouldBeNull
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.shouldNotBe
 import io.quarkus.test.TestTransaction
 import io.quarkus.test.junit.QuarkusTest
 import io.quarkus.test.security.TestSecurity
@@ -17,6 +18,7 @@ import org.backstage.assertThrowsHttpException
 import org.backstage.expect
 import org.backstage.users.UserFixtures
 import org.backstage.users.UserRepository
+import org.backstage.util.findByIdOrThrow
 import org.junit.jupiter.api.Test
 
 @QuarkusTest
@@ -150,8 +152,9 @@ class QuoteServiceTests {
             .also { repository.persist(it) }
             .id!!
 
-        service.upvote(quoteId)
+        val response = service.upvote(quoteId)
 
+        response.action shouldBe QuoteVoteAction.ADDED
         with(repository.findById(quoteId)) {
             shouldNotBeNull()
 
@@ -177,8 +180,9 @@ class QuoteServiceTests {
             .also { repository.persist(it) }
             .id!!
 
-        service.upvote(quoteId)
+        val response = service.upvote(quoteId)
 
+        response.action shouldBe QuoteVoteAction.CHANGED
         with(repository.findById(quoteId)) {
             shouldNotBeNull()
 
@@ -187,6 +191,32 @@ class QuoteServiceTests {
             with(this.votes.first()) {
                 this.type shouldBe QuoteVoteType.UPVOTE
                 this.user.id shouldBe  user.id!!
+            }
+        }
+    }
+
+    @Test
+    fun `when upvoting a quote the user's already upvoted the vote should be cleared`() {
+        val user = insertUser()
+        val otherUser = insertUser(identityId = AuthHelpers.EXAMPLE_IDENTITY_ID)
+        val quoteId = QuoteFixtures.makeEntity(addedBy = user, rating = 2 * QuoteVoteType.UPVOTE.weight)
+            .apply {
+                QuoteVoteEntity(type = QuoteVoteType.UPVOTE, user = user)
+                    .also { votes.add(it) }
+                QuoteVoteEntity(type = QuoteVoteType.UPVOTE, user = otherUser)
+                    .also { votes.add(it) }
+            }
+            .also { repository.persist(it) }
+            .id!!
+
+        val response = service.upvote(quoteId)
+
+        response.action shouldBe QuoteVoteAction.REMOVED
+        with(repository.findByIdOrThrow(quoteId)) {
+            rating shouldBe 1
+            votes shouldHaveSize 1
+            with(votes.first()) {
+                this.user.id shouldNotBe user.id
             }
         }
     }
@@ -205,8 +235,9 @@ class QuoteServiceTests {
             .also { repository.persist(it) }
             .id!!
 
-        service.downvote(quoteId)
+        val response = service.downvote(quoteId)
 
+        response.action shouldBe QuoteVoteAction.ADDED
         with(repository.findById(quoteId)) {
             shouldNotBeNull()
 
@@ -232,8 +263,9 @@ class QuoteServiceTests {
             .also { repository.persist(it) }
             .id!!
 
-        service.downvote(quoteId)
+        val response = service.downvote(quoteId)
 
+        response.action shouldBe QuoteVoteAction.CHANGED
         with(repository.findById(quoteId)) {
             shouldNotBeNull()
 
@@ -242,6 +274,32 @@ class QuoteServiceTests {
             with(this.votes.first()) {
                 this.type shouldBe QuoteVoteType.DOWNVOTE
                 this.user.id shouldBe  user.id!!
+            }
+        }
+    }
+
+    @Test
+    fun `when downvoting a quote the user's already downvoted the vote should be cleared`() {
+        val user = insertUser()
+        val otherUser = insertUser(identityId = AuthHelpers.EXAMPLE_IDENTITY_ID)
+        val quoteId = QuoteFixtures.makeEntity(addedBy = user, rating = QuoteVoteType.UPVOTE.weight + QuoteVoteType.DOWNVOTE.weight)
+            .apply {
+                QuoteVoteEntity(type = QuoteVoteType.DOWNVOTE, user = user)
+                    .also { votes.add(it) }
+                QuoteVoteEntity(type = QuoteVoteType.UPVOTE, user = otherUser)
+                    .also { votes.add(it) }
+            }
+            .also { repository.persist(it) }
+            .id!!
+
+        val response = service.downvote(quoteId)
+
+        response.action shouldBe QuoteVoteAction.REMOVED
+        with(repository.findByIdOrThrow(quoteId)) {
+            rating shouldBe 1
+            votes shouldHaveSize 1
+            with(votes.first()) {
+                this.user.id shouldNotBe user.id
             }
         }
     }

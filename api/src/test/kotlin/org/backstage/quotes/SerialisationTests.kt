@@ -3,47 +3,50 @@ package org.backstage.quotes
 import com.fasterxml.jackson.module.kotlin.readValue
 import io.kotest.assertions.json.shouldContainJsonKeyValue
 import io.kotest.assertions.json.shouldEqualJson
-import io.kotest.core.spec.style.BehaviorSpec
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.datatest.withData
 import io.kotest.matchers.shouldBe
 import org.backstage.util.objectMapper
 
-class QuoteSerialisationTests : BehaviorSpec() {
+class QuoteSerialisationTests : FunSpec() {
     init {
-        Given("the JSON for a create request") {
+        test("the JSON for a create request should be de-serialised correctly") {
             val requestJson = QuoteFixtures.CREATE_REQUEST_JSON
 
-            When("de-serialising the request") {
-                val request = objectMapper.readValue<QuoteRequest.Create>(requestJson)
+            val request = objectMapper.readValue<QuoteRequest.Create>(requestJson)
 
-                Then("the DTO should be de-serialised correctly") {
-                    request shouldBe QuoteFixtures.CREATE_REQUEST
-                }
-            }
+            request shouldBe QuoteFixtures.CREATE_REQUEST
         }
 
-        Given("the default response DTO") {
+        test("the default response DTO should serialise correctly") {
             val response = QuoteFixtures.RESPONSE_DEFAULT
 
-            When("serialising the response") {
-                val responseJson = objectMapper.writeValueAsString(response)
+            val responseJson = objectMapper.writeValueAsString(response)
 
-                Then("the response should be serialised correctly") {
-                    responseJson.shouldEqualJson(QuoteFixtures.RESPONSE_DEFAULT_JSON)
-                }
-            }
+            responseJson.shouldEqualJson(QuoteFixtures.RESPONSE_DEFAULT_JSON)
         }
 
-        Given("the default response DTO for a quote the user has voted for") {
+        test("a default response DTO that the user has voted for should have the userVote property set") {
             val response = QuoteFixtures.RESPONSE_DEFAULT.copy(
                 userVote = QuoteVoteType.UPVOTE,
             )
 
-            When("serialising the response") {
+            val responseJson = objectMapper.writeValueAsString(response)
+
+            responseJson.shouldContainJsonKeyValue("userVote", "UPVOTE")
+        }
+
+        context("the action response DTO should be serialised correctly") {
+            withData(nameFn = {"action = $it"}, QuoteVoteAction.entries) {action ->
+                val response = QuoteResponse.Vote(action = action)
+
                 val responseJson = objectMapper.writeValueAsString(response)
 
-                Then("the userVote property should be serialised correctly") {
-                    responseJson.shouldContainJsonKeyValue("userVote", "UPVOTE")
-                }
+                responseJson.shouldEqualJson("""
+                    {
+                        "action": "${action.name}"
+                    }
+                """.trimIndent())
             }
         }
     }

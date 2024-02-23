@@ -11,6 +11,8 @@ enum class QuoteVoteType(
     val weight: Int,
 ) { UPVOTE(1), DOWNVOTE(-1) }
 
+enum class QuoteVoteAction { ADDED, CHANGED, REMOVED }
+
 sealed class QuoteRequest {
     data class Create(
         @get:NotBlank
@@ -48,5 +50,10 @@ sealed class QuoteResponse {
 
         @JsonProperty("userVote")
         val userVote: QuoteVoteType?,
+    ) : QuoteResponse()
+
+    data class Vote(
+        @JsonProperty("action")
+        val action: QuoteVoteAction
     ) : QuoteResponse()
 }

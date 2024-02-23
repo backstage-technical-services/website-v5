@@ -164,7 +164,8 @@ class QuoteResourceTests {
             .patch("/${quote.id}/upvote")
 
             .then()
-            .statusCode(NO_CONTENT)
+            .statusCode(OK)
+            .body("action", notNullValue())
 
         cleanUpTest {
             repository.delete(quote)
@@ -222,7 +223,8 @@ class QuoteResourceTests {
             .patch("/${quote.id}/downvote")
 
             .then()
-            .statusCode(NO_CONTENT)
+            .statusCode(OK)
+            .body("action", notNullValue())
 
         cleanUpTest {
             repository.delete(quote)

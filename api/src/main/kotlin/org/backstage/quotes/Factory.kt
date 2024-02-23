@@ -2,8 +2,8 @@ package org.backstage.quotes
 
 import org.backstage.users.UserEntity
 
-object QuoteConverter {
-    fun toDefaultResponse(quote: QuoteEntity, user: UserEntity?) = QuoteResponse.Default(
+object QuoteResponseFactory {
+    fun default(quote: QuoteEntity, user: UserEntity?) = QuoteResponse.Default(
         id = quote.id!!,
         culprit = quote.culprit,
         quote = quote.quote,
@@ -13,5 +13,9 @@ object QuoteConverter {
             null -> null
             else -> quote.votes.firstOrNull { vote -> vote.user.id == user.id }?.type
         }
+    )
+
+    fun vote(action: QuoteVoteAction) = QuoteResponse.Vote(
+        action = action,
     )
 }

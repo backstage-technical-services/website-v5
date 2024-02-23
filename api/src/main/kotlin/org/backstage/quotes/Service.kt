@@ -18,8 +18,8 @@ interface QuoteService {
     fun list(pageIndex: Int, pageSize: Int): PaginatedResponse<QuoteResponse.Default>
     fun create(request: QuoteRequest.Create): Long
     fun get(id: Long): QuoteResponse.Default
-    fun upvote(id: Long)
-    fun downvote(id: Long)
+    fun upvote(id: Long): QuoteResponse.Vote
+    fun downvote(id: Long): QuoteResponse.Vote
     fun delete(id: Long)
 }
 
@@ -33,7 +33,7 @@ class RepositoryQuoteService(
         .findPaginated(
             page = Page.of(pageIndex, pageSize).checkPageSize(MAX_PAGE_SIZE),
             sort = Sort.descending("date"),
-        ) { quote -> QuoteConverter.toDefaultResponse(quote, getCurrentUser()) }
+        ) { quote -> QuoteResponseFactory.default(quote, getCurrentUser()) }
 
     override fun create(request: QuoteRequest.Create): Long = createQuote(request)
         .also { LOGGER.info("Created quote with ID $it") }
@@ -54,36 +54,54 @@ class RepositoryQuoteService(
 
     override fun get(id: Long): QuoteResponse.Default = repository
         .findByIdOrThrow(id)
-        .let { quote -> QuoteConverter.toDefaultResponse(quote, getCurrentUser()) }
+        .let { quote -> QuoteResponseFactory.default(quote, getCurrentUser()) }
 
     override fun upvote(id: Long) = updateVotes(id = id, type = QuoteVoteType.UPVOTE)
+        .let(QuoteResponseFactory::vote)
 
     override fun downvote(id: Long) = updateVotes(id = id, type = QuoteVoteType.DOWNVOTE)
+        .let(QuoteResponseFactory::vote)
 
     @Transactional
-    fun updateVotes(id: Long, type: QuoteVoteType) {
+    fun updateVotes(id: Long, type: QuoteVoteType): QuoteVoteAction {
         val quote = repository.findByIdOrThrow(id)
         val user = userService.findByIdentityId(identityId = identity.getUserId())
 
-        when (val vote = quote.votes.firstOrNull { it.user.id == user.id }) {
+        return when (val vote = quote.votes.firstOrNull { it.user.id == user.id }) {
+            // First time voting => just add the vote
             null -> {
                 QuoteVoteEntity(
                     type = type,
                     user = user,
                 ).also { quote.votes.add(it) }
+                quote.rating += type.weight
+                LOGGER.info("User with ID ${user.id} ${type.name.lowercase()}d quote with ID $id")
+
+                QuoteVoteAction.ADDED
             }
 
             else -> {
-                quote.rating -= vote.type.weight
-                vote.type = type
+                val oldType = vote.type
+                quote.rating -= oldType.weight
+
+                when(vote.type) {
+                    // Same type => remove vote
+                    type -> {
+                        quote.votes.remove(vote)
+                        LOGGER.info("User with ID ${user.id} removed their $oldType vote for quote with ID $id")
+
+                        QuoteVoteAction.REMOVED
+                    }
+                    // Different type => update to new type
+                    else -> {
+                        vote.type = type
+                        quote.rating += type.weight
+                        LOGGER.info("User with ID ${user.id} changed their vote for quote with ID $id from $oldType to $type")
+
+                        QuoteVoteAction.CHANGED
+                    }
+                }
             }
-        }
-
-        quote.rating += type.weight
-
-        when (type) {
-            QuoteVoteType.UPVOTE -> LOGGER.info("User with ID ${user.id} upvoted quote with ID $id")
-            QuoteVoteType.DOWNVOTE -> LOGGER.info("User with ID ${user.id} downvoted quote with ID $id")
         }
     }
 

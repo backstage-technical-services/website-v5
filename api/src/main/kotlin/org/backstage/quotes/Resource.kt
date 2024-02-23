@@ -39,7 +39,7 @@ class QuoteResource(
     fun upvote(
         @PathParam("id") id: Long,
     ): Response = service.upvote(id)
-        .let { Response.noContent().build() }
+        .let { response -> Response.ok(response).build() }
 
     @PATCH
     @Path("{id}/downvote")
@@ -47,7 +47,7 @@ class QuoteResource(
     fun downvote(
         @PathParam("id") id: Long,
     ): Response = service.downvote(id)
-        .let { Response.noContent().build() }
+        .let { response -> Response.ok(response).build() }
 
     @DELETE
     @Path("{id}")

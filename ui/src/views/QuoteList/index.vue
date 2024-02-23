@@ -54,7 +54,7 @@ import { computed, onMounted, reactive, ref } from 'vue'
 import { mdiAlert, mdiPlus } from '@quasar/extras/mdi-v7'
 
 import type { QTableOnRequest } from '@/types/quasar'
-import type { QuoteResponse } from '@/api/domains/quotes'
+import type { DefaultQuoteResponse } from '@/api/domains/quotes'
 import Quote from './Quote.vue'
 import AddQuote from './AddQuote.vue'
 import { can } from '@/helpers/auth'
@@ -67,7 +67,7 @@ import { useHead } from '@unhead/vue'
 
 const canCreate = computed(() => can(permissions.quotes.add))
 
-const quoteState = reactive<LoadableState<PaginatedResponse<QuoteResponse>>>({
+const quoteState = reactive<LoadableState<PaginatedResponse<DefaultQuoteResponse>>>({
   isLoading: true,
 })
 const quoteList = computed(() => quoteState.data?.items)

@@ -4,6 +4,7 @@ import { DateTime } from 'luxon'
 import { fromApiDate, toApiDate } from '@/config/dates'
 
 export type QuoteVoteType = 'UPVOTE' | 'DOWNVOTE'
+export type QuoteVoteAction = 'ADDED' | 'CHANGED' | 'REMOVED'
 
 export type CreateQuoteRequest = {
   culprit: string
@@ -14,7 +15,7 @@ type RawCreateQuoteRequest = Omit<CreateQuoteRequest, 'date'> & {
   date: string
 }
 
-export type QuoteResponse = {
+export type DefaultQuoteResponse = {
   id: number
   culprit: string
   quote: string
@@ -22,17 +23,21 @@ export type QuoteResponse = {
   rating: number
   userVote?: QuoteVoteType
 }
-type RawQuoteResponse = Omit<QuoteResponse, 'date' | 'userVote'> & {
+type RawDefaultQuoteResponse = Omit<DefaultQuoteResponse, 'date' | 'userVote'> & {
   date: string
   userVote: QuoteVoteType | null
+}
+
+export type QuoteVoteResponse = {
+  action: QuoteVoteAction
 }
 
 export default function({ http, extractData, extractResourceId }: ApiProps) {
   const basePath = '/quote'
 
   return {
-    list: async(pageIndex: number, pageSize: number = 20): Promise<PaginatedResponse<QuoteResponse>> => http
-      .get<PaginatedResponse<RawQuoteResponse>>(basePath, {
+    list: async(pageIndex: number, pageSize: number = 20): Promise<PaginatedResponse<DefaultQuoteResponse>> => http
+      .get<PaginatedResponse<RawDefaultQuoteResponse>>(basePath, {
         params: {
           pageIndex,
           pageSize,
@@ -58,9 +63,13 @@ export default function({ http, extractData, extractResourceId }: ApiProps) {
         .then(extractResourceId)
     },
 
-    upvote: async(id: number): Promise<void> => http.patch(`${basePath}/${id}/upvote`),
+    upvote: async(id: number): Promise<QuoteVoteAction> => http.patch<QuoteVoteResponse>(`${basePath}/${id}/upvote`)
+      .then(extractData)
+      .then(({ action }) => action),
 
-    downvote: async(id: number): Promise<void> => http.patch(`${basePath}/${id}/downvote`),
+    downvote: async(id: number): Promise<QuoteVoteAction> => http.patch<QuoteVoteResponse>(`${basePath}/${id}/downvote`)
+      .then(extractData)
+      .then(({ action }) => action),
 
     delete: async(id: number): Promise<void> => http.delete(`${basePath}/${id}`),
   }

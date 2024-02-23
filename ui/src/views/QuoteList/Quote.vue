@@ -60,14 +60,14 @@ import {
   mdiFormatQuoteOpen,
 } from '@quasar/extras/mdi-v7'
 
-import type { QuoteResponse } from '@/api/domains/quotes'
+import type { DefaultQuoteResponse } from '@/api/domains/quotes'
 import { mapError, useApi } from '@/api'
 import { useNotifications } from '@/composables/notifications'
 import { can } from '@/helpers/auth'
 import { permissions } from '@/config/auth'
 import { Dialog } from 'quasar'
 
-const props = defineProps<{ quote: QuoteResponse}>()
+const props = defineProps<{ quote: DefaultQuoteResponse}>()
 const { quote } = toRefs(props)
 const emit = defineEmits(['refresh'])
 
@@ -77,8 +77,6 @@ const canDelete = computed(() => can(permissions.quotes.delete))
 const api = useApi()
 const onUpvote = () => api.quotes.upvote(quote.value.id)
   .then(() => {
-    const { success } = useNotifications()
-    success('Upvoted quote')
     emit('refresh')
   })
   .catch(err => {
@@ -87,8 +85,6 @@ const onUpvote = () => api.quotes.upvote(quote.value.id)
   })
 const onDownvote = () => api.quotes.downvote(quote.value.id)
   .then(() => {
-    const { success } = useNotifications()
-    success('Downvoted quote')
     emit('refresh')
   })
   .catch(err => {
