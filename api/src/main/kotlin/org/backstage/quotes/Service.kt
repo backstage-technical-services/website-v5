@@ -75,7 +75,7 @@ class RepositoryQuoteService(
                     user = user,
                 ).also { quote.votes.add(it) }
                 quote.rating += type.weight
-                LOGGER.info("User with ID ${user.id} ${type.name.lowercase()}d quote with ID $id")
+                LOGGER.info("User ${user.id} ${type.name.lowercase()}d quote $id")
 
                 QuoteVoteAction.ADDED
             }
@@ -88,7 +88,7 @@ class RepositoryQuoteService(
                     // Same type => remove vote
                     type -> {
                         quote.votes.remove(vote)
-                        LOGGER.info("User with ID ${user.id} removed their $oldType vote for quote with ID $id")
+                        LOGGER.info("User ${user.id} removed their $oldType vote for quote $id")
 
                         QuoteVoteAction.REMOVED
                     }
@@ -96,7 +96,7 @@ class RepositoryQuoteService(
                     else -> {
                         vote.type = type
                         quote.rating += type.weight
-                        LOGGER.info("User with ID ${user.id} changed their vote for quote with ID $id from $oldType to $type")
+                        LOGGER.info("User ${user.id} changed their vote for quote $id from $oldType to $type")
 
                         QuoteVoteAction.CHANGED
                     }
@@ -111,9 +111,9 @@ class RepositoryQuoteService(
 
         if (quote != null) {
             repository.delete(quote)
-            LOGGER.info("Deleted quote with ID $id")
+            LOGGER.info("Deleted quote $id")
         } else {
-            LOGGER.debug("Tried to delete quote with ID $id but it doesn't exist")
+            LOGGER.debug("Tried to delete quote $id but it doesn't exist")
         }
     }
 

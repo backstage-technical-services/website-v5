@@ -162,7 +162,7 @@ class QuoteServiceTests {
             this.votes shouldHaveSize 1
             with(this.votes.first()) {
                 this.type shouldBe QuoteVoteType.UPVOTE
-                this.user.id shouldBe  user.id!!
+                this.user.id shouldBe user.id!!
             }
         }
     }
@@ -190,7 +190,7 @@ class QuoteServiceTests {
             this.votes shouldHaveSize 1
             with(this.votes.first()) {
                 this.type shouldBe QuoteVoteType.UPVOTE
-                this.user.id shouldBe  user.id!!
+                this.user.id shouldBe user.id!!
             }
         }
     }
@@ -245,7 +245,7 @@ class QuoteServiceTests {
             this.votes shouldHaveSize 1
             with(this.votes.first()) {
                 this.type shouldBe QuoteVoteType.DOWNVOTE
-                this.user.id shouldBe  user.id!!
+                this.user.id shouldBe user.id!!
             }
         }
     }
@@ -273,7 +273,7 @@ class QuoteServiceTests {
             this.votes shouldHaveSize 1
             with(this.votes.first()) {
                 this.type shouldBe QuoteVoteType.DOWNVOTE
-                this.user.id shouldBe  user.id!!
+                this.user.id shouldBe user.id!!
             }
         }
     }
@@ -282,7 +282,10 @@ class QuoteServiceTests {
     fun `when downvoting a quote the user's already downvoted the vote should be cleared`() {
         val user = insertUser()
         val otherUser = insertUser(identityId = AuthHelpers.EXAMPLE_IDENTITY_ID)
-        val quoteId = QuoteFixtures.makeEntity(addedBy = user, rating = QuoteVoteType.UPVOTE.weight + QuoteVoteType.DOWNVOTE.weight)
+        val quoteId = QuoteFixtures.makeEntity(
+            addedBy = user,
+            rating = QuoteVoteType.UPVOTE.weight + QuoteVoteType.DOWNVOTE.weight,
+        )
             .apply {
                 QuoteVoteEntity(type = QuoteVoteType.DOWNVOTE, user = user)
                     .also { votes.add(it) }
