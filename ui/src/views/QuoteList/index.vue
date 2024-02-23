@@ -27,9 +27,17 @@
         </template>
 
         <template #no-data>
-          <div class="row full-width flex-center text-h6" v-if="!quoteState.isLoading">
-            <q-icon :name="mdiAlert" size="sm" class="q-mr-md" />
-            No data.
+          <div class="row full-width flex-center" v-if="!quoteState.isLoading">
+            <q-icon :name="mdiAlert" color="warning" size="xl" class="q-mr-lg" />
+
+            <div>
+              <div class="text-h3 text-bts-gold" style="margin: 0;">
+                We don't seem to have any good quotes
+              </div>
+              <div class="text-h4 text-grey" style="margin: 0;">
+                You guys need to start embarrassing yourselves
+              </div>
+            </div>
           </div>
         </template>
 
