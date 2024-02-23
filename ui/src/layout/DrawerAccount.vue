@@ -19,7 +19,7 @@
       <q-item-section>My events</q-item-section>
     </q-item>
 
-    <q-item clickable v-ripple @click="logout">
+    <q-item clickable v-ripple @click="logout" data-cy="logout-btn">
       <q-item-section avatar>
         <q-icon :name="mdiLogout" />
       </q-item-section>
@@ -30,7 +30,7 @@
 
   <!-- Not logged in -->
   <template v-else>
-    <q-item clickable v-ripple @click="login">
+    <q-item clickable v-ripple @click="login" data-cy="login-btn">
       <q-item-section avatar>
         <q-icon :name="mdiLogin"/>
       </q-item-section>
@@ -38,18 +38,12 @@
       <q-item-section>Log in</q-item-section>
     </q-item>
   </template>
-
-
 </template>
 
 <script lang="ts" setup>
-import { mdiLogin, mdiLogout, mdiAccount, mdiCalendar, mdiStar } from '@quasar/extras/mdi-v7'
+import { mdiLogin, mdiLogout, mdiAccount, mdiCalendar } from '@quasar/extras/mdi-v7'
 import { useAuth0 } from '@auth0/auth0-vue'
 import { login, logout } from '@/config/auth'
 
 const { isAuthenticated } = useAuth0()
 </script>
-
-<style lang="scss" scoped>
-
-</style>

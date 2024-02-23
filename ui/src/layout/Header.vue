@@ -1,7 +1,7 @@
 <template>
   <q-header>
     <q-toolbar class="q-px-md-none">
-      <q-btn flat round :icon="mdiMenu" @click="showDrawer = !showDrawer" />
+      <q-btn flat round :icon="mdiMenu" @click="showDrawer = !showDrawer" data-cy="toggle-drawer-btn" />
 
       <div class="container row no-wrap items-center">
         <q-toolbar-title class="full-height" shrink>
