@@ -48,7 +48,7 @@ import { mdiAlert, mdiPlus } from '@quasar/extras/mdi-v7'
 import type { QTableOnRequest } from '@/types/quasar'
 import type { QuoteResponse } from '@/api/domains/quotes'
 import Quote from './Quote.vue'
-import QuoteAdd from '@/components/QuoteAdd.vue'
+import AddQuote from './AddQuote.vue'
 import { can } from '@/helpers/auth'
 import { permissions } from '@/config/auth'
 import { handleError, type LoadableState, useApi } from '@/api'
@@ -72,7 +72,7 @@ const pagination = ref({
 })
 
 const showAddDialog = () => Dialog.create({
-  component: QuoteAdd,
+  component: AddQuote,
 }).onOk(() => refresh())
 
 const api = useApi()

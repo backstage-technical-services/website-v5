@@ -6,9 +6,9 @@
       </q-card-section>
 
       <q-card-section>
-        <q-form class="q-gutter-md" @submit="onSubmit" @reset="onDialogCancel">
+        <q-form class="q-gutter-md" @submit="onSubmit" @reset="onDialogCancel" >
           <!-- Date/time -->
-          <q-input v-model="formData.date">
+          <q-input v-model="formData.date" :rules="dateValidationRules">
             <template #before>
               <q-icon :name="mdiClock" />
             </template>
@@ -42,15 +42,13 @@
             </template>
           </q-input>
 
+          <!-- Actions -->
           <q-card-actions align="right">
             <q-btn color="positive" :icon="mdiPlus" label="Create" type="submit" :disable="isSubmitting" :loading="isSubmitting" />
             <q-btn color="secondary" label="Cancel" type="reset" :disable="isSubmitting" flat />
           </q-card-actions>
-
         </q-form>
       </q-card-section>
-
-
     </q-card>
   </q-dialog>
 </template>
@@ -64,13 +62,17 @@ import { DateTime } from 'luxon'
 import { mapError, useApi } from '@/api'
 import type { CreateQuoteRequest } from '@/api/domains/quotes'
 import { useNotifications } from '@/composables/notifications'
-import { requiredString } from '@/helpers/validation'
+import { requiredString, type ValidationRules } from '@/helpers/validation'
 import { dateTimeFormat, dateTimeMask } from '@/config/dates'
 
 const { dialogRef, onDialogHide, onDialogOK, onDialogCancel } = useDialogPluginComponent()
 defineEmits([...useDialogPluginComponent.emits])
 
 const isSubmitting = ref(false)
+const dateValidationRules: ValidationRules = [
+  (val: string) => DateTime.fromFormat(val, dateTimeFormat).isValid || 'Must be a valid date',
+  (val: string) => DateTime.fromFormat(val, dateTimeFormat).diffNow().toMillis() <=0 || 'Cannot be in the future',
+]
 const formData = reactive({
   culprit: '',
   quote: '',

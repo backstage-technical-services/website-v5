@@ -2,6 +2,7 @@
   <div class="q-pa-md col-12">
     <q-card class="bg-transparent" flat>
       <q-card-section horizontal>
+        <!-- Voting -->
         <q-card-section class="column justify-center text-center q-pa-none" style="min-width: 2.5em;">
           <q-btn
               :icon="mdiChevronUp"
@@ -25,6 +26,7 @@
           </q-btn>
         </q-card-section>
 
+        <!-- Quote -->
         <q-card-section class="col-grow row items-start q-pl-none">
           <div class="col-auto">
             <q-icon class="col" size="xl" color="grey-9" :name="mdiFormatQuoteOpen" />
@@ -37,14 +39,13 @@
           </div>
         </q-card-section>
 
+        <!-- Delete -->
         <q-card-actions class="text-grey-6 items-start" v-if="canDelete">
           <q-btn :icon="mdiDelete" size="md" color="red-8" class="q-mt-md" @click="onDelete" flat v-if="canDelete">
             <q-tooltip>Delete</q-tooltip>
           </q-btn>
         </q-card-actions>
       </q-card-section>
-
-
     </q-card>
   </div>
 </template>
