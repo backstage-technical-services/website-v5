@@ -155,6 +155,7 @@ class QuoteServiceTests {
         with(repository.findById(quoteId)) {
             shouldNotBeNull()
 
+            this.rating shouldBe 1
             this.likes shouldHaveSize 1
             with(this.likes.first()) {
                 this.type shouldBe QuoteLikeType.LIKE
@@ -166,7 +167,7 @@ class QuoteServiceTests {
     @Test
     fun `when liking a quote the user's already disliked, the like should be persisted`() {
         val user = insertUser()
-        val quoteId = QuoteFixtures.makeEntity(addedBy = user)
+        val quoteId = QuoteFixtures.makeEntity(addedBy = user, rating = QuoteLikeType.DISLIKE.vote)
             .also { quote ->
                 QuoteLikeEntity(
                     type = QuoteLikeType.DISLIKE,
@@ -181,6 +182,7 @@ class QuoteServiceTests {
         with(repository.findById(quoteId)) {
             shouldNotBeNull()
 
+            this.rating shouldBe 1
             this.likes shouldHaveSize 1
             with(this.likes.first()) {
                 this.type shouldBe QuoteLikeType.LIKE
@@ -208,6 +210,7 @@ class QuoteServiceTests {
         with(repository.findById(quoteId)) {
             shouldNotBeNull()
 
+            this.rating shouldBe -1
             this.likes shouldHaveSize 1
             with(this.likes.first()) {
                 this.type shouldBe QuoteLikeType.DISLIKE
@@ -219,7 +222,7 @@ class QuoteServiceTests {
     @Test
     fun `when disliking a quote the user's already liked, the dislike should be persisted`() {
         val user = insertUser()
-        val quoteId = QuoteFixtures.makeEntity(addedBy = user)
+        val quoteId = QuoteFixtures.makeEntity(addedBy = user, rating = QuoteLikeType.LIKE.vote)
             .also { quote ->
                 QuoteLikeEntity(
                     type = QuoteLikeType.LIKE,
@@ -234,6 +237,7 @@ class QuoteServiceTests {
         with(repository.findById(quoteId)) {
             shouldNotBeNull()
 
+            this.rating shouldBe -1
             this.likes shouldHaveSize 1
             with(this.likes.first()) {
                 this.type shouldBe QuoteLikeType.DISLIKE

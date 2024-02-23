@@ -68,9 +68,12 @@ class RepositoryQuoteService(
                 ).also { quote.likes.add(it) }
             }
             else -> {
+                quote.rating -= like.type.vote
                 like.type = type
             }
         }
+
+        quote.rating += type.vote
 
         when(type) {
             QuoteLikeType.LIKE -> LOGGER.info("User with ID ${user.id} liked quote with ID $id")

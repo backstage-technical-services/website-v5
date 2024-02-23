@@ -25,12 +25,14 @@ object QuoteFixtures {
             .apply {
                 id = Random.nextLong(1, 5000)
             },
+        rating: Int = 0,
         deleted: Boolean = false,
     ) = QuoteEntity(
         culprit = culprit,
         quote = quote,
         date = date,
         addedBy = addedBy,
+        rating = rating,
     ).apply {
         this.deleted = deleted
     }

@@ -27,6 +27,9 @@ data class QuoteEntity(
     @ManyToOne(optional = false)
     @JoinColumn(name = "added_by_id")
     var addedBy: UserEntity,
+
+    @Column(name = "rating", nullable = false)
+    var rating: Int = 0,
 ) : BaseEntity() {
     @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true)
     @JoinColumn(name = "quote_id")
@@ -52,7 +55,7 @@ inline fun <reified T : Any> QuoteEntity.toClass(): T = when(T::class) {
         culprit = culprit,
         quote = quote,
         date = date,
-        rating = likes.sumOf { it.type.vote },
+        rating = rating,
         likes = likes.count { it.type == QuoteLikeType.LIKE },
         dislikes = likes.count { it.type === QuoteLikeType.DISLIKE },
     ) as T
