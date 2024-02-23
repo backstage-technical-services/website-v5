@@ -18,8 +18,8 @@ interface QuoteService {
     fun list(pageIndex: Int, pageSize: Int): PaginatedResponse<QuoteResponse.Default>
     fun create(request: QuoteRequest.Create): Long
     fun get(id: Long): QuoteResponse.Default
-    fun like(id: Long)
-    fun dislike(id: Long)
+    fun upvote(id: Long)
+    fun downvote(id: Long)
     fun delete(id: Long)
 }
 
@@ -56,34 +56,34 @@ class RepositoryQuoteService(
         .findByIdOrThrow(id)
         .let { quote -> QuoteConverter.toDefaultResponse(quote, getCurrentUser()) }
 
-    override fun like(id: Long) = updateLikes(id = id, type = QuoteLikeType.LIKE)
+    override fun upvote(id: Long) = updateVotes(id = id, type = QuoteVoteType.UPVOTE)
 
-    override fun dislike(id: Long) = updateLikes(id = id, type = QuoteLikeType.DISLIKE)
+    override fun downvote(id: Long) = updateVotes(id = id, type = QuoteVoteType.DOWNVOTE)
 
     @Transactional
-    fun updateLikes(id: Long, type: QuoteLikeType) {
+    fun updateVotes(id: Long, type: QuoteVoteType) {
         val quote = repository.findByIdOrThrow(id)
         val user = userService.findByIdentityId(identityId = identity.getUserId())
 
-        when (val like = quote.likes.firstOrNull { it.user.id == user.id }) {
+        when (val vote = quote.votes.firstOrNull { it.user.id == user.id }) {
             null -> {
-                QuoteLikeEntity(
+                QuoteVoteEntity(
                     type = type,
                     user = user,
-                ).also { quote.likes.add(it) }
+                ).also { quote.votes.add(it) }
             }
 
             else -> {
-                quote.rating -= like.type.vote
-                like.type = type
+                quote.rating -= vote.type.weight
+                vote.type = type
             }
         }
 
-        quote.rating += type.vote
+        quote.rating += type.weight
 
         when (type) {
-            QuoteLikeType.LIKE -> LOGGER.info("User with ID ${user.id} liked quote with ID $id")
-            QuoteLikeType.DISLIKE -> LOGGER.info("User with ID ${user.id} disliked quote with ID $id")
+            QuoteVoteType.UPVOTE -> LOGGER.info("User with ID ${user.id} upvoted quote with ID $id")
+            QuoteVoteType.DOWNVOTE -> LOGGER.info("User with ID ${user.id} downvoted quote with ID $id")
         }
     }
 

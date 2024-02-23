@@ -3,7 +3,7 @@ import type { PaginatedResponse } from '@/config/pagination'
 import { DateTime } from 'luxon'
 import { fromApiDate, toApiDate } from '@/config/dates'
 
-export type QuoteLikeType = 'LIKE' | 'DISLIKE'
+export type QuoteVoteType = 'UPVOTE' | 'DOWNVOTE'
 
 export type CreateQuoteRequest = {
   culprit: string
@@ -20,11 +20,11 @@ export type QuoteResponse = {
   quote: string
   date: DateTime
   rating: number
-  userVote?: QuoteLikeType
+  userVote?: QuoteVoteType
 }
 type RawQuoteResponse = Omit<QuoteResponse, 'date' | 'userVote'> & {
   date: string
-  userVote: QuoteLikeType | null
+  userVote: QuoteVoteType | null
 }
 
 export default function({ http, extractData, extractResourceId }: ApiProps) {
@@ -58,9 +58,9 @@ export default function({ http, extractData, extractResourceId }: ApiProps) {
         .then(extractResourceId)
     },
 
-    like: async(id: number): Promise<void> => http.patch(`${basePath}/${id}/like`),
+    upvote: async(id: number): Promise<void> => http.patch(`${basePath}/${id}/upvote`),
 
-    dislike: async(id: number): Promise<void> => http.patch(`${basePath}/${id}/dislike`),
+    downvote: async(id: number): Promise<void> => http.patch(`${basePath}/${id}/downvote`),
 
     delete: async(id: number): Promise<void> => http.delete(`${basePath}/${id}`),
   }

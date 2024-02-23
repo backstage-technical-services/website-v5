@@ -7,21 +7,22 @@
           <q-btn
               :icon="mdiChevronUp"
               size="md"
-              :color="quote.userVote === 'LIKE' ? undefined : 'grey-8'"
+              :color="quote.userVote === 'UPVOTE' ? undefined : 'grey-8'"
               class="q-pa-none"
-              @click="onLike"
-              flat v-if="canLike">
+              @click="onUpvote"
+              flat
+              v-if="canVote">
             <q-tooltip>Upvote</q-tooltip>
           </q-btn>
           <div :class="{ 'text-body2': true, 'text-grey-6': quote.rating === 0, 'text-red-4': quote.rating < 0, 'text-green-4': quote.rating > 0 }">{{ quote.rating }}</div>
           <q-btn
               :icon="mdiChevronDown"
               size="md"
-              :color="quote.userVote === 'DISLIKE' ? undefined : 'grey-8'"
+              :color="quote.userVote === 'DOWNVOTE' ? undefined : 'grey-8'"
               class="q-pa-none"
-              @click="onDislike"
+              @click="onDownvote"
               flat
-              v-if="canLike">
+              v-if="canVote">
             <q-tooltip>Downvote</q-tooltip>
           </q-btn>
         </q-card-section>
@@ -70,11 +71,11 @@ const props = defineProps<{ quote: QuoteResponse}>()
 const { quote } = toRefs(props)
 const emit = defineEmits(['refresh'])
 
-const canLike = computed(() => can(permissions.quotes.like))
+const canVote = computed(() => can(permissions.quotes.vote))
 const canDelete = computed(() => can(permissions.quotes.delete))
 
 const api = useApi()
-const onLike = () => api.quotes.like(quote.value.id)
+const onUpvote = () => api.quotes.upvote(quote.value.id)
   .then(() => {
     const { success } = useNotifications()
     success('Upvoted quote')
@@ -84,7 +85,7 @@ const onLike = () => api.quotes.like(quote.value.id)
     const { error } = useNotifications()
     error(`Could not upvote quote: ${mapError(err).text}`)
   })
-const onDislike = () => api.quotes.dislike(quote.value.id)
+const onDownvote = () => api.quotes.downvote(quote.value.id)
   .then(() => {
     const { success } = useNotifications()
     success('Downvoted quote')

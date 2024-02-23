@@ -33,16 +33,16 @@ data class QuoteEntity(
 ) : BaseEntity() {
     @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true)
     @JoinColumn(name = "quote_id")
-    var likes: MutableList<@JvmSuppressWildcards QuoteLikeEntity> = mutableListOf()
+    var votes: MutableList<@JvmSuppressWildcards QuoteVoteEntity> = mutableListOf()
 }
 
 @Audited
 @Entity
-@Table(name = "quote_likes")
-data class QuoteLikeEntity(
+@Table(name = "quote_votes")
+data class QuoteVoteEntity(
     @Enumerated(EnumType.STRING)
     @Column(name = "type", nullable = false)
-    var type: QuoteLikeType,
+    var type: QuoteVoteType,
 
     @ManyToOne
     @JoinColumn(name = "user_id")

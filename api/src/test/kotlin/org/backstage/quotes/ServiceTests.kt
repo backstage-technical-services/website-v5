@@ -132,115 +132,115 @@ class QuoteServiceTests {
             this.quote shouldBe request.quote
             this.date shouldBe request.date
             this.addedBy.id shouldBe user.id!!
-            this.likes.shouldBeEmpty()
+            this.votes.shouldBeEmpty()
         }
     }
 
     @Test
-    fun `when liking a non-existent quote an exception should be thrown`() {
+    fun `when upvoting a non-existent quote an exception should be thrown`() {
         assertThrowsHttpException {
-            service.like(1000L)
+            service.upvote(1000L)
         }
     }
 
     @Test
-    fun `when liking a quote the like should be persisted`() {
+    fun `when upvoting a quote the vote should be persisted`() {
         val user = insertUser()
         val quoteId = QuoteFixtures.makeEntity(addedBy = user)
             .also { repository.persist(it) }
             .id!!
 
-        service.like(quoteId)
+        service.upvote(quoteId)
 
         with(repository.findById(quoteId)) {
             shouldNotBeNull()
 
             this.rating shouldBe 1
-            this.likes shouldHaveSize 1
-            with(this.likes.first()) {
-                this.type shouldBe QuoteLikeType.LIKE
+            this.votes shouldHaveSize 1
+            with(this.votes.first()) {
+                this.type shouldBe QuoteVoteType.UPVOTE
                 this.user.id shouldBe  user.id!!
             }
         }
     }
 
     @Test
-    fun `when liking a quote the user's already disliked, the like should be persisted`() {
+    fun `when upvoting a quote the user's already downvoted, the upvote should be persisted`() {
         val user = insertUser()
-        val quoteId = QuoteFixtures.makeEntity(addedBy = user, rating = QuoteLikeType.DISLIKE.vote)
+        val quoteId = QuoteFixtures.makeEntity(addedBy = user, rating = QuoteVoteType.DOWNVOTE.weight)
             .also { quote ->
-                QuoteLikeEntity(
-                    type = QuoteLikeType.DISLIKE,
+                QuoteVoteEntity(
+                    type = QuoteVoteType.DOWNVOTE,
                     user = user,
-                ).also { quote.likes.add(it) }
+                ).also { quote.votes.add(it) }
             }
             .also { repository.persist(it) }
             .id!!
 
-        service.like(quoteId)
+        service.upvote(quoteId)
 
         with(repository.findById(quoteId)) {
             shouldNotBeNull()
 
             this.rating shouldBe 1
-            this.likes shouldHaveSize 1
-            with(this.likes.first()) {
-                this.type shouldBe QuoteLikeType.LIKE
+            this.votes shouldHaveSize 1
+            with(this.votes.first()) {
+                this.type shouldBe QuoteVoteType.UPVOTE
                 this.user.id shouldBe  user.id!!
             }
         }
     }
 
     @Test
-    fun `when disliking a non-existent quote an exception should be thrown`() {
+    fun `when downvoting a non-existent quote an exception should be thrown`() {
         assertThrowsHttpException {
-            service.dislike(1000L)
+            service.downvote(1000L)
         }
     }
 
     @Test
-    fun `when disliking a quote the like should be persisted`() {
+    fun `when downvoting a quote the downvote should be persisted`() {
         val user = insertUser()
         val quoteId = QuoteFixtures.makeEntity(addedBy = user)
             .also { repository.persist(it) }
             .id!!
 
-        service.dislike(quoteId)
+        service.downvote(quoteId)
 
         with(repository.findById(quoteId)) {
             shouldNotBeNull()
 
             this.rating shouldBe -1
-            this.likes shouldHaveSize 1
-            with(this.likes.first()) {
-                this.type shouldBe QuoteLikeType.DISLIKE
+            this.votes shouldHaveSize 1
+            with(this.votes.first()) {
+                this.type shouldBe QuoteVoteType.DOWNVOTE
                 this.user.id shouldBe  user.id!!
             }
         }
     }
 
     @Test
-    fun `when disliking a quote the user's already liked, the dislike should be persisted`() {
+    fun `when downvoting a quote the user's already upvoted, the downvote should be persisted`() {
         val user = insertUser()
-        val quoteId = QuoteFixtures.makeEntity(addedBy = user, rating = QuoteLikeType.LIKE.vote)
+        val quoteId = QuoteFixtures.makeEntity(addedBy = user, rating = QuoteVoteType.UPVOTE.weight)
             .also { quote ->
-                QuoteLikeEntity(
-                    type = QuoteLikeType.LIKE,
+                QuoteVoteEntity(
+                    type = QuoteVoteType.UPVOTE,
                     user = user,
-                ).also { quote.likes.add(it) }
+                ).also { quote.votes.add(it) }
             }
             .also { repository.persist(it) }
             .id!!
 
-        service.dislike(quoteId)
+        service.downvote(quoteId)
 
         with(repository.findById(quoteId)) {
             shouldNotBeNull()
 
             this.rating shouldBe -1
-            this.likes shouldHaveSize 1
-            with(this.likes.first()) {
-                this.type shouldBe QuoteLikeType.DISLIKE
+            this.votes shouldHaveSize 1
+            with(this.votes.first()) {
+                this.type shouldBe QuoteVoteType.DOWNVOTE
                 this.user.id shouldBe  user.id!!
             }
         }
@@ -292,40 +292,40 @@ class QuoteServiceTests {
     }
 
     @Test
-    fun `when fetching a quote that the user has liked the userVote field should be LIKED`() {
+    fun `when fetching a quote that the user has upvoted the userVote field should be UPVOTE`() {
         val user = insertUser()
         val quoteId = QuoteFixtures.makeEntity(addedBy = user)
             .also { repository.persist(it) }
             .id!!
-        service.like(quoteId)
+        service.upvote(quoteId)
 
         with(service.get(quoteId)) {
-            userVote shouldBe QuoteLikeType.LIKE
+            userVote shouldBe QuoteVoteType.UPVOTE
         }
     }
 
     @Test
-    fun `when fetching a quote that the user has disliked the userVote field should be DISLIKED`() {
+    fun `when fetching a quote that the user has downvoted the userVote field should be DOWNVOTE`() {
         val user = insertUser()
         val quoteId = QuoteFixtures.makeEntity(addedBy = user)
             .also { repository.persist(it) }
             .id!!
-        service.dislike(quoteId)
+        service.downvote(quoteId)
 
         with(service.get(quoteId)) {
-            userVote shouldBe QuoteLikeType.DISLIKE
+            userVote shouldBe QuoteVoteType.DOWNVOTE
         }
     }
 
     @Test
-    fun `when fetching a quote that's been liked by another user the userVote field should be null`() {
+    fun `when fetching a quote that's been voted by another user the userVote field should be null`() {
         val user = insertUser()
-        val likedUser = insertUser(identityId = AuthHelpers.EXAMPLE_IDENTITY_ID)
+        val votedUser = insertUser(identityId = AuthHelpers.EXAMPLE_IDENTITY_ID)
 
         val quoteId = QuoteFixtures.makeEntity(addedBy = user)
             .apply {
-                QuoteLikeEntity(type = QuoteLikeType.LIKE, user = likedUser)
-                    .also { likes.add(it) }
+                QuoteVoteEntity(type = QuoteVoteType.UPVOTE, user = votedUser)
+                    .also { votes.add(it) }
             }
             .also { repository.persist(it) }
             .id!!

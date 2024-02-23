@@ -7,9 +7,9 @@ import jakarta.validation.constraints.PastOrPresent
 import org.backstage.util.PATTERN_DATETIME
 import java.time.LocalDateTime
 
-enum class QuoteLikeType(
-    val vote: Int,
-) { LIKE(1), DISLIKE(-1) }
+enum class QuoteVoteType(
+    val weight: Int,
+) { UPVOTE(1), DOWNVOTE(-1) }
 
 sealed class QuoteRequest {
     data class Create(
@@ -47,6 +47,6 @@ sealed class QuoteResponse {
         val rating: Int,
 
         @JsonProperty("userVote")
-        val userVote: QuoteLikeType?,
+        val userVote: QuoteVoteType?,
     ) : QuoteResponse()
 }

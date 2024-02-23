@@ -34,19 +34,19 @@ class QuoteResource(
         }
 
     @PATCH
-    @Path("{id}/like")
-    @RolesAllowed(Roles.Quotes.LIKE)
-    fun like(
+    @Path("{id}/upvote")
+    @RolesAllowed(Roles.Quotes.VOTE)
+    fun upvote(
         @PathParam("id") id: Long,
-    ): Response = service.like(id)
+    ): Response = service.upvote(id)
         .let { Response.noContent().build() }
 
     @PATCH
-    @Path("{id}/dislike")
-    @RolesAllowed(Roles.Quotes.LIKE)
-    fun dislike(
+    @Path("{id}/downvote")
+    @RolesAllowed(Roles.Quotes.VOTE)
+    fun downvote(
         @PathParam("id") id: Long,
-    ): Response = service.dislike(id)
+    ): Response = service.downvote(id)
         .let { Response.noContent().build() }
 
     @DELETE

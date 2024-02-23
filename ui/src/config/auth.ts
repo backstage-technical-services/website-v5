@@ -50,7 +50,7 @@ export const permissions = {
   quotes: {
     list: 'quote:read',
     add: 'quote:create',
-    like: 'quote:like',
+    vote: 'quote:vote',
     delete: 'quote:delete',
   },
 }

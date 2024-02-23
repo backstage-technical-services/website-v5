@@ -4,7 +4,7 @@ object Roles {
     object Quotes {
         const val READ = "quote:read"
         const val CREATE = "quote:create"
-        const val LIKE = "quote:like"
+        const val VOTE = "quote:vote"
         const val DELETE = "quote:delete"
     }
     object Users {

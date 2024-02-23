@@ -11,7 +11,7 @@ object QuoteConverter {
         rating = quote.rating,
         userVote = when (user) {
             null -> null
-            else -> quote.likes.firstOrNull { like -> like.user.id == user.id }?.type
+            else -> quote.votes.firstOrNull { vote -> vote.user.id == user.id }?.type
         }
     )
 }

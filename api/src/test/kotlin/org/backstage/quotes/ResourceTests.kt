@@ -126,10 +126,10 @@ class QuoteResourceTests {
     }
 
     @Test
-    fun `liking a quote as an anonymous user should return a 401 response`() {
+    fun `upvoting a quote as an anonymous user should return a 401 response`() {
         RestAssured
             .`when`()
-            .patch("/1/like")
+            .patch("/1/upvote")
 
             .then()
             .shouldBeUnauthorised()
@@ -137,10 +137,10 @@ class QuoteResourceTests {
 
     @Test
     @TestSecurity(user = AuthHelpers.DEFAULT_USER_ID)
-    fun `liking a quote without the correct role should return a 403 response`() {
+    fun `upvoting a quote without the correct role should return a 403 response`() {
         RestAssured
             .`when`()
-            .patch("/1/like")
+            .patch("/1/upvote")
 
             .then()
             .shouldBeForbidden()
@@ -148,8 +148,8 @@ class QuoteResourceTests {
 
 
     @Test
-    @TestSecurity(user = AuthHelpers.DEFAULT_USER_ID, roles = [Roles.Quotes.LIKE])
-    fun `liking a quote should return a 204 status code`() {
+    @TestSecurity(user = AuthHelpers.DEFAULT_USER_ID, roles = [Roles.Quotes.VOTE])
+    fun `upvoting a quote should return a 204 status code`() {
         val user = setUpTest {
             UserFixtures.makeEntity(identityId = AuthHelpers.DEFAULT_USER_ID)
                 .also { userRepository.persist(it) }
@@ -161,7 +161,7 @@ class QuoteResourceTests {
 
         RestAssured
             .`when`()
-            .patch("/${quote.id}/like")
+            .patch("/${quote.id}/upvote")
 
             .then()
             .statusCode(NO_CONTENT)
@@ -173,21 +173,21 @@ class QuoteResourceTests {
     }
 
     @Test
-    @TestSecurity(user = AuthHelpers.DEFAULT_USER_ID, roles = [Roles.Quotes.LIKE])
-    fun `liking a non-existent quote should return a 404 response`() {
+    @TestSecurity(user = AuthHelpers.DEFAULT_USER_ID, roles = [Roles.Quotes.VOTE])
+    fun `upvoting a non-existent quote should return a 404 response`() {
         RestAssured
             .`when`()
-            .patch("/1000/like")
+            .patch("/1000/upvote")
 
             .then()
             .shouldShowNotFound()
     }
 
     @Test
-    fun `disliking a quote as an anonymous user should return a 401 response`() {
+    fun `downvoting a quote as an anonymous user should return a 401 response`() {
         RestAssured
             .`when`()
-            .patch("/1/dislike")
+            .patch("/1/downvote")
 
             .then()
             .shouldBeUnauthorised()
@@ -195,10 +195,10 @@ class QuoteResourceTests {
 
     @Test
     @TestSecurity(user = AuthHelpers.DEFAULT_USER_ID)
-    fun `disliking a quote without the correct role should return a 403 response`() {
+    fun `downvoting a quote without the correct role should return a 403 response`() {
         RestAssured
             .`when`()
-            .patch("/1/dislike")
+            .patch("/1/downvote")
 
             .then()
             .shouldBeForbidden()
@@ -206,8 +206,8 @@ class QuoteResourceTests {
 
 
     @Test
-    @TestSecurity(user = AuthHelpers.DEFAULT_USER_ID, roles = [Roles.Quotes.LIKE])
-    fun `disliking a quote should return a 204 status code`() {
+    @TestSecurity(user = AuthHelpers.DEFAULT_USER_ID, roles = [Roles.Quotes.VOTE])
+    fun `downvoting a quote should return a 204 status code`() {
         val user = setUpTest {
             UserFixtures.makeEntity(identityId = AuthHelpers.DEFAULT_USER_ID)
                 .also { userRepository.persist(it) }
@@ -219,7 +219,7 @@ class QuoteResourceTests {
 
         RestAssured
             .`when`()
-            .patch("/${quote.id}/dislike")
+            .patch("/${quote.id}/downvote")
 
             .then()
             .statusCode(NO_CONTENT)
@@ -231,11 +231,11 @@ class QuoteResourceTests {
     }
 
     @Test
-    @TestSecurity(user = AuthHelpers.DEFAULT_USER_ID, roles = [Roles.Quotes.LIKE])
-    fun `disliking a non-existent quote should return a 404 response`() {
+    @TestSecurity(user = AuthHelpers.DEFAULT_USER_ID, roles = [Roles.Quotes.VOTE])
+    fun `downvoting a non-existent quote should return a 404 response`() {
         RestAssured
             .`when`()
-            .patch("/1000/dislike")
+            .patch("/1000/downvote")
 
             .then()
             .shouldShowNotFound()

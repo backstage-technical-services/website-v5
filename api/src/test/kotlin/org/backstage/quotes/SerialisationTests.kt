@@ -35,14 +35,14 @@ class QuoteSerialisationTests : BehaviorSpec() {
 
         Given("the default response DTO for a quote the user has voted for") {
             val response = QuoteFixtures.RESPONSE_DEFAULT.copy(
-                userVote = QuoteLikeType.LIKE,
+                userVote = QuoteVoteType.UPVOTE,
             )
 
             When("serialising the response") {
                 val responseJson = objectMapper.writeValueAsString(response)
 
                 Then("the userVote property should be serialised correctly") {
-                    responseJson.shouldContainJsonKeyValue("userVote", "LIKE")
+                    responseJson.shouldContainJsonKeyValue("userVote", "UPVOTE")
                 }
             }
         }
