@@ -26,20 +26,17 @@ object QuoteFixtures {
                 id = Random.nextLong(1, 5000)
             },
         rating: Int = 0,
-        deleted: Boolean = false,
     ) = QuoteEntity(
         culprit = culprit,
         quote = quote,
         date = date,
         addedBy = addedBy,
         rating = rating,
-    ).apply {
-        this.deleted = deleted
-    }
+    )
 
     private const val EXAMPLE_ID = 1L
     private const val EXAMPLE_CULPRIT = "Phil Connors"
-    private const val EXAMPLE_QUOTE = "Ned, I would love to stand here and talk with you—but I’m not going to."
+    private const val EXAMPLE_QUOTE = "Ned, I would love to stand here and talk with you—but I'm not going to."
     val CREATE_REQUEST = makeCreateRequest(
         culprit = EXAMPLE_CULPRIT,
         quote = EXAMPLE_QUOTE,
