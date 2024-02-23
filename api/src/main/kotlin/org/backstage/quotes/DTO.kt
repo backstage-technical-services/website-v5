@@ -11,7 +11,6 @@ enum class QuoteLikeType(
     val vote: Int,
 ) { LIKE(1), DISLIKE(-1) }
 
-
 sealed class QuoteRequest {
     data class Create(
         @get:NotBlank
