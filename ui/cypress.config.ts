@@ -23,4 +23,5 @@ export default defineConfig({
     AUTH0_USERNAME: process.env.AUTH0_USERNAME,
     AUTH0_PASSWORD: process.env.AUTH0_PASSWORD,
   },
+  video: true,
 })
