@@ -1,8 +1,13 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="API - Dev Server" type="QuarkusRunConfigurationType" factoryName="Quarkus">
+  <configuration default="false" name="API - E2E Tests" type="QuarkusRunConfigurationType" factoryName="Quarkus">
     <module name="api.main" />
     <QsGradleRunConfiguration>
       <ExternalSystemSettings>
+        <option name="env">
+          <map>
+            <entry key="QUARKUS_PROFILE" value="e2e" />
+          </map>
+        </option>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/api" />
         <option name="externalSystemIdString" value="GRADLE" />
@@ -24,7 +29,7 @@
     </QsGradleRunConfiguration>
     <method v="2">
       <option name="Make" enabled="true" />
-      <option name="RunConfigurationTask" enabled="false" run_configuration_name="Database" run_configuration_type="docker-deploy" />
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="Database" run_configuration_type="docker-deploy" />
     </method>
   </configuration>
 </component>

@@ -87,7 +87,13 @@ jobs:
     name: E2E Tests
     runs-on: ubuntu-latest
     env:
+      AUTH0_USERNAME: ${{ secrets.AUTH0_USERNAME }}
+      AUTH0_PASSWORD: ${{ secrets.AUTH0_PASSWORD }}
       CYPRESS_COVERAGE: true
+      OIDC_SERVER_URL: ${{ secrets.OIDC_SERVER_URL }}
+      OIDC_CLIENT_ID: ${{ secrets.OIDC_CLIENT_ID }}
+      OIDC_CLIENT_SECRET: ${{ secrets.OIDC_CLIENT_SECRET }}
+      QUARKUS_PROFILE: e2e
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -97,6 +103,11 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
+      - name: Process the import sql file
+        run: |
+          envsubst \
+            < api/src/main/resources/import-e2e.tmpl.sql \
+            > api/src/main/resources/import-e2e.sql
       - name: Start the API
         run: |
           pushd api && ./gradlew assemble && popd
@@ -106,14 +117,7 @@ jobs:
               --force-recreate \
               api
           scripts/wait_until_healthy.sh "backstage-api"
-        env:
-          OIDC_SERVER_URL: ${{ secrets.OIDC_SERVER_URL }}
-          OIDC_CLIENT_ID: ${{ secrets.OIDC_CLIENT_ID }}
-          OIDC_CLIENT_SECRET: ${{ secrets.OIDC_CLIENT_SECRET }}
       - uses: cypress-io/github-action@v6
-        env:
-          AUTH0_USERNAME: ${{ secrets.AUTH0_USERNAME }}
-          AUTH0_PASSWORD: ${{ secrets.AUTH0_PASSWORD }}
         with:
           working-directory: ui
           build: yarn build

@@ -34,7 +34,7 @@ services:
     ports:
       - '8080:8080'
     environment:
-      QUARKUS_PROFILE: prod
+      QUARKUS_PROFILE: ${QUARKUS_PROFILE:-dev}
       LOG_LEVEL: debug
       # Database
       DB_HOST: database

@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory
 import java.net.URL
 
 @Dependent
-@IfBuildProfile(anyOf = ["prod", "dev"])
+@IfBuildProfile(anyOf = ["prod", "dev", "e2e"])
 class Auth0Config(
     @ConfigProperty(name = "quarkus.oidc.auth-server-url") private val authServerUrl: String,
     @ConfigProperty(name = "quarkus.oidc.client-id") private val clientId: String,
@@ -54,7 +54,7 @@ class Auth0Config(
 }
 
 @ApplicationScoped
-@IfBuildProfile(anyOf = ["prod", "dev"])
+@IfBuildProfile(anyOf = ["prod", "dev", "e2e"])
 class Auth0AuthService(
     private val managementAPI: ManagementAPI,
 ) : AuthService {
