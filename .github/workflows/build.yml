@@ -104,6 +104,9 @@ jobs:
           distribution: temurin
           java-version: 17
       - name: Process the import sql file
+        env:
+          AUTH0_ID: ${{ secrets.AUTH0_ID }}
+          AUTH0_ROLE_ID: ${{ secrets.AUTH0_ROLE_ID }}
         run: |
           envsubst \
             < api/src/main/resources/import-e2e.tmpl.sql \
