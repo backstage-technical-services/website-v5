@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md col-12">
-    <q-card class="bg-transparent" flat>
+    <q-card class="bg-transparent" flat data-cy="quote-item">
       <q-card-section horizontal>
         <!-- Voting -->
         <q-card-section class="column justify-center text-center q-pa-none" style="min-width: 2.5em;">
@@ -11,7 +11,8 @@
               class="q-pa-none"
               @click="onUpvote"
               flat
-              v-if="canVote">
+              v-if="canVote"
+              data-cy="quote-upvote-btn">
             <q-tooltip>Upvote</q-tooltip>
           </q-btn>
           <div :class="{ 'text-body2': true, 'text-grey-6': quote.rating === 0, 'text-red-4': quote.rating < 0, 'text-green-4': quote.rating > 0 }">{{ quote.rating }}</div>
@@ -22,7 +23,8 @@
               class="q-pa-none"
               @click="onDownvote"
               flat
-              v-if="canVote">
+              v-if="canVote"
+              data-cy="quote-downvote-btn">
             <q-tooltip>Downvote</q-tooltip>
           </q-btn>
         </q-card-section>
@@ -31,7 +33,7 @@
         <q-card-section class="row items-start q-pl-none no-wrap col">
           <q-icon size="xl" color="grey-9" :name="mdiFormatQuoteOpen" />
 
-          <div>
+          <div data-cy="quote-item-details">
             <div class="q-pt-sm q-pb-md" style="white-space: pre-wrap">{{ quote.quote }}</div>
 
             <div class="text-caption text-grey-5">&mdash; {{ quote.culprit }}, {{ quote.date.toRelative() }}</div>
@@ -40,7 +42,7 @@
 
         <!-- Delete -->
         <q-card-actions class="text-grey-6 items-start" v-if="canDelete">
-          <q-btn :icon="mdiDelete" size="md" color="red-8" class="q-mt-md" @click="onDelete" flat v-if="canDelete">
+          <q-btn :icon="mdiDelete" size="md" color="red-8" class="q-mt-md" @click="onDelete" flat v-if="canDelete" data-cy="quote-delete-btn">
             <q-tooltip>Delete</q-tooltip>
           </q-btn>
         </q-card-actions>
@@ -95,6 +97,7 @@ const onDelete = () => Dialog.create({
   persistent: true,
   ok: {
     color: 'positive',
+    'data-cy': 'confirm-delete',
   },
   cancel: {
     color: 'secondary',

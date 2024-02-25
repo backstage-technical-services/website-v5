@@ -9,7 +9,8 @@
             color="positive"
             :icon="mdiPlus"
             label="Add quote"
-            @click="showAddDialog" />
+            @click="showAddDialog"
+            data-cy="quote-add-btn" />
       </div>
 
       <q-table
@@ -21,7 +22,8 @@
         v-model:pagination="pagination"
         :rows-per-page-options="PAGINATION_OPTIONS"
         rows-per-page-label="Quotes per page:"
-        grid>
+        grid
+        data-cy="quote-list">
         <template #loading>
           <q-inner-loading color="primary" showing />
         </template>
