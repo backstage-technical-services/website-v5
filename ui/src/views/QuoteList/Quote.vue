@@ -28,12 +28,10 @@
         </q-card-section>
 
         <!-- Quote -->
-        <q-card-section class="col-grow row items-start q-pl-none">
-          <div class="col-auto">
-            <q-icon class="col" size="xl" color="grey-9" :name="mdiFormatQuoteOpen" />
-          </div>
+        <q-card-section class="row items-start q-pl-none no-wrap col">
+          <q-icon size="xl" color="grey-9" :name="mdiFormatQuoteOpen" />
 
-          <div class="col-grow">
+          <div>
             <div class="q-pt-sm q-pb-md" style="white-space: pre-wrap">{{ quote.quote }}</div>
 
             <div class="text-caption text-grey-5">&mdash; {{ quote.culprit }}, {{ quote.date.toRelative() }}</div>
