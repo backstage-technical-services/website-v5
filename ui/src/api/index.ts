@@ -3,6 +3,7 @@ import type { AxiosResponse } from 'axios'
 
 import type { ApiProps } from '@/api/types'
 import auth from '@/config/auth'
+import quotesApi from './domains/quotes'
 
 const http = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
@@ -36,7 +37,9 @@ const apiProps: ApiProps = {
   extractData,
   extractResourceId,
 }
-const api = {}
+const api = {
+  quotes: quotesApi(apiProps),
+}
 
 export type { ApiError, GenericApiResponse, LoadableState } from './types'
 export { mapError, handleError } from './utils'

@@ -14,8 +14,7 @@ import io.quarkiverse.test.junit.mockk.InjectMock
 import io.quarkus.test.TestTransaction
 import io.quarkus.test.junit.QuarkusTest
 import jakarta.inject.Inject
-import jakarta.ws.rs.core.Response.Status.CONFLICT
-import jakarta.ws.rs.core.Response.Status.INTERNAL_SERVER_ERROR
+import jakarta.ws.rs.core.Response.Status.*
 import org.backstage.AuthHelpers
 import org.backstage.assertThrowsHttpException
 import org.backstage.auth.AuthService
@@ -188,6 +187,30 @@ class UserServiceTests {
             expectedMessage = "An internal error occurred",
         ) {
             service.create(request)
+        }
+    }
+
+    @Test
+    @TestTransaction
+    fun `when fetching a user by identity ID which exists then the user should be returned`() {
+        val userEntity = UserFixtures.makeEntity(
+            identityId = AuthHelpers.EXAMPLE_IDENTITY_ID
+        )
+        repository.persist(userEntity)
+
+        val user = service.findByIdentityId(AuthHelpers.EXAMPLE_IDENTITY_ID)
+
+        user.id.shouldNotBeNull()
+        user.id shouldBe userEntity.id
+    }
+
+    @Test
+    fun `when fetching a user by identity ID which doesn't exist then an exception should be thrown`() {
+        assertThrowsHttpException(
+            expectedStatus = NOT_FOUND,
+            expectedMessage = "Could not find user for that identity ID",
+        ) {
+            service.findByIdentityId(AuthHelpers.EXAMPLE_IDENTITY_ID)
         }
     }
 }

@@ -12,7 +12,7 @@ import java.time.LocalDate
 
 @ApplicationScoped
 class UserRepository : PanacheRepository<UserEntity> {
-    fun findByIdentityId(identityId: String): UserEntity? = find("identityId = ?", identityId).firstResult()
+    fun findByIdentityId(identityId: String): UserEntity? = find("identityId = ?1", identityId).firstResult()
     fun existsByEmail(email: String): Boolean = count("email = ?1", email) > 0
     fun existsByUsername(username: String): Boolean = count("username = ?1", username) > 0
 }

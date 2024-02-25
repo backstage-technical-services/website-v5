@@ -2,8 +2,9 @@ describe('the FAQ page', () => {
   it('is accessible', () => {
     cy.visit('/faq')
 
-    cy.title().should('contain', 'Frequently Asked Questions')
-    cy.contains('Frequently Asked Questions')
+    cy.expectTitle('Frequently Asked Questions')
+    cy.expectHeader('Frequently Asked Questions')
+    cy.expectBreadcrumbs('Frequently Asked Questions')
   })
 
   it('is accessible from old url', () => {

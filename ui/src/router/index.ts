@@ -6,6 +6,7 @@ import Error from '@/views/Error.vue'
 
 import auth from './auth'
 import legal from './legal'
+import quotes from './quotes'
 import redirects from './redirects'
 
 const scrollBehavior: RouterScrollBehavior = (to, from, savedPosition) => {
@@ -34,8 +35,9 @@ const router = createRouter({
       component: () => import('@/views/FAQ.vue'),
     },
     ...auth,
-    ...redirects,
     ...legal,
+    ...quotes,
+    ...redirects,
     {
       path: '/:pathMatch(.*)*',
       name: 'not-found',

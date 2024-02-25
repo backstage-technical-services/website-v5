@@ -26,7 +26,7 @@ fun Long?.shouldBeValidId() {
 
 object AuthHelpers {
     const val DEFAULT_USER_ID = "TEST_USER"
-    val EXAMPLE_IDENTITY_ID = "auth0|${faker.random.randomString()}"
+    const val EXAMPLE_IDENTITY_ID = "auth0|64de9e01a5bc96abe1c9f5cf"
 
     fun createMockedPrincipal(userId: String = DEFAULT_USER_ID): Principal =
         mockk<OidcJwtCallerPrincipal> {

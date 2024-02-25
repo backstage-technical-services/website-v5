@@ -12,7 +12,7 @@
       </q-avatar>
 
       <div class="text-weight-bold">{{ isAuthenticated ? user?.name : 'Not logged in' }}</div>
-      <div v-if="isAuthenticated">{{ user?.email }}</div>
+      <div v-if="isAuthenticated" data-cy="profile-email">{{ user?.email }}</div>
     </div>
   </q-img>
 </template>

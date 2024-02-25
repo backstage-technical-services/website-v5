@@ -3,7 +3,7 @@
       <app-header v-if="isHeaderVisible" />
 
       <q-page-container>
-        <q-breadcrumbs class="container q-mt-md" v-if="breadcrumbs.length > 0">
+        <q-breadcrumbs class="container q-mt-md" v-if="breadcrumbs.length > 0" data-cy="breadcrumbs">
           <q-breadcrumbs-el :icon="mdiHome" to="/" class="text-grey-6" />
           <q-breadcrumbs-el
               v-for="(crumb, index) in breadcrumbs"
