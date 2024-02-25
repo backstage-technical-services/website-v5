@@ -117,6 +117,9 @@ jobs:
               --force-recreate \
               api
           scripts/wait_until_healthy.sh "backstage-api"
+      - if: ${{ failure() }}
+        name: Export container logs
+        run: docker compose logs api
       - uses: cypress-io/github-action@v6
         with:
           working-directory: ui
