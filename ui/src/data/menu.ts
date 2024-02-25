@@ -1,17 +1,17 @@
 import type { RouteLocationRaw } from 'vue-router'
-import { mdiFormatQuoteOpen } from '@quasar/extras/mdi-v7'
+import { mdiFormatQuoteOpen, mdiTableMultiple } from '@quasar/extras/mdi-v7'
 import { can } from '@/helpers/auth'
 import { permissions } from '@/config/auth'
+import { assetRegister } from '@/data/links'
 
 export type MainMenuItem = {
   id?: string
   text?: string
   icon?: string
-  link?: string | RouteLocationRaw
+  link?: RouteLocationRaw
+  href?: string
   children?: MainMenuItem[]
 }
-
-export type MainMenu = MainMenuItem[]
 
 const buildSection = (props: Omit<MainMenuItem, 'children'>, childrenFn: () => MainMenuItem[]): MainMenuItem | null => {
   const children = childrenFn()
@@ -40,10 +40,30 @@ const buildMembers = () => buildSection({
   return items
 })
 
+const buildEquipment = () => buildSection({
+  id: 'equipment',
+  text: 'Equipment',
+}, () => {
+  const items: MainMenuItem[] = []
+
+  if(can(permissions.equipment.assets.view)) {
+    items.push({
+      id: 'equipment-asset-register',
+      text: 'Asset Register',
+      href: assetRegister,
+      icon: mdiTableMultiple,
+    })
+  }
+
+  return items
+})
+
 export const useMenu = () => {
   const members = buildMembers()
+  const equipment = buildEquipment()
 
   return [
     ...(members ? [members] : []),
+    ...(equipment ? [equipment] : []),
   ]
 }

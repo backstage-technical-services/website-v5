@@ -47,6 +47,11 @@ export const login = () => {
 
 export default auth0
 export const permissions = {
+  equipment: {
+    assets: {
+      view: 'equipment.asset:read',
+    },
+  },
   quotes: {
     list: 'quote:read',
     add: 'quote:create',
