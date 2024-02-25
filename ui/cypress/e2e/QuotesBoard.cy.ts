@@ -45,7 +45,7 @@ describe('the quotes board', () => {
       .dataCy('quote-delete-btn')
       .click()
 
-    cy.withinDialog((e) => {
+    cy.withinDialog(() => {
       cy.dataCy('confirm-delete').click()
     })
 
