@@ -7,6 +7,7 @@ declare global {
       login: (username?: string, password?: string) => Chainable
       showDrawer: () => Chainable
       expectTitle: (title: string) => Chainable
+      expectHeader: (header: string) => Chainable
       expectBreadcrumbs: (...crumbs: string[]) => Chainable
       notification: (expectedText: string) => Chainable
     }
@@ -42,6 +43,10 @@ Cypress.Commands.add(
 
 Cypress.Commands.add('expectTitle', (title: string) => {
   return cy.title().should('contain', title)
+})
+
+Cypress.Commands.add('expectHeader', header => {
+  cy.get('.q-page > h1').contains(header)
 })
 
 Cypress.Commands.add('expectBreadcrumbs', (...crumbs: string[]) => {
