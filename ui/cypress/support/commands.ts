@@ -38,6 +38,7 @@ Cypress.Commands.add(
         cy.contains('button[value=default]', 'Continue').click()
       },
     )
+    cy.expectTitle('Home')
   },
 )
 
