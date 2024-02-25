@@ -24,3 +24,6 @@ nb-configuration.xml
 
 ### macOS  ###
 .DS_Store
+
+### Other ###
+.env

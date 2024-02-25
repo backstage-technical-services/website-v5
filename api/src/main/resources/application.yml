@@ -70,13 +70,12 @@ quarkus:
 
 "%e2e":
   quarkus:
+    config:
+      profile:
+        parent: dev
     http:
-      cors:
-        origins: http://localhost:8000
       host: 0.0.0.0
     hibernate-orm:
-      database:
-        generation: drop-and-create
       sql-load-script: import-e2e.sql
 
 "%test":
