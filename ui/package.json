@@ -42,7 +42,7 @@
     "@types/node": "18",
     "@unhead/addons": "^1.8.10",
     "@vitejs/plugin-vue": "^4.0.0",
-    "@vitest/coverage-v8": "^0.34.2",
+    "@vitest/coverage-v8": "^0.34.6",
     "@vitest/ui": "^0.34.2",
     "@vue/eslint-config-typescript": "^11.0.2",
     "@vue/test-utils": "^2.4.4",
