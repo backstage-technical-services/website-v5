@@ -27,7 +27,7 @@
         text-color="black"
         :label="page"
         :disable="page === scope.pagination.page"
-        @click="goToPage(page, scope.pagination.rowsPerPage ?? 1)"
+        @click="goToPage(page, scope.pagination.rowsPerPage)"
         data-cy="pagination-choose-page" />
     <!-- Next page -->
     <q-btn
