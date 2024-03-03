@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-black" v-if="isLoading"></div>
+  <div class="bg-black" v-if="isLoading && permissionsReady"></div>
   <main-layout v-else />
 </template>
 
@@ -12,7 +12,7 @@ import { useAuthStore } from '@/stores'
 import { useNotifications } from '@/composables/notifications'
 import { getUserPermissions } from '@/helpers/auth'
 
-const { error, isLoading } = useAuth0()
+const { error, isLoading, isAuthenticated } = useAuth0()
 const { error: notifyError } = useNotifications()
 watch(error, err => {
   if (err.value) {
@@ -20,10 +20,11 @@ watch(error, err => {
   }
 })
 
-const { setPermissions } = useAuthStore()
+const { setPermissions, permissionsReady, setAuthenticated } = useAuthStore()
 watch(isLoading, loading => {
   if (!loading) {
     getUserPermissions().then(setPermissions)
   }
 })
+watch(isAuthenticated, setAuthenticated)
 </script>
