@@ -1,9 +1,6 @@
+import type { QPagination } from '@/types/quasar/pagination'
+
 export type QTableOnRequest = {
-  pagination: {
-    sortBy?: string
-    descending?: boolean
-    page?: number
-    rowsPerPage?: number
-  }
+  pagination: QPagination
   filter?: Function
 }
