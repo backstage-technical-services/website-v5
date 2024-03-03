@@ -1,8 +1,8 @@
 export type QPagination = {
-  sortBy?: string
-  descending?: boolean
-  page?: number
-  rowsPerPage?: number
+  sortBy: string | null
+  descending: boolean
+  page: number
+  rowsPerPage: number
 }
 export type QPaginatorProps = {
   pagination: QPagination
@@ -15,6 +15,6 @@ export type QPaginatorProps = {
   nextPage: () => void
   lastPage: () => void
 
-  isFullscreen: boolean
+  inFullscreen: boolean
   toggleFullscreen: () => void
 }

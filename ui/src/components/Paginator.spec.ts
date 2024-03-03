@@ -14,6 +14,8 @@ const mockLastPage = vi.fn()
 
 const makeScope = (page: number = 5, numPages: number = 10): QPaginatorProps => ({
   pagination: {
+    sortBy: null,
+    descending: true,
     page,
     rowsPerPage: 20,
   },
@@ -26,7 +28,7 @@ const makeScope = (page: number = 5, numPages: number = 10): QPaginatorProps => 
   nextPage: mockNextPage,
   lastPage: mockLastPage,
 
-  isFullscreen: false,
+  inFullscreen: false,
   toggleFullscreen: vi.fn(),
 })
 

@@ -26,7 +26,7 @@
         color="bts-yellow"
         text-color="black"
         :label="page"
-        :disable="page === currentPage"
+        :disable="page === scope.pagination.page"
         @click="goToPage(page, scope.pagination.rowsPerPage ?? 1)"
         data-cy="pagination-choose-page" />
     <!-- Next page -->
@@ -62,6 +62,5 @@ const props = defineProps<{
   scope: QPaginatorProps
 }>()
 
-const currentPage = computed(() => props.scope.pagination.page ?? 1)
-const pageList = computed(() => generatePageList(currentPage.value, props.scope.pagesNumber))
+const pageList = computed(() => generatePageList(props.scope.pagination.page, props.scope.pagesNumber))
 </script>
