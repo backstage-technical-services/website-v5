@@ -696,10 +696,10 @@
     execa "^5.1.1"
     strip-ansi "^6.0.0"
 
-"@quasar/vite-plugin@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@quasar/vite-plugin/-/vite-plugin-1.4.1.tgz#3b6c1d4fac3c13b8774585d447fbb96df7dd1a9e"
-  integrity sha512-lLw7j1A7viLQ6++p29NuYUdfjpaWctRi6tRhMYm8VPumXs8enGeV59JEJ+1tJR2FcQUMYsGOoyHHcQrsakXIkA==
+"@quasar/vite-plugin@^1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@quasar/vite-plugin/-/vite-plugin-1.6.0.tgz#3b8f82656b14782fafe66b30dfac0775b87ab9dd"
+  integrity sha512-LmbV76G1CwWZbrEQhqyZpkRQTJyO3xpW55aXY1zWN+JhyUeG77CcMCEWteBVnJ6I6ehUPFDC9ONd2+WlwH6rNQ==
 
 "@rollup/pluginutils@^4.2.1":
   version "4.2.1"

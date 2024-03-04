@@ -34,7 +34,7 @@
     "@quasar/quasar-app-extension-testing": "^2.2.0",
     "@quasar/quasar-app-extension-testing-e2e-cypress": "^5.1.0",
     "@quasar/quasar-app-extension-testing-unit-vitest": "^0.3.0",
-    "@quasar/vite-plugin": "^1.4.1",
+    "@quasar/vite-plugin": "^1.6.0",
     "@rushstack/eslint-patch": "^1.2.0",
     "@tsconfig/node18": "^18.2.2",
     "@types/jsdom": "^21.1.0",
