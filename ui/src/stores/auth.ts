@@ -1,18 +1,23 @@
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import { useAuth0 } from '@auth0/auth0-vue'
 
 export const useAuthStore = defineStore('auth', () => {
-  const { isLoading } = useAuth0()
+  const isAuthenticated = ref(false)
+  const setAuthenticated = (authenticated: boolean) => {
+    isAuthenticated.value = authenticated
+  }
+
+
   const permissions = ref<string[]>([])
-  const permissionsSet = ref(false)
+  const permissionsReady = ref(false)
   const setPermissions = (newPermissions: string[]) => {
     permissions.value = newPermissions
-    permissionsSet.value = true
+    permissionsReady.value = true
   }
-  const permissionsReady = computed(() => permissionsSet.value && !isLoading.value)
 
   return {
+    isAuthenticated,
+    setAuthenticated,
     permissions,
     setPermissions,
     permissionsReady,

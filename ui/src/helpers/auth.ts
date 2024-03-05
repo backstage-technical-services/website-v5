@@ -23,11 +23,12 @@ export const getUserPermissions = async(): Promise<string[]> => {
 }
 
 export const can = (permission: string): boolean => {
-  if (!auth0.isAuthenticated.value) {
+  const { isAuthenticated, permissions } = storeToRefs(useAuthStore())
+
+  if (!isAuthenticated.value) {
     return false
   }
 
-  const { permissions } = storeToRefs(useAuthStore())
   return permissions.value.indexOf(permission) !== -1
 }
 
