@@ -20,17 +20,17 @@
   resolved "https://registry.yarnpkg.com/@antfu/utils/-/utils-0.7.7.tgz#26ea493a831b4f3a85475e7157be02fb4eab51fb"
   integrity sha512-gFPqTG7otEJ8uP6wrhDv6mqwGWYZKNvAcCq6u9hOj0c+IKCEsY4L1oC9trPq2SaWIzAfHvqfBDxF591JkMf+kg==
 
-"@auth0/auth0-spa-js@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@auth0/auth0-spa-js/-/auth0-spa-js-2.1.1.tgz#4cc798ce7c20fcefbe362bf5e5b6ba2cb5c466ab"
-  integrity sha512-21qEf5Bjouy76CWd1gQgf/tT6iD513YFYaK0+3OF1nbwLtPFpxm5Ln94M7SCVFKfe5jbchWuEcIb1HLer3r6RA==
+"@auth0/auth0-spa-js@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@auth0/auth0-spa-js/-/auth0-spa-js-2.1.3.tgz#aabf6f439e41edbeef0cf4766ad754e5b47616e5"
+  integrity sha512-NMTBNuuG4g3rame1aCnNS5qFYIzsTUV5qTFPRfTyYFS1feS6jsCBR+eTq9YkxCp1yuoM2UIcjunPaoPl77U9xQ==
 
-"@auth0/auth0-vue@^2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@auth0/auth0-vue/-/auth0-vue-2.3.0.tgz#81c890b35bbacfe82740d579c7e7d4a07900ffaa"
-  integrity sha512-qg+Cmoem/MOpXfR4cdBdvvqukzzjh3mIO7hcBlmjJdjORiSKvHhCmgO4FVx0IVeFPpI4RLGvD1uR7DWT31h1bg==
+"@auth0/auth0-vue@^2.3.3":
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/@auth0/auth0-vue/-/auth0-vue-2.3.3.tgz#d775abcea2c1287aa6d5590732a643cd1bb046f2"
+  integrity sha512-xL6R2nriWynA4Cp75NqtGjSWNx+JbhPMMffSsfDxf/glYfj7Q9kn1DIqnTp+ZrjzyV3kcUj7x0yCYW0yi3t+rg==
   dependencies:
-    "@auth0/auth0-spa-js" "^2.1.1"
+    "@auth0/auth0-spa-js" "^2.1.3"
     vue "^3.2.41"
 
 "@babel/code-frame@^7.22.10", "@babel/code-frame@^7.22.5":

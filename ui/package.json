@@ -16,7 +16,7 @@
     "check:lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore"
   },
   "dependencies": {
-    "@auth0/auth0-vue": "^2.3.0",
+    "@auth0/auth0-vue": "^2.3.3",
     "@quasar/extras": "^1.16.5",
     "@unhead/vue": "^1.8.20",
     "axios": "^1.6.8",
