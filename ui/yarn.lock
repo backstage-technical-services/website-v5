@@ -929,13 +929,13 @@
     unplugin "^1.6.0"
     unplugin-ast "^0.8.2"
 
-"@unhead/dom@1.8.20":
-  version "1.8.20"
-  resolved "https://registry.yarnpkg.com/@unhead/dom/-/dom-1.8.20.tgz#85fde2a198aad074515e88e83c075d1b16676359"
-  integrity sha512-TXRQSVbqBOQc02m3wxgj55m93U8a3WBHV9xJi2zVX/iHEJgeQbZMJ+rV0YJkHy2OHAC0MfjVQA5NDLaVwtromw==
+"@unhead/dom@1.9.3":
+  version "1.9.3"
+  resolved "https://registry.yarnpkg.com/@unhead/dom/-/dom-1.9.3.tgz#9d4d5bca80be3289df428c9c731a193aa2be24f3"
+  integrity sha512-l7KO6zv8T/yKpWOtcKww3k6RLENEiwiapoiPwtKlwWBFJekSjgM1+1AVu58yWqadFYHGP0/XhMwxKrOaOL+Vkw==
   dependencies:
-    "@unhead/schema" "1.8.20"
-    "@unhead/shared" "1.8.20"
+    "@unhead/schema" "1.9.3"
+    "@unhead/shared" "1.9.3"
 
 "@unhead/schema@1.8.10":
   version "1.8.10"
@@ -945,10 +945,10 @@
     hookable "^5.5.3"
     zhead "^2.2.4"
 
-"@unhead/schema@1.8.20":
-  version "1.8.20"
-  resolved "https://registry.yarnpkg.com/@unhead/schema/-/schema-1.8.20.tgz#d3c46cc7d3f059300654356102e3986d09f73457"
-  integrity sha512-n0e5jsKino8JTHc4wpr4l8MXXIrj0muYYAEVa0WSYkIVnMiBr1Ik3l6elhCr4fdSyJ3M2DQQleea/oZCr11XCw==
+"@unhead/schema@1.9.3":
+  version "1.9.3"
+  resolved "https://registry.yarnpkg.com/@unhead/schema/-/schema-1.9.3.tgz#b462e742b22ddbda6697f857241a0f7d87fb636b"
+  integrity sha512-emFHDYxn6u5SVwSRXMpYBCYKBua+GCjUwTLLdUupInthW3UraSUuXakmv06wDvejE8pTrBOPrGWescIYmwm69A==
   dependencies:
     hookable "^5.5.3"
     zhead "^2.2.4"
@@ -960,22 +960,22 @@
   dependencies:
     "@unhead/schema" "1.8.10"
 
-"@unhead/shared@1.8.20":
-  version "1.8.20"
-  resolved "https://registry.yarnpkg.com/@unhead/shared/-/shared-1.8.20.tgz#e6314d20b9e281f76e38e93404d2c7fb76c9c518"
-  integrity sha512-J0fdtavcMtXcG0g9jmVW03toqfr8A0G7k+Q6jdpwuUPhWk/vhfZn3aiRV+F8LlU91c/AbGWDv8T1MrtMQbb0Sg==
+"@unhead/shared@1.9.3":
+  version "1.9.3"
+  resolved "https://registry.yarnpkg.com/@unhead/shared/-/shared-1.9.3.tgz#e871f9cea17228771fd895026a43750af8527e04"
+  integrity sha512-9wJ+wNmAVDCsCFKE3YHMwNkmFqKzCqQfp53ABJHQFOvY336s4nMWtiMNMjxF4aY4pJk8Qpwd8dRlgpLlyH0KZg==
   dependencies:
-    "@unhead/schema" "1.8.20"
+    "@unhead/schema" "1.9.3"
 
-"@unhead/vue@^1.8.20":
-  version "1.8.20"
-  resolved "https://registry.yarnpkg.com/@unhead/vue/-/vue-1.8.20.tgz#fa0f49a8cc29b825a4b4e8c3fa3352b0f516caf0"
-  integrity sha512-Lm6cnbX/QGCh+pxGN1Tl6LVXxYs5bLlN8APfI2rQ5kMNRE6Yy7r2eY5wCZ0SfsSRonqJxzVlgMMh8JPEY5d4GQ==
+"@unhead/vue@^1.9.3":
+  version "1.9.3"
+  resolved "https://registry.yarnpkg.com/@unhead/vue/-/vue-1.9.3.tgz#809a8616f0bbae3941dbd441c52f288d654e75d1"
+  integrity sha512-DrTOTUOvKZlL7nVhsu9gCNXiGv/ErqHqSOrbNGqahlnOFJgJQD+9VVr904K/u75ISg00ksAzKfFPN15FgMovMw==
   dependencies:
-    "@unhead/schema" "1.8.20"
-    "@unhead/shared" "1.8.20"
+    "@unhead/schema" "1.9.3"
+    "@unhead/shared" "1.9.3"
     hookable "^5.5.3"
-    unhead "1.8.20"
+    unhead "1.9.3"
 
 "@vitejs/plugin-vue@^4.6.2":
   version "4.6.2"
@@ -4920,14 +4920,14 @@ undici-types@~5.26.4:
   resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-5.26.5.tgz#bcd539893d00b56e964fd2657a4866b221a65617"
   integrity sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==
 
-unhead@1.8.20:
-  version "1.8.20"
-  resolved "https://registry.yarnpkg.com/unhead/-/unhead-1.8.20.tgz#f97d699b43e7ca68a2ac7bcb4c88c4595617f46e"
-  integrity sha512-IJOCYact/7Za3M7CeeCWs8Vze53kHvKDUy/EXtkTm/an5StgqOt2uCnS3HrkioIMKdHBpy/qtTc6E3BoGMOq7Q==
+unhead@1.9.3:
+  version "1.9.3"
+  resolved "https://registry.yarnpkg.com/unhead/-/unhead-1.9.3.tgz#9c9d7a69aecd0f6c1becbf98114d9ba18fdf720a"
+  integrity sha512-nV6d4ALJph73hCJT1tAd4z30Q2Gv8vNUvK0netM/EetL2scdggf9brcX3OyPqWhZbnFIOE+AouH2oE1KPznkcw==
   dependencies:
-    "@unhead/dom" "1.8.20"
-    "@unhead/schema" "1.8.20"
-    "@unhead/shared" "1.8.20"
+    "@unhead/dom" "1.9.3"
+    "@unhead/schema" "1.9.3"
+    "@unhead/shared" "1.9.3"
     hookable "^5.5.3"
 
 universalify@^0.2.0:
