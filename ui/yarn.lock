@@ -1141,15 +1141,15 @@
   resolved "https://registry.yarnpkg.com/@ungap/structured-clone/-/structured-clone-1.2.0.tgz#756641adb587851b5ccb3e095daf27ae581c8406"
   integrity sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==
 
-"@unhead/addons@^1.9.4":
-  version "1.9.4"
-  resolved "https://registry.yarnpkg.com/@unhead/addons/-/addons-1.9.4.tgz#584b541e23f32307942ad69efef151e7a93347be"
-  integrity sha512-LSvvOQPPHtGX6xh58iB4zfsR8/yDX7HR0eK42FIyeUaCDMuO+hXy1xGiJQM0V7V/eaZFXY1gYkfkmccfMP37Jw==
+"@unhead/addons@^1.9.7":
+  version "1.9.7"
+  resolved "https://registry.yarnpkg.com/@unhead/addons/-/addons-1.9.7.tgz#3331b170faf817a6d36f904d053ddebee0c9bb3f"
+  integrity sha512-+1DeUNvOhDNPdvxiZcYJakLEqdQvFeUwmYZcILBtZD/nJ+80pzS9Z7pIy1FC658lx3OuE+i7reD/gQzORescMg==
   dependencies:
     "@rollup/pluginutils" "^5.1.0"
-    "@unhead/schema" "1.9.4"
-    "@unhead/shared" "1.9.4"
-    magic-string "^0.30.8"
+    "@unhead/schema" "1.9.7"
+    "@unhead/shared" "1.9.7"
+    magic-string "^0.30.10"
     mlly "^1.6.1"
     ufo "^1.5.3"
     unplugin "^1.10.1"
@@ -1171,10 +1171,10 @@
     hookable "^5.5.3"
     zhead "^2.2.4"
 
-"@unhead/schema@1.9.4":
-  version "1.9.4"
-  resolved "https://registry.yarnpkg.com/@unhead/schema/-/schema-1.9.4.tgz#4518139c82b5590e43c4f0b71072198f3a93a66e"
-  integrity sha512-/J6KYQ+aqKO5uLDTU9BXfiRAfJ3mQNmF5gh3Iyd4qZaWfqjsDGYIaAe4xAGPnJxwBn6FHlnvQvZBSGqru1MByw==
+"@unhead/schema@1.9.7":
+  version "1.9.7"
+  resolved "https://registry.yarnpkg.com/@unhead/schema/-/schema-1.9.7.tgz#44c87f89b7526b7cd81ef5c5d399a63e77d373b6"
+  integrity sha512-naQGY1gQqq8DmQCxVTOeeXIqaRwbqnLEgvQl12zPEDviYxmg7TCbmKyN9uT4ZarQbJ2WYT2UtYvdSrmTXcwlBw==
   dependencies:
     hookable "^5.5.3"
     zhead "^2.2.4"
@@ -1186,12 +1186,12 @@
   dependencies:
     "@unhead/schema" "1.9.3"
 
-"@unhead/shared@1.9.4":
-  version "1.9.4"
-  resolved "https://registry.yarnpkg.com/@unhead/shared/-/shared-1.9.4.tgz#1f9b2e4103a49e6e39a51b5f4e94f5a337132aa9"
-  integrity sha512-ErP6SUzPPRX9Df4fqGlwlLInoG+iBiH0nDudRuIpoFGyTnv1uO9BQ+lfFld8s1gI1WCdoBwVkISBp9/f/E/GLA==
+"@unhead/shared@1.9.7":
+  version "1.9.7"
+  resolved "https://registry.yarnpkg.com/@unhead/shared/-/shared-1.9.7.tgz#1588ad1c3fb9c9517f48b63261d07d40a1d3a075"
+  integrity sha512-srji+qaBkkGOTdtTmFxt3AebFYcpt1qQHeQva7X3dSm5nZJDoKj35BJJTZfBSRCjgvkTtsdVUT14f9p9/4BCMA==
   dependencies:
-    "@unhead/schema" "1.9.4"
+    "@unhead/schema" "1.9.7"
 
 "@unhead/vue@^1.9.3":
   version "1.9.3"
@@ -3847,10 +3847,10 @@ magic-string-ast@^0.3.0:
   dependencies:
     magic-string "^0.30.2"
 
-magic-string@^0.30.2, magic-string@^0.30.5, magic-string@^0.30.7, magic-string@^0.30.8:
-  version "0.30.9"
-  resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.30.9.tgz#8927ae21bfdd856310e07a1bc8dd5e73cb6c251d"
-  integrity sha512-S1+hd+dIrC8EZqKyT9DstTH/0Z+f76kmmvZnkfQVmOpDEF9iVgdYif3Q/pIWHmCoo59bQVGW0kVL3e2nl+9+Sw==
+magic-string@^0.30.10, magic-string@^0.30.2, magic-string@^0.30.5, magic-string@^0.30.7:
+  version "0.30.10"
+  resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.30.10.tgz#123d9c41a0cb5640c892b041d4cfb3bd0aa4b39e"
+  integrity sha512-iIRwTIf0QKV3UAnYK4PU8uiEc4SRh5jX0mwpIwETPpHdhVM4f53RSwS/vXvN1JhGX+Cs7B8qIq3d6AH49O5fAQ==
   dependencies:
     "@jridgewell/sourcemap-codec" "^1.4.15"
 
