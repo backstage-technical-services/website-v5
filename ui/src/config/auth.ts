@@ -48,6 +48,9 @@ export const login = () => {
 export default auth0
 export const permissions = {
   equipment: {
+    patDatabase: {
+      view: 'equipment.pat-database:read',
+    },
     assets: {
       view: 'equipment.asset:read',
     },

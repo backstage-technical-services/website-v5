@@ -1,8 +1,8 @@
 import type { RouteLocationRaw } from 'vue-router'
-import { mdiFormatQuoteOpen, mdiTableMultiple } from '@quasar/extras/mdi-v7'
+import { mdiDatabase, mdiFormatQuoteOpen, mdiTableMultiple } from '@quasar/extras/mdi-v7'
 import { can } from '@/helpers/auth'
 import { permissions } from '@/config/auth'
-import { assetRegister } from '@/data/links'
+import { assetRegister, patDatabase } from '@/data/links'
 
 export type MainMenuItem = {
   id?: string
@@ -52,6 +52,15 @@ const buildEquipment = () => buildSection({
       text: 'Asset Register',
       href: assetRegister,
       icon: mdiTableMultiple,
+    })
+  }
+
+  if(can(permissions.equipment.patDatabase.view)) {
+    items.push({
+      id: 'equipment-pat-database',
+      text: 'PAT Database',
+      href: patDatabase,
+      icon: mdiDatabase,
     })
   }
 
