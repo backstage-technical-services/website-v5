@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.9.22"
+    kotlin("jvm") version "1.9.24"
     kotlin("plugin.allopen") version "1.9.22"
     kotlin("plugin.jpa") version "1.9.22"
     id("io.gitlab.arturbosch.detekt") version "1.23.5"
