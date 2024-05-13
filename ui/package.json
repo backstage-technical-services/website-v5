@@ -26,7 +26,7 @@
     "pinia": "^2.1.7",
     "quasar": "^2.15.1",
     "vue": "^3.4.27",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.2"
   },
   "devDependencies": {
     "@cypress/code-coverage": "^3.12.37",
