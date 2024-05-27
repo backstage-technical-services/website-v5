@@ -838,10 +838,10 @@
   resolved "https://registry.yarnpkg.com/@quasar/extras/-/extras-1.16.11.tgz#84b1efb9097a6e58c3ebfdd5da83ac658056a35c"
   integrity sha512-sbTBHOA+Hi7ah0P6qSm+xfRXqwJ94ct3NKA3Lkq3iNPYuHD7VXbSWtP2eA7Cu9Fd0WjVoPbngf6yFGg46U3IfQ==
 
-"@quasar/quasar-app-extension-testing-e2e-cypress@^6.0.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@quasar/quasar-app-extension-testing-e2e-cypress/-/quasar-app-extension-testing-e2e-cypress-6.0.0.tgz#8fb8866f1a567c813f1f6f9ea29f1a739f72fccf"
-  integrity sha512-ja9hk6o2zQFlKwF3iu8HDfA/vJApALL/H0jSULGzIyKsx4GfqvEU7Fdg2+2V85jUFkuWasispmh1Xzhizx8c5w==
+"@quasar/quasar-app-extension-testing-e2e-cypress@^6.1.0":
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@quasar/quasar-app-extension-testing-e2e-cypress/-/quasar-app-extension-testing-e2e-cypress-6.1.0.tgz#fa6568ae1e3474cb6cd62feb619221d849947c30"
+  integrity sha512-Gbq9egeDEK/VLHLaXAMYBUlc1fGOpmtmPrM95UG+8ONyRWhm1876H5ax6M0q1s+MDmul3NX/tLXFWTp75zStGQ==
   dependencies:
     "@cypress/code-coverage" "^3.12.26"
     cross-env "^7.0.3"
