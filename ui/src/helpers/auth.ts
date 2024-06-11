@@ -1,7 +1,7 @@
 import { watch } from 'vue'
 import type { NavigationGuardNext, RouteLocationNormalized, RouteLocationRaw } from 'vue-router'
 import { storeToRefs } from 'pinia'
-import jwtDecode from 'jwt-decode'
+import { jwtDecode } from 'jwt-decode'
 import type { JwtPayload } from 'jwt-decode'
 
 import { useNotifications } from '@/composables/notifications'
