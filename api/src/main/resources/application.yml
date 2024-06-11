@@ -27,6 +27,8 @@ quarkus:
       timezone: UTC
     database:
       generation: none
+    quote-identifiers:
+      strategy: only-keywords
 
   # Auth/OIDC
   oidc:

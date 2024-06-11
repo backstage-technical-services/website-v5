@@ -29,18 +29,10 @@
         </template>
 
         <template #no-data>
-          <div class="row full-width flex-center" v-if="!quoteState.isLoading">
-            <q-icon :name="mdiAlert" color="warning" size="xl" class="q-mr-lg" />
-
-            <div>
-              <div class="text-h3 text-bts-gold" style="margin: 0;">
-                We don't seem to have any good quotes
-              </div>
-              <div class="text-h4 text-grey" style="margin: 0;">
-                You guys need to start embarrassing yourselves
-              </div>
-            </div>
-          </div>
+          <TableNoData
+              header="We don't seem to have any good quotes"
+              subheader="You guys need to start embarrassing yourselves"
+              v-if="!quoteState.isLoading" />
         </template>
 
         <template #item="props">
@@ -57,7 +49,7 @@
 
 <script lang="ts" setup>
 import { computed, onMounted, reactive, ref } from 'vue'
-import { mdiAlert, mdiPlus } from '@quasar/extras/mdi-v7'
+import { mdiPlus } from '@quasar/extras/mdi-v7'
 
 import type { QTableOnRequest } from '@/types/quasar'
 import type { DefaultQuoteResponse } from '@/api/domains/quotes'
@@ -72,6 +64,7 @@ import { useBreadcrumbs } from '@/composables/breadcrumbs'
 import { Dialog } from 'quasar'
 import { useHead } from '@unhead/vue'
 import { fetchPaginatedList } from '@/helpers/pagination'
+import TableNoData from '@/components/TableNoData.vue'
 
 const canCreate = computed(() => can(permissions.quotes.add))
 
@@ -99,7 +92,7 @@ const fetchQuotesPage = async(pageNum: number, pageSize: number) => {
 
   return fetchPaginatedList(pageNum, pageSize, api.quotes.list)
     .then(data => {
-      quoteState.data = data
+      // quoteState.data = data
 
       pagination.value.page = data.page.pageIndex + 1
       pagination.value.rowsPerPage = data.page.pageSize

@@ -35,6 +35,11 @@ const router = createRouter({
       component: () => import('@/views/FAQ.vue'),
     },
     ...auth,
+    {
+      path: '/committee',
+      name: 'committee',
+      component: () => import('@/views/Committee/index.vue'),
+    },
     ...legal,
     ...quotes,
     ...redirects,

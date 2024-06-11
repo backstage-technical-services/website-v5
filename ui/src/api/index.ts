@@ -3,6 +3,7 @@ import type { AxiosResponse } from 'axios'
 
 import type { ApiProps } from '@/api/types'
 import auth from '@/config/auth'
+import committeeApi from './domains/committee'
 import quotesApi from './domains/quotes'
 
 const http = axios.create({
@@ -38,6 +39,7 @@ const apiProps: ApiProps = {
   extractResourceId,
 }
 const api = {
+  committee: committeeApi(apiProps),
   quotes: quotesApi(apiProps),
 }
 

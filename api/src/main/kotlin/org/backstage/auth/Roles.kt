@@ -1,6 +1,10 @@
 package org.backstage.auth
 
 object Roles {
+    object Committee {
+        const val READ = "committee:read"
+        const val EDIT = "committee:edit"
+    }
     object Quotes {
         const val READ = "quote:read"
         const val CREATE = "quote:create"
