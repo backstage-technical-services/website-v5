@@ -1,7 +1,6 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
-import type { QuasarPluginOptions } from 'quasar'
 import { Quasar, config as quasarConfig } from './config/quasar'
 
 import App from './App.vue'
@@ -14,7 +13,7 @@ const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
-app.use(Quasar, quasarConfig as Partial<QuasarPluginOptions>)
+app.use(Quasar, quasarConfig)
 app.use(auth0)
 app.use(unhead)
 

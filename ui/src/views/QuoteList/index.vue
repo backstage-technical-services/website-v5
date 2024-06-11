@@ -78,7 +78,7 @@ const canCreate = computed(() => can(permissions.quotes.add))
 const quoteState = reactive<LoadableState<PaginatedResponse<DefaultQuoteResponse>>>({
   isLoading: true,
 })
-const quoteList = computed(() => quoteState.data?.items)
+const quoteList = computed(() => quoteState.data?.items ?? [])
 
 const paginationOptions = [5, 10, 20, 50]
 const pagination = ref({

@@ -1,7 +1,7 @@
 import { Quasar, Notify, Dialog, LocalStorage } from 'quasar'
 
 // Load the language
-import langEnGb from 'quasar/lang/en-GB.mjs'
+import langEnGb from 'quasar/lang/en-GB.js'
 
 // Load the font
 import '@quasar/extras/roboto-font/roboto-font.css'
