@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@auth0/auth0-vue": "^2.3.3",
-    "@quasar/extras": "^1.16.11",
+    "@quasar/extras": "^1.16.12",
     "@unhead/vue": "^1.9.15",
     "axios": "^1.7.2",
     "jwt-decode": "^4.0.0",
