@@ -53,7 +53,7 @@ dependencies {
     // Other
     implementation("io.quarkus:quarkus-mailer")
     implementation("io.quarkus:quarkus-cache")
-    implementation("org.apache.commons:commons-lang3:3.14.0")
+    implementation("org.apache.commons:commons-lang3:3.15.0")
 
     // Tests
     testImplementation("io.github.serpro69:kotlin-faker:1.16.0")
