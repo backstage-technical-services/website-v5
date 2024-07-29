@@ -39,7 +39,7 @@
     "@tsconfig/node18": "^18.2.4",
     "@types/jsdom": "^21.1.7",
     "@types/luxon": "^3.4.2",
-    "@types/node": "20",
+    "@types/node": "22",
     "@unhead/addons": "^1.9.11",
     "@vitejs/plugin-vue": "^5.0.5",
     "@vitest/coverage-v8": "^1.6.0",
