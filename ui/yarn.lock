@@ -1180,18 +1180,18 @@
   resolved "https://registry.yarnpkg.com/@ungap/structured-clone/-/structured-clone-1.2.0.tgz#756641adb587851b5ccb3e095daf27ae581c8406"
   integrity sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==
 
-"@unhead/addons@^1.9.11":
-  version "1.9.11"
-  resolved "https://registry.yarnpkg.com/@unhead/addons/-/addons-1.9.11.tgz#ae4a30cad9cfabd38aeb0128190b1f47635db51a"
-  integrity sha512-XEfiAYJttvGFzDd9uVJDmBEUjBWM7EPPtICG1NXlA6aH1PaZTg72YsURo5NSbgOABn6hsw2ctvdw52KLyZiMfg==
+"@unhead/addons@^1.9.16":
+  version "1.9.16"
+  resolved "https://registry.yarnpkg.com/@unhead/addons/-/addons-1.9.16.tgz#a59d89bddcf45114d5befdce8104080ccbf78a4c"
+  integrity sha512-5F6jReJceeeTnY774/OIAjEBMZ2EWuEivLLanpOJzZdxf30zzsZ+v9WwIEx5tb3+TTdvEhHFcB3rTH6UoLvxWg==
   dependencies:
     "@rollup/pluginutils" "^5.1.0"
-    "@unhead/schema" "1.9.11"
-    "@unhead/shared" "1.9.11"
+    "@unhead/schema" "1.9.16"
+    "@unhead/shared" "1.9.16"
     magic-string "^0.30.10"
-    mlly "^1.7.0"
+    mlly "^1.7.1"
     ufo "^1.5.3"
-    unplugin "^1.10.1"
+    unplugin "^1.11.0"
     unplugin-ast "^0.10.0"
 
 "@unhead/dom@1.9.16":
@@ -1202,14 +1202,6 @@
     "@unhead/schema" "1.9.16"
     "@unhead/shared" "1.9.16"
 
-"@unhead/schema@1.9.11":
-  version "1.9.11"
-  resolved "https://registry.yarnpkg.com/@unhead/schema/-/schema-1.9.11.tgz#b9e87ec835e2c142203b34045c5ec8d809916626"
-  integrity sha512-hvIGl20wpQQImyHvAMv2tPgccKLGEwMn8KYQdImUkiCLdQw2Jw9jH7syE/u+TPSqwOQIwsvPja5sK+SChL1KNw==
-  dependencies:
-    hookable "^5.5.3"
-    zhead "^2.2.4"
-
 "@unhead/schema@1.9.16":
   version "1.9.16"
   resolved "https://registry.yarnpkg.com/@unhead/schema/-/schema-1.9.16.tgz#cd650cc3a48e501f676bd8b0077acd5bac6776a5"
@@ -1217,13 +1209,6 @@
   dependencies:
     hookable "^5.5.3"
     zhead "^2.2.4"
-
-"@unhead/shared@1.9.11":
-  version "1.9.11"
-  resolved "https://registry.yarnpkg.com/@unhead/shared/-/shared-1.9.11.tgz#b5ce665017b6f35e3e37359af910b76b651626ba"
-  integrity sha512-jgpQ/cPfXzQA7c4F4PKyPXxS9POXAMrJ0QUBMTQYNOW6t6KlljjK89n6nUEmGuiyO4jdJGooZNVS1fXVaKIgYQ==
-  dependencies:
-    "@unhead/schema" "1.9.11"
 
 "@unhead/shared@1.9.16":
   version "1.9.16"
@@ -1484,6 +1469,11 @@ acorn@^8.11.3:
   version "8.11.3"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.11.3.tgz#71e0b14e13a4ec160724b38fb7b0f233b1b81d7a"
   integrity sha512-Y9rRfJG5jcKOE0CLisYbojUjIrIEE7AGMzA/Sm4BslANhbS+cDMpgBdcPT91oJ7OuJ9hYJBx59RjbhxVnrF8Xg==
+
+acorn@^8.12.1:
+  version "8.12.1"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.12.1.tgz#71616bdccbe25e27a54439e0046e89ca76df2248"
+  integrity sha512-tcpGyI9zbizT9JbV6oYE477V6mTlXvvi0T0G3SNIYE2apm/G5huBa1+K89VGeovbg+jycCrfhl3ADxErOuO6Jg==
 
 acorn@^8.9.0:
   version "8.10.0"
@@ -4006,14 +3996,14 @@ minimist@^1.2.0, minimist@^1.2.6, minimist@^1.2.8:
   resolved "https://registry.yarnpkg.com/minipass/-/minipass-7.0.4.tgz#dbce03740f50a4786ba994c1fb908844d27b038c"
   integrity sha512-jYofLM5Dam9279rdkWzqHozUo4ybjdZmCsDHePy5V/PbBcVMiSZR97gmAy45aqi8CK1lG2ECd356FU86avfwUQ==
 
-mlly@^1.2.0, mlly@^1.4.2, mlly@^1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/mlly/-/mlly-1.7.0.tgz#587383ae40dda23cadb11c3c3cc972b277724271"
-  integrity sha512-U9SDaXGEREBYQgfejV97coK0UL1r+qnF2SyO9A3qcI8MzKnsIFKHNVEkrDyNncQTKQQumsasmeq84eNMdBfsNQ==
+mlly@^1.2.0, mlly@^1.4.2, mlly@^1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/mlly/-/mlly-1.7.1.tgz#e0336429bb0731b6a8e887b438cbdae522c8f32f"
+  integrity sha512-rrVRZRELyQzrIUAVMHxP97kv+G786pHmOKzuFII8zDYahFBS7qnHh2AlYSl1GAHhaMPCz6/oHjVMcfFYgFYHgA==
   dependencies:
     acorn "^8.11.3"
     pathe "^1.1.2"
-    pkg-types "^1.1.0"
+    pkg-types "^1.1.1"
     ufo "^1.5.3"
 
 mrmime@^2.0.0:
@@ -4463,13 +4453,13 @@ pkg-types@^1.0.3:
     mlly "^1.2.0"
     pathe "^1.1.0"
 
-pkg-types@^1.1.0:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/pkg-types/-/pkg-types-1.1.1.tgz#07b626880749beb607b0c817af63aac1845a73f2"
-  integrity sha512-ko14TjmDuQJ14zsotODv7dBlwxKhUKQEhuhmbqo1uCi9BB0Z2alo/wAXg6q1dTR5TyuqYyWhjtfe/Tsh+X28jQ==
+pkg-types@^1.1.1:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/pkg-types/-/pkg-types-1.1.3.tgz#161bb1242b21daf7795036803f28e30222e476e3"
+  integrity sha512-+JrgthZG6m3ckicaOB74TwQ+tBWsFl3qVQg7mN8ulwSOElJ7gBhKzj2VkCPnZ4NlF6kEquYU+RIYNVAvzd54UA==
   dependencies:
     confbox "^0.1.7"
-    mlly "^1.7.0"
+    mlly "^1.7.1"
     pathe "^1.1.2"
 
 postcss-selector-parser@^6.0.15:
@@ -5452,15 +5442,15 @@ unplugin-ast@^0.10.0:
     magic-string-ast "^0.6.0"
     unplugin "^1.10.1"
 
-unplugin@^1.10.1:
-  version "1.10.1"
-  resolved "https://registry.yarnpkg.com/unplugin/-/unplugin-1.10.1.tgz#8ceda065dc71bc67d923dea0920f05c67f2cd68c"
-  integrity sha512-d6Mhq8RJeGA8UfKCu54Um4lFA0eSaRa3XxdAJg8tIdxbu1ubW0hBCZUL7yI2uGyYCRndvbK8FLHzqy2XKfeMsg==
+unplugin@^1.10.1, unplugin@^1.11.0:
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/unplugin/-/unplugin-1.12.0.tgz#a11d3eb565602190748b1f95ecc8590b0f7dcbb4"
+  integrity sha512-KeczzHl2sATPQUx1gzo+EnUkmN4VmGBYRRVOZSGvGITE9rGHRDGqft6ONceP3vgXcyJ2XjX5axG5jMWUwNCYLw==
   dependencies:
-    acorn "^8.11.3"
+    acorn "^8.12.1"
     chokidar "^3.6.0"
     webpack-sources "^3.2.3"
-    webpack-virtual-modules "^0.6.1"
+    webpack-virtual-modules "^0.6.2"
 
 untildify@^4.0.0:
   version "4.0.0"
@@ -5715,10 +5705,10 @@ webpack-sources@^3.2.3:
   resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-3.2.3.tgz#2d4daab8451fd4b240cc27055ff6a0c2ccea0cde"
   integrity sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==
 
-webpack-virtual-modules@^0.6.1:
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/webpack-virtual-modules/-/webpack-virtual-modules-0.6.1.tgz#ac6fdb9c5adb8caecd82ec241c9631b7a3681b6f"
-  integrity sha512-poXpCylU7ExuvZK8z+On3kX+S8o/2dQ/SVYueKA0D4WEMXROXgY8Ez50/bQEUmvoSMMrWcrJqCHuhAbsiwg7Dg==
+webpack-virtual-modules@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/webpack-virtual-modules/-/webpack-virtual-modules-0.6.2.tgz#057faa9065c8acf48f24cb57ac0e77739ab9a7e8"
+  integrity sha512-66/V2i5hQanC51vBQKPH4aI8NMAcBW59FVBs+rC7eGHupMyfn34q7rZIE+ETlJ+XTevqfUhVVBgSUNSW2flEUQ==
 
 whatwg-encoding@^3.1.1:
   version "3.1.1"
