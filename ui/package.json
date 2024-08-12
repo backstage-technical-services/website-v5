@@ -41,7 +41,7 @@
     "@types/luxon": "^3.4.2",
     "@types/node": "22",
     "@unhead/addons": "^1.9.16",
-    "@vitejs/plugin-vue": "^5.0.5",
+    "@vitejs/plugin-vue": "^5.1.2",
     "@vitest/coverage-v8": "^1.6.0",
     "@vitest/ui": "^1.6.0",
     "@vue/eslint-config-typescript": "^13.0.0",
