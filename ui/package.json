@@ -19,7 +19,7 @@
     "@auth0/auth0-vue": "^2.3.3",
     "@quasar/extras": "^1.16.12",
     "@unhead/vue": "^1.9.16",
-    "axios": "^1.7.2",
+    "axios": "^1.7.4",
     "jwt-decode": "^4.0.0",
     "luxon": "^3.4.4",
     "marked": "^13.0.2",
