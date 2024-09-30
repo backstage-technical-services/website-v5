@@ -15,7 +15,7 @@ val quarkusPlatformGroupId: String by project
 val quarkusPlatformArtifactId: String by project
 val quarkusPlatformVersion: String by project
 val kotestVersion: String by project
-val jacksonVersion = "2.17.2"
+val jacksonVersion = "2.18.0"
 
 dependencies {
     implementation(enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}"))
