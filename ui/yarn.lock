@@ -892,10 +892,10 @@
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
-"@rollup/pluginutils@^5.1.0":
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-5.1.0.tgz#7e53eddc8c7f483a4ad0b94afb1f7f5fd3c771e0"
-  integrity sha512-XTIWOPPcpvyKI6L1NHo0lFlCyznUEyPmPY1mc3KpPVDYulHSTvyeLNVW00QTLIAFNhR3kYnJTQHeGqU4M3n09g==
+"@rollup/pluginutils@^5.1.0", "@rollup/pluginutils@^5.1.2":
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-5.1.2.tgz#d3bc9f0fea4fd4086aaac6aa102f3fa587ce8bd9"
+  integrity sha512-/FIdS3PyZ39bjZlwqFnWqCOVnW7o963LtKMwQOD0NhQqw22gSr2YY1afu3FxRip4ZCZNsD5jq6Aaz6QV3D/Njw==
   dependencies:
     "@types/estree" "^1.0.0"
     estree-walker "^2.0.2"
@@ -1185,18 +1185,18 @@
   resolved "https://registry.yarnpkg.com/@ungap/structured-clone/-/structured-clone-1.2.0.tgz#756641adb587851b5ccb3e095daf27ae581c8406"
   integrity sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==
 
-"@unhead/addons@^1.10.0":
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/@unhead/addons/-/addons-1.10.0.tgz#af416d6d410dc92845546ee73fb43cda220e8480"
-  integrity sha512-K6+pRWFgWqP2vsGdKHtYULZ35D9vZb2qZ8n3YiC0TPzoG2wStrf+HOxfV4D8lddarzD9U8QjKe0z8OwYsIqIdg==
+"@unhead/addons@^1.11.7":
+  version "1.11.7"
+  resolved "https://registry.yarnpkg.com/@unhead/addons/-/addons-1.11.7.tgz#871f21c87febc4bd9f783d5575cae3b98ecba40c"
+  integrity sha512-h2EfW4NHgUSr/MZTHnr+nWm2eiX6yVFdxAdYuVOI8VgTUdyYGD7RsY5Gm0gMcJ9h/KPrSh7EyF0tKlS5jyVVrQ==
   dependencies:
-    "@rollup/pluginutils" "^5.1.0"
-    "@unhead/schema" "1.10.0"
-    "@unhead/shared" "1.10.0"
+    "@rollup/pluginutils" "^5.1.2"
+    "@unhead/schema" "1.11.7"
+    "@unhead/shared" "1.11.7"
     magic-string "^0.30.11"
     mlly "^1.7.1"
     ufo "^1.5.4"
-    unplugin "^1.12.2"
+    unplugin "^1.14.1"
     unplugin-ast "^0.10.0"
 
 "@unhead/dom@1.11.7":
@@ -1207,14 +1207,6 @@
     "@unhead/schema" "1.11.7"
     "@unhead/shared" "1.11.7"
 
-"@unhead/schema@1.10.0":
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/@unhead/schema/-/schema-1.10.0.tgz#6d0f0dd4de21ab6e7c16d2471691131f63b7cb24"
-  integrity sha512-hmgkFdLzm/VPLAXBF89Iry4Wz/6FpHMfMKCnAdihAt1Ublsi04RrA0hQuAiuGG2CZiKL4VCxtmV++UXj/kyakA==
-  dependencies:
-    hookable "^5.5.3"
-    zhead "^2.2.4"
-
 "@unhead/schema@1.11.7":
   version "1.11.7"
   resolved "https://registry.yarnpkg.com/@unhead/schema/-/schema-1.11.7.tgz#917738d3adf21d5baa3791a17948c425f7e41808"
@@ -1222,13 +1214,6 @@
   dependencies:
     hookable "^5.5.3"
     zhead "^2.2.4"
-
-"@unhead/shared@1.10.0":
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/@unhead/shared/-/shared-1.10.0.tgz#5883996f1aa52a1267c65d75feec2801172ee199"
-  integrity sha512-Lv7pP0AoWJy+YaiWd4kGD+TK78ahPUwnIRx6YCC6FjPmE0KCqooeDS4HbInYaklLlEMQZislXyIwLczK2DTWiw==
-  dependencies:
-    "@unhead/schema" "1.10.0"
 
 "@unhead/shared@1.11.7":
   version "1.11.7"
@@ -1922,7 +1907,7 @@ check-more-types@2.24.0, check-more-types@^2.24.0:
   resolved "https://registry.yarnpkg.com/check-more-types/-/check-more-types-2.24.0.tgz#1420ffb10fd444dcfc79b43891bbfffd32a84600"
   integrity sha512-Pj779qHxV2tuapviy1bSZNEL1maXr13bPYpsvSDB68HlYcYuhlDrmGd63i0JHMCLKzc7rUSNIrpdJlhVlNwrxA==
 
-"chokidar@>=3.0.0 <4.0.0", chokidar@^3.6.0:
+"chokidar@>=3.0.0 <4.0.0":
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.6.0.tgz#197c6cc669ef2a8dc5e7b4d97ee4e092c3eb0d5b"
   integrity sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==
@@ -5509,14 +5494,12 @@ unplugin-ast@^0.10.0:
     magic-string-ast "^0.6.0"
     unplugin "^1.10.1"
 
-unplugin@^1.10.1, unplugin@^1.12.2:
-  version "1.12.2"
-  resolved "https://registry.yarnpkg.com/unplugin/-/unplugin-1.12.2.tgz#cc85aef010614394898caccf5f17002af8a4cd6f"
-  integrity sha512-bEqQxeC7rxtxPZ3M5V4Djcc4lQqKPgGe3mAWZvxcSmX5jhGxll19NliaRzQSQPrk4xJZSGniK3puLWpRuZN7VQ==
+unplugin@^1.10.1, unplugin@^1.14.1:
+  version "1.14.1"
+  resolved "https://registry.yarnpkg.com/unplugin/-/unplugin-1.14.1.tgz#c76d6155a661e43e6a897bce6b767a1ecc344c1a"
+  integrity sha512-lBlHbfSFPToDYp9pjXlUEFVxYLaue9f9T1HC+4OHlmj+HnMDdz9oZY+erXfoCe/5V/7gKUSY2jpXPb9S7f0f/w==
   dependencies:
     acorn "^8.12.1"
-    chokidar "^3.6.0"
-    webpack-sources "^3.2.3"
     webpack-virtual-modules "^0.6.2"
 
 untildify@^4.0.0:
@@ -5758,11 +5741,6 @@ webidl-conversions@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-7.0.0.tgz#256b4e1882be7debbf01d05f0aa2039778ea080a"
   integrity sha512-VwddBukDzu71offAQR975unBIGqfKZpM+8ZX6ySk8nYhVoo5CYaZyzt3YBvYtRtO+aoGlqxPg/B87NGVZ/fu6g==
-
-webpack-sources@^3.2.3:
-  version "3.2.3"
-  resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-3.2.3.tgz#2d4daab8451fd4b240cc27055ff6a0c2ccea0cde"
-  integrity sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==
 
 webpack-virtual-modules@^0.6.2:
   version "0.6.2"
