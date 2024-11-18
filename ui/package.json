@@ -40,7 +40,7 @@
     "@types/jsdom": "^21.1.7",
     "@types/luxon": "^3.4.2",
     "@types/node": "22",
-    "@unhead/addons": "^1.11.10",
+    "@unhead/addons": "^1.11.11",
     "@vitejs/plugin-vue": "^5.1.4",
     "@vitest/coverage-v8": "^1.6.0",
     "@vitest/ui": "^1.6.0",
