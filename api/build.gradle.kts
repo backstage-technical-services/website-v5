@@ -43,7 +43,7 @@ dependencies {
 
     // Auth
     implementation("io.quarkus:quarkus-oidc")
-    implementation("com.auth0:auth0:2.14.0")
+    implementation("com.auth0:auth0:2.15.0")
 
     // Monitoring
     implementation("io.quarkus:quarkus-smallrye-health")
