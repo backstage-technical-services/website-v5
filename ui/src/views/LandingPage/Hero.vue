@@ -19,19 +19,24 @@ type Props = {
   title: string
   bgColor: string
 
-  btnColor: string
+  btnColor?: string
   btnLabel?: string
 
   image?: string
 }
-const props = withDefaults(defineProps<Props>(), {
-  btnColor: 'primary',
-})
-const showButton = computed(() => props.btnLabel !== undefined)
+const {
+  title,
+  bgColor,
+  btnColor = 'primary',
+  btnLabel,
+  image,
+} = defineProps<Props>()
+
+const showButton = computed(() => btnLabel !== undefined)
 
 const heroStyles = computed(() => ({
-  'background-color': props.image === undefined ? props.bgColor : undefined,
-  'background-image': `url('${props.image}')`,
+  'background-color': image === undefined ? bgColor : undefined,
+  'background-image': `url('${image}')`,
 }))
 </script>
 

@@ -24,15 +24,15 @@ import { mdiHome, mdiGithub } from '@quasar/extras/mdi-v7'
 import { useHead } from '@unhead/vue'
 import { useLayout } from '@/composables/layout'
 
-const props = withDefaults(defineProps<{
+type Props = {
   code?: number
   details: string
-}>(), {
-  code: 500,
-})
+}
+
+const { code = 500, details } = defineProps<Props>()
 
 useHead({
-  title: `Error ${props.code}`,
+  title: `Error ${code}`,
 })
 
 const {
