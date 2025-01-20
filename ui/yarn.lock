@@ -1340,21 +1340,13 @@
     unplugin "^2.1.2"
     unplugin-ast "^0.13.1"
 
-"@unhead/dom@1.11.14":
-  version "1.11.14"
-  resolved "https://registry.yarnpkg.com/@unhead/dom/-/dom-1.11.14.tgz#30e39d9848c964e5038c98e2de0de8bd0737d77a"
-  integrity sha512-FaHCWo9JR4h7PCpSRaXuMC6ifXOuBzlI0PD1MmUcxND2ayDl1d6DauIbN8TUf9TDRxNkrK1Ehb0OCXjC1ZJtrg==
+"@unhead/dom@1.11.18":
+  version "1.11.18"
+  resolved "https://registry.yarnpkg.com/@unhead/dom/-/dom-1.11.18.tgz#2105b0afb567ee3f9c6b21771cfd2116bae8f37e"
+  integrity sha512-zQuJUw/et9zYEV0SZWTDX23IgurwMaXycAuxt4L6OgNL0T4TWP3a0J/Vm3Q02hmdNo/cPKeVBrwBdnFUXjGU4w==
   dependencies:
-    "@unhead/schema" "1.11.14"
-    "@unhead/shared" "1.11.14"
-
-"@unhead/schema@1.11.14":
-  version "1.11.14"
-  resolved "https://registry.yarnpkg.com/@unhead/schema/-/schema-1.11.14.tgz#fec0c3947144001c12d68c96a8585abaa6771f1b"
-  integrity sha512-V9W9u5tF1/+TiLqxu+Qvh1ShoMDkPEwHoEo4DKdDG6ko7YlbzFfDxV6el9JwCren45U/4Vy/4Xi7j8OH02wsiA==
-  dependencies:
-    hookable "^5.5.3"
-    zhead "^2.2.4"
+    "@unhead/schema" "1.11.18"
+    "@unhead/shared" "1.11.18"
 
 "@unhead/schema@1.11.18":
   version "1.11.18"
@@ -1364,13 +1356,6 @@
     hookable "^5.5.3"
     zhead "^2.2.4"
 
-"@unhead/shared@1.11.14":
-  version "1.11.14"
-  resolved "https://registry.yarnpkg.com/@unhead/shared/-/shared-1.11.14.tgz#b001403cfbdb35c8a12a9231f0734a91d2460213"
-  integrity sha512-41Qt4PJKYVrEGOTXgBJLRYrEu3S7n5stoB4TFC6312CIBVedXqg7voHQurn32LVDjpfJftjLa2ggCjpqdqoRDw==
-  dependencies:
-    "@unhead/schema" "1.11.14"
-
 "@unhead/shared@1.11.18":
   version "1.11.18"
   resolved "https://registry.yarnpkg.com/@unhead/shared/-/shared-1.11.18.tgz#e35a8adbf526ec640e96ec0c874df70f450d3a6c"
@@ -1379,16 +1364,15 @@
     "@unhead/schema" "1.11.18"
     packrup "^0.1.2"
 
-"@unhead/vue@^1.11.14":
-  version "1.11.14"
-  resolved "https://registry.yarnpkg.com/@unhead/vue/-/vue-1.11.14.tgz#8d534bb7101882a70e2c0db1c49aefa3cea216d1"
-  integrity sha512-6nfi7FsZ936gscmj+1nUB1pybiFMFbnuEFo7B/OY2klpLWsYDUOVvpsJhbu7C3u7wkTlJXglmAk6jdd8I7WgZA==
+"@unhead/vue@^1.11.18":
+  version "1.11.18"
+  resolved "https://registry.yarnpkg.com/@unhead/vue/-/vue-1.11.18.tgz#dc872a775ea6f3b2e4a5fd81e77034fa71b246a8"
+  integrity sha512-Jfi7t/XNBnlcauP9UTH3VHBcS69G70ikFd2e5zdgULLDRWpOlLs1sSTH1V2juNptc93DOk9RQfC5jLWbLcivFw==
   dependencies:
-    "@unhead/schema" "1.11.14"
-    "@unhead/shared" "1.11.14"
-    defu "^6.1.4"
+    "@unhead/schema" "1.11.18"
+    "@unhead/shared" "1.11.18"
     hookable "^5.5.3"
-    unhead "1.11.14"
+    unhead "1.11.18"
 
 "@vitejs/plugin-vue@^5.2.1":
   version "5.2.1"
@@ -2392,11 +2376,6 @@ define-properties@^1.1.3, define-properties@^1.1.4, define-properties@^1.2.0:
   dependencies:
     has-property-descriptors "^1.0.0"
     object-keys "^1.1.1"
-
-defu@^6.1.4:
-  version "6.1.4"
-  resolved "https://registry.yarnpkg.com/defu/-/defu-6.1.4.tgz#4e0c9cf9ff68fe5f3d7f2765cc1a012dfdcb0479"
-  integrity sha512-mEQCMmwJu317oSz8CwdIOdwf3xMif1ttiM8LTufzc3g6kR+9Pe236twL8j3IYT1F7GfRgGcW6MWxzZjLIkuHIg==
 
 delayed-stream@~1.0.0:
   version "1.0.0"
@@ -5666,14 +5645,14 @@ undici-types@~6.20.0:
   resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-6.20.0.tgz#8171bf22c1f588d1554d55bf204bc624af388433"
   integrity sha512-Ny6QZ2Nju20vw1SRHe3d9jVu6gJ+4e3+MMpqu7pqE5HT6WsTSlce++GQmK5UXS8mzV8DSYHrQH+Xrf2jVcuKNg==
 
-unhead@1.11.14:
-  version "1.11.14"
-  resolved "https://registry.yarnpkg.com/unhead/-/unhead-1.11.14.tgz#9be7c432a74fa299462d7e87b2a2c0b0e9c48e01"
-  integrity sha512-XmXW0aZyX9kGk9ejCKCSvv/J4T3Rt4hoAe2EofM+nhG+zwZ7AArUMK/0F/fj6FTkfgY0u0/JryE00qUDULgygA==
+unhead@1.11.18:
+  version "1.11.18"
+  resolved "https://registry.yarnpkg.com/unhead/-/unhead-1.11.18.tgz#a89b78262ac6aae3130cb64e3a93d0bd56c40115"
+  integrity sha512-TWgGUoZMpYe2yJwY6jZ0/9kpQT18ygr2h5lI6cUXdfD9UzDc0ytM9jGaleSYkj9guJWXkk7izYBnzJvxl8mRvQ==
   dependencies:
-    "@unhead/dom" "1.11.14"
-    "@unhead/schema" "1.11.14"
-    "@unhead/shared" "1.11.14"
+    "@unhead/dom" "1.11.18"
+    "@unhead/schema" "1.11.18"
+    "@unhead/shared" "1.11.18"
     hookable "^5.5.3"
 
 universalify@^2.0.0:
