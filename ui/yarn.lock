@@ -1325,14 +1325,14 @@
   resolved "https://registry.yarnpkg.com/@ungap/structured-clone/-/structured-clone-1.2.0.tgz#756641adb587851b5ccb3e095daf27ae581c8406"
   integrity sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==
 
-"@unhead/addons@^1.11.18":
-  version "1.11.18"
-  resolved "https://registry.yarnpkg.com/@unhead/addons/-/addons-1.11.18.tgz#3398ee6dc437a5a816c9ac1880a407bf859ce54e"
-  integrity sha512-WIqqy3asQLvaNQlZd+P+IQ+y8Mu0YfGbnDBp8NW/ZzyeOYB/A5MjlfgC2wdX+J8Bk889VGvSZ0ymXm0N9Kd+ug==
+"@unhead/addons@^1.11.19":
+  version "1.11.19"
+  resolved "https://registry.yarnpkg.com/@unhead/addons/-/addons-1.11.19.tgz#cbc7a268437678bb06bba30f84990921ef5d7472"
+  integrity sha512-lnWuZ8pI9lGmiDIVNt5VNRT8n3CQ3zVgxNO6LyyCsE6+BiOMHh3Xd21btIKiF6n0LuJj5aG2vuNlrc0BqbEZTA==
   dependencies:
     "@rollup/pluginutils" "^5.1.4"
-    "@unhead/schema" "1.11.18"
-    "@unhead/shared" "1.11.18"
+    "@unhead/schema" "1.11.19"
+    "@unhead/shared" "1.11.19"
     estree-walker "^3.0.3"
     magic-string "^0.30.17"
     mlly "^1.7.3"
@@ -1348,14 +1348,6 @@
     "@unhead/schema" "1.11.19"
     "@unhead/shared" "1.11.19"
 
-"@unhead/schema@1.11.18":
-  version "1.11.18"
-  resolved "https://registry.yarnpkg.com/@unhead/schema/-/schema-1.11.18.tgz#bb8f861c0872e98b500038cb926ec3755d539d33"
-  integrity sha512-a3TA/OJCRdfbFhcA3Hq24k1ZU1o9szicESrw8DZcGyQFacHnh84mVgnyqSkMnwgCmfN4kvjSiTBlLEHS6+wATw==
-  dependencies:
-    hookable "^5.5.3"
-    zhead "^2.2.4"
-
 "@unhead/schema@1.11.19":
   version "1.11.19"
   resolved "https://registry.yarnpkg.com/@unhead/schema/-/schema-1.11.19.tgz#0df49ba27725403a6a3edb7400d7e596bd9e6ec6"
@@ -1363,14 +1355,6 @@
   dependencies:
     hookable "^5.5.3"
     zhead "^2.2.4"
-
-"@unhead/shared@1.11.18":
-  version "1.11.18"
-  resolved "https://registry.yarnpkg.com/@unhead/shared/-/shared-1.11.18.tgz#e35a8adbf526ec640e96ec0c874df70f450d3a6c"
-  integrity sha512-OsupRQRxJqqnuKiL1Guqipjbl7MndD5DofvmGa3PFGu2qNPmOmH2mxGFjRBBgq2XxY1KalIHl/2I9HV6gbK8cw==
-  dependencies:
-    "@unhead/schema" "1.11.18"
-    packrup "^0.1.2"
 
 "@unhead/shared@1.11.19":
   version "1.11.19"
