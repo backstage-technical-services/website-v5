@@ -1,3 +1,4 @@
+enabled: true
 titleOnly: true
 types:
   - feat
@@ -11,3 +12,5 @@ types:
   - ci
   - chore
   - revert
+allowMergeCommits: true
+allowRevertCommits: true
