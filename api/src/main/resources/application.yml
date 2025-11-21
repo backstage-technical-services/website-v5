@@ -1,0 +1,81 @@
+quarkus:
+  # Server
+  http:
+    port: 8080
+    cors:
+      ~: true
+      methods: GET,PUT,POST,PATCH,DELETE
+
+  # Logging
+  log:
+    console:
+      format: "ts=%d{yyyy-MM-dd HH:mm:ss.SSS} level=%p traceId=%X{traceId} spanId=%X{spanId} class=%c{2.} %X msg=\"%s\"%e%n"
+      json:
+        enabled: false
+    min-level: TRACE
+    level: INFO
+    category:
+      "org.backstage.api":
+        level: ${LOG_LEVEL:INFO}
+
+  # Database
+  datasource:
+    db-kind: postgresql
+  hibernate-orm:
+    dialect: org.hibernate.dialect.PostgreSQLDialect
+    jdbc:
+      timezone: UTC
+    schema-management:
+      strategy: none
+
+  # Auth/OIDC
+  oidc:
+    auth-server-url: ${OIDC_SERVER_URL}
+    client-id: ${OIDC_CLIENT_ID}
+    credentials:
+      secret: ${OIDC_CLIENT_SECRET}
+
+"%prod":
+  quarkus:
+    datasource:
+      jdbc:
+        url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+      username: ${DB_USER}
+      password: ${DB_PASS}
+    log:
+      console:
+        json:
+          enabled: true
+          excluded-keys: [sequence, hostName, processId, processName]
+
+"%dev":
+  quarkus:
+    http:
+      cors:
+        origins: http://localhost:8000
+    log:
+      category:
+        "org.backstage.api":
+          level: ${LOG_LEVEL:DEBUG}
+        "org.jboss.resteasy.reactive.common.core.AbstractResteasyReactiveContext":
+          level: DEBUG
+    datasource:
+      jdbc:
+        url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:backstage}
+      username: ${DB_USER:backstage}
+      password: ${DB_PASS:backstage}
+    hibernate-orm:
+      schema-management:
+        strategy: drop-and-create
+      log:
+        jdbc-warnings: true
+        sql: true
+
+"%test":
+  quarkus:
+    hibernate-orm:
+      sql-load-script: no-file
+      schema-management:
+        strategy: drop-and-create
+    oidc:
+      enabled: false
